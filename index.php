@@ -1,12 +1,12 @@
 <?php
    $rootUrl = "https://qdp.hivetasks.com/";
-   header('Link: <' . $rootUrl . 'style.css>; rel=preload; as=style', false);
+   header('Link: <' . $rootUrl . 'css/style.css>; rel=preload; as=style', false);
    header('Link: <' . $rootUrl . 'script.js>; rel=preload; as=script', false);
 ?><!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <link href="<?php echo $rootUrl;?>style.css" rel="stylesheet" />
+        <link href="<?php echo $rootUrl;?>css/style.css" rel="stylesheet" />
         <script src="<?php echo $rootUrl;?>script.js" type="text/javascript" defer></script>
     </head>
     <body<?php
