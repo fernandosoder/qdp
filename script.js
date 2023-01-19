@@ -223,7 +223,7 @@ var loadPost = (post, open = false) => {
 
 
 
-        let payout = post.is_paidout ? post.author_payout_value : post.max_accepted_payout.split(" ")[0] < post.pending_payout_value.split(" ")[0] ? post.max_accepted_payout.split(" ")[0] : post.pending_payout_value.split(" ")[0];
+        let payout = post.is_paidout ? post.author_payout_value.split(" ")[0] : post.max_accepted_payout.split(" ")[0] < post.pending_payout_value.split(" ")[0] ? post.max_accepted_payout.split(" ")[0] : post.pending_payout_value.split(" ")[0];
         let upvotes = 0;
         let downvotes = 0;
         let upower = 0;
@@ -360,7 +360,7 @@ var updatePostData = (author, permlink, timeout = 5000) => {
             let post_element = document.querySelector("[author=" + author + "][permlink=" + permlink + "] ");
             let post = JSON.parse(res.target.response)["result"];
 //            console.log(post);
-            let payout = post.is_paidout ? post.author_payout_value : post.max_accepted_payout.split(" ")[0] < post.pending_payout_value.split(" ")[0] ? post.max_accepted_payout.split(" ")[0] : post.pending_payout_value.split(" ")[0];
+            let payout = post.is_paidout ? post.author_payout_value.split(" ")[0] : post.max_accepted_payout.split(" ")[0] < post.pending_payout_value.split(" ")[0] ? post.max_accepted_payout.split(" ")[0] : post.pending_payout_value.split(" ")[0];
             let upvotes = 0;
             let downvotes = 0;
             let upower = 0;
