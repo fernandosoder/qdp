@@ -1,0 +1,25 @@
+Options -Indexes
+
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteRule ^\/?\@([^\/]+)\/?$ ./index.php?author=$1
+RewriteRule ^\/?\@([^\/]+)\/([^\/]+)\/?$ ./index.php?author=$1&permlink=$2
+RewriteRule ^\/?(upload)\/?$ ./index.php?upload=true
+RewriteRule ^\/?(ipfshandler)\/?$ ./ipfshandler.php
+
+
+<ifModule mod_headers.c>
+    <FilesMatch "index\.php">
+#        Header set Content-Type: "text/plain"
+#
+        H2Push on
+#        H2PushResource add "../favicon.ico" critical
+#        H2PushResource add style.css
+#
+#        Header add Link "<./style.css?p>;rel=preload;as=style;crossorigin"
+#        Header add Link "<./script.js?p>;rel=preload;as=script;crossorigin"
+    </FilesMatch>
+
+</ifModule>
+ 
