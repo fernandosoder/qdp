@@ -12,9 +12,6 @@
     -ms-user-select: text
     user-select: text
 
-*
-    /*transition: 0.1s linear*/
-
 html
 
     margin: 0
@@ -45,13 +42,7 @@ html
     
     a.☰
         display: inline
-    
 
-/* @media screen and (min-width: 400px) and (max-width: 799px)
-    body
-        grid-template-columns: auto 200px 0 
-    
- */
 @media screen and (max-width: 799px)
     main#posts_container
         margin: 10px
@@ -59,9 +50,6 @@ html
     button.sidemenu
         display: inline-block
         position: absolute
-    
-    body
-        /*! grid-gap: 10px */
     
     body:not(.sidemenu)
         grid-template-columns: 0 calc(100%) 0
@@ -71,13 +59,6 @@ html
     
     body.sidemenu
         grid-template-columns: 100% 0 0
-    
-    body.sidemenu 
-
-    
-    body.sidemenu main
-
-    
 
 body
     background-color: #151719
@@ -107,20 +88,6 @@ body > header
     width: 100%
     overflow: hidden
 
-body > header nav
-    /*! display: inline-block */
-    /*! top: 0 */
-    /*! margin: 0 */
-    /*! padding: 0 */
-    /*! position: relative */
-    /*! line-height: 0 */
-    /*! height: 100% */
-
-
-body > header nav a
-    /*! line-height: normal */
-
-
 body > header .sitename
     margin-left: 15px
     font-size: 25px
@@ -129,18 +96,15 @@ body > header .sitename
 
 body > header nav
     grid-area: menu
-    /*! display: none */
 
 body > header .userprofile
     margin-right: 20px
     grid-area: profile
-    /*! display: none */
     height: 50px
     line-height: 45px
 
 
 main#posts_container
-    /*! display: inline-block */
     text-align: left
     grid-area: main
 
@@ -179,20 +143,13 @@ main#posts_container > section img
     height: auto
     display: inline-block
 
-aside
-    /*! overflow: hidden */
-
 aside.left
     grid-area: asideleft
-    /*! background-color: red */
 
 aside.right
     grid-area: asideright
-    /*! background-color: blue */
-
 
 .section_media
-    /*! aspect-ratio: 80/50 */
     min-height: 40px
     text-align: center
 
@@ -204,8 +161,6 @@ aside.right
 
 
 section:not(.open) > .section_body
-    /*! max-height: 120px */
-    /*! height: 120px */
     overflow: hidden
 
 .section_body
@@ -217,17 +172,10 @@ section:not(.open) > .section_body
 
 .section_footer
     min-height: 50px
-    /*! background-color: red */
-    /*! background-color: red */
 
 a
     color: inherit
     text-decoration: inherit
-
-
-a.☰
-
-
 
 [upload] .titulo_textarea
     width: calc(100% - 46px)
@@ -346,15 +294,12 @@ section:empty
     line-height: 100px
 
 [upload] .mediaobject:not(.dragenter)
-
     min-height: 100px
-    /*     height: 100px */
 
 [upload] .mediaobject.dragenter
-    background-color:gray
+    background-color: gray
     line-height: 100px
     min-height: 300px
-    /*     height: 300px */
 
 [upload] .mediaobject.dragenter:empty:before
     content: "Drop file here"
@@ -365,11 +310,9 @@ section:empty
 
 [upload] .mediaobject progress
     background-color: rgb(252, 252, 252)
-    /*! height: 100% */
     width: calc(100% - 20px)
     display: inline-block
     position: absolute
-    /*! top: 0 */
     left: 10px
     bottom: 10px
 
@@ -437,7 +380,6 @@ section:empty
 
 
 [upload] footer > div.button_div .maxpay
-    /*! background-color: red */
     height: 100%
     min-width: 10px
 
@@ -450,8 +392,6 @@ section:empty
 
 
 [upload] footer > div.button_div .maxpay > *
-
-    /*! background-color: green */
     display: inline
     vertical-align: sub
     line-height: 100%
@@ -470,9 +410,6 @@ section:empty
     -moz-user-select: text
     -ms-user-select: text
     user-select: text
-
-*
-    /*transition: 0.1s linear*/
 
 html
 
@@ -530,13 +467,6 @@ html
     
     body.sidemenu
         grid-template-columns: 100% 0 0
-    
-    body.sidemenu 
-
-    
-    body.sidemenu main
-
-    
 
 body
     background-color: #151719
@@ -566,20 +496,6 @@ body > header
     width: 100%
     overflow: hidden
 
-body > header nav
-    /*! display: inline-block */
-    /*! top: 0 */
-    /*! margin: 0 */
-    /*! padding: 0 */
-    /*! position: relative */
-    /*! line-height: 0 */
-    /*! height: 100% */
-
-
-body > header nav a
-    /*! line-height: normal */
-
-
 body > header .sitename
     margin-left: 15px
     font-size: 25px
@@ -588,18 +504,15 @@ body > header .sitename
 
 body > header nav
     grid-area: menu
-    /*! display: none */
 
 body > header .userprofile
     margin-right: 20px
     grid-area: profile
-    /*! display: none */
     height: 50px
     line-height: 45px
 
 
 main#posts_container
-    /*! display: inline-block */
     text-align: left
     grid-area: main
 
@@ -638,20 +551,13 @@ main#posts_container > section img
     height: auto
     display: inline-block
 
-aside
-    /*! overflow: hidden */
-
 aside.left
     grid-area: asideleft
-    /*! background-color: red */
 
 aside.right
     grid-area: asideright
-    /*! background-color: blue */
-
 
 .section_media
-    /*! aspect-ratio: 80/50 */
     min-height: 40px
     text-align: center
 
@@ -667,7 +573,6 @@ aside.right
 
 section:not(.open) > .section_body
     max-height: 120px
-    /*! height: 120px */
     overflow: hidden
 
 .section_body
@@ -686,11 +591,6 @@ section:not(.open) > .section_body
 a
     color: inherit
     text-decoration: inherit
-
-
-a.☰
-
-
 
 [upload] .titulo_textarea
     width: calc(100% - 46px)
@@ -756,7 +656,6 @@ section:empty
     display: inline
 
 .userprofile a.loggedon span
-    /*! font-style: italic */
     font-size: 13px
 
 .userprofile a.loggedon img
@@ -814,10 +713,9 @@ section:empty
     /*     height: 100px */
 
 [upload] .mediaobject.dragenter
-    background-color:gray
+    background-color: gray
     line-height: 100px
     min-height: 300px
-    /*     height: 300px */
 
 [upload] .mediaobject.dragenter:empty:before
     content: "Drop file here"
@@ -828,11 +726,9 @@ section:empty
 
 [upload] .mediaobject progress
     background-color: rgb(252, 252, 252)
-    /*! height: 100% */
     width: calc(100% - 20px)
     display: inline-block
     position: absolute
-    /*! top: 0 */
     left: 10px
     bottom: 10px
 
@@ -972,22 +868,18 @@ footer button.loading
     position: relative
 
 footer button.loading:before
-  animation-name: updown
-  animation-duration: 1s
-  animation-direction: alternate
-  animation-iteration-count: infinite
-  animation-timing-function: linear
+    animation-name: updown
+    animation-duration: 1s
+    animation-direction: alternate
+    animation-iteration-count: infinite
+    animation-timing-function: linear
     position: relative
 
 @keyframes updown 
-  from 
-    top: -20px
-      
-  
-  to 
-    top: 20px
-  
-
+    from 
+        top: -20px
+    to 
+        top: 20px
 
 footer button.downvote:before
     content: "👎"
