@@ -13,52 +13,18 @@
     user-select: text
 
 html
-
     margin: 0
 
-
-@media screen and (min-width: 1400px) 
-    body
-        grid-template-columns: auto 800px auto
-        grid-gap: 20px
-    
-    a.☰
-        display: none
-    
-
-@media screen and (min-width: 1000px) and (max-width:1399px) 
-    body
-        grid-template-columns: auto 600px auto
-        grid-gap: 20px
-    
-    a.☰
-        display: none
-    
-
-@media screen and (min-width: 800px) and (max-width: 999px)
-    body
-        grid-template-columns: auto 500px 0
-        grid-gap: 20px
-    
-    a.☰
+a.☰
+    display: none
+    @media (max-width: 999px)
         display: inline
 
-@media screen and (max-width: 799px)
-    main#posts_container
-        margin: 10px
-    
-    button.sidemenu
+button.sidemenu
+    @media (max-width: 799px)
         display: inline-block
         position: absolute
-    
-    body:not(.sidemenu)
-        grid-template-columns: 0 calc(100%) 0
-    
-    a.☰
-        display: inline
-    
-    body.sidemenu
-        grid-template-columns: 100% 0 0
+
 
 body
     background-color: #151719
@@ -68,58 +34,71 @@ body
     display: inline-grid
     width: 100%
     margin: 0
+    @media (max-width: 799px)
+        &:not(.sidemenu)
+            grid-template-columns: 0 calc(100%) 0
+        &.sidemenu
+            grid-template-columns: 100% 0 0
 
+    @media screen and (min-width: 1400px) 
+        grid-template-columns: auto 800px auto
+        grid-gap: 20px
+    @media screen and (min-width: 1000px) and (max-width:1399px)
+        grid-template-columns: auto 600px auto
+        grid-gap: 20px
+    @media screen and (min-width: 800px) and (max-width: 999px)
+        grid-template-columns: auto 500px 0
+        grid-gap: 20px
 
-body > header
-    text-align: left
-    background-color: #262b35
-    /*! font-size: 13px */
-    height: 50px
-    line-height: 50px
-    /*! top: 0 */
-    /*! left: 0 */
-    grid-area: header
-    margin: 0
-    display: inline-grid
-    grid-template: "banner menu profile"
-    grid-gap: 20px
-    grid-template-columns: max-content auto max-content
-    position: relative
-    width: 100%
-    overflow: hidden
+    & > header
+        text-align: left
+        background-color: #262b35
+        height: 50px
+        line-height: 50px
+        grid-area: header
+        margin: 0
+        display: inline-grid
+        grid-template: "banner menu profile"
+        grid-gap: 20px
+        grid-template-columns: max-content auto max-content
+        position: relative
+        width: 100%
+        overflow: hidden
 
-body > header .sitename
-    margin-left: 15px
-    font-size: 25px
-    display: inline
-    grid-area: banner
+        .sitename
+            margin-left: 15px
+            font-size: 25px
+            display: inline
+            grid-area: banner
 
-body > header nav
-    grid-area: menu
+        nav
+            grid-area: menu
 
-body > header .userprofile
-    margin-right: 20px
-    grid-area: profile
-    height: 50px
-    line-height: 45px
+        .userprofile
+            margin-right: 20px
+            grid-area: profile
+            height: 50px
+            line-height: 45px
 
 
 main#posts_container
     text-align: left
     grid-area: main
 
+    @media (max-width: 799px)
+        margin: 10px
 
-main#posts_container > section
-    margin-bottom: 30px
-    background-color: #1d2023
-    overflow: hidden
-    box-shadow: 2px 2px 7px gray
-    border-radius: 15px
+    & > section
+        margin-bottom: 30px
+        background-color: #1d2023
+        overflow: hidden
+        box-shadow: 2px 2px 7px gray
+        border-radius: 15px
 
 
-main#posts_container > section :is(h2,.section_media,div.section_body,.section_openclose)
-    margin-left: 20px
-    margin-right: 20px
+        :is(h2,.section_media,div.section_body,.section_openclose)
+            margin-left: 20px
+            margin-right: 20px
 
 .section_openclose
     text-align: center
@@ -138,415 +117,6 @@ section.open .section_openclose:before
     content: "Close Post"
 
 main#posts_container > section img
-    /*! width: 90% */
-    max-width: 90%
-    height: auto
-    display: inline-block
-
-aside.left
-    grid-area: asideleft
-
-aside.right
-    grid-area: asideright
-
-.section_media
-    min-height: 40px
-    text-align: center
-
-.section_media,
-.section_body
-    width: calc(100% - 40px)
-    position: relative
-    display: inline-block
-
-
-section:not(.open) > .section_body
-    overflow: hidden
-
-.section_body
-
-    overflow: visible
-    height: auto
-    margin: 20px
-
-
-.section_footer
-    min-height: 50px
-
-a
-    color: inherit
-    text-decoration: inherit
-
-[upload] .titulo_textarea
-    width: calc(100% - 46px)
-    resize: vertical
-    font-size: 22px
-    max-height: 200px
-    min-height: 50px
-    margin: 20px
-
-
-[upload] .upload_section
-    text-align: center
-    margin: 20px
-    vertical-align: middle
-
-
-div.bigimage
-    background-color: #000000cc
-    position: fixed
-    min-height: 100%
-    width: 100%
-    z-index: 10
-    overflow: scroll
-
-
-div.bigimage img
-    position: absolute
-    margin: auto
-    top: 0
-    left: 0
-    right: 0
-    bottom: 0
-
-
-a.section_author
-    display: inline-block
-
-
-.section_header
-    text-align: right
-
-.section_header h2
-    text-align: left
-
-
-.section_header > a.section_author
-    margin-right: 20px
-    font-size: 14px
-    font-style: italic
-
-
-section:empty
-    display: none
-
-
-.userprofile:not([logado]) > a.loggedon,
-.userprofile[logado] > a.loggedoff
-    display: none
-
-
-.userprofile[logado] > a.loggedon,
-.userprofile:not([logado]) > a.loggedoff
-    display: inline
-
-.userprofile a.loggedon span
-    /*! font-style: italic */
-    font-size: 13px
-
-.userprofile a.loggedon img
-    height: 70%
-    position: relative
-    display: inline
-    border-radius: 25px
-    vertical-align: middle
-    margin-right: 5px
-
-.userprofile span:before
-    content: "@"
-
-
-[upload] input[type="file"]
-    display: none
-
-
-[upload] .mediaobject
-    width: calc(100% - 40px)
-    margin-left: 20px
-    border: 1px dotted
-    cursor: pointer
-    position: relative
-    transition: 0.1s linear
-
-
-[upload] .mediaobject:not(:empty):before
-    content: "X"
-    position: absolute
-    display: inline-block
-    background-color: #808080
-
-    height: 30px
-    width: 30px
-    vertical-align: middle
-    line-height: 30px
-    border-radius: 5px
-    top: 5px
-    left: 5px
-    opacity: 0.6
-
-
-[upload] .mediaobject > *
-    max-width: 100%
-
-
-[upload] .mediaobject:not(.dragenter):empty:before
-    content: "Click Here or paste URL below to choose a file"
-    line-height: 100px
-
-[upload] .mediaobject:not(.dragenter)
-    min-height: 100px
-
-[upload] .mediaobject.dragenter
-    background-color: gray
-    line-height: 100px
-    min-height: 300px
-
-[upload] .mediaobject.dragenter:empty:before
-    content: "Drop file here"
-
-[upload] .mediaobject:empty:before
-    vertical-align: middle
-
-
-[upload] .mediaobject progress
-    background-color: rgb(252, 252, 252)
-    width: calc(100% - 20px)
-    display: inline-block
-    position: absolute
-    left: 10px
-    bottom: 10px
-
-
-[upload] 
-    text-align: left
-
-
-[upload] input[type="url"]
-    display: inline-block
-    width: calc(100% - 45px)
-    margin-left: 2px
-    margin-top: 3px
-
-
-[upload] .comentario_textarea
-    width: calc(100% - 46px)
-    resize: vertical
-    font-size: 16px
-    max-height: 600px
-    min-height: 50px
-    margin: 20px
-
-
-[upload] footer > div
-    margin-left: 20px
-    margin-right: 20px
-    font-size: 16px
-
-[upload] footer > div:not(.button_div)
-    text-align: left
-    margin-bottom: 10px
-
-[upload] footer > div.button_div
-    text-align: right
-    margin-bottom: 20px
-    display: inline-grid
-    grid-gap: 10px
-    grid-template-areas: "maxpay btm"
-    width: calc(100% - 40px)
-    grid-template-columns: auto min-content
-
-
-[upload] footer > div:not(.button_div) :is(label,input[type=checkbox])
-    cursor: pointer
-
-
-[upload] footer > div.button_div button
-    font-size: 18px
-    padding-top: 5px
-    padding-bottom: 5px
-    padding-left: 20px
-    padding-right: 20px
-    cursor: pointer
-    grid-area: btm
-
-
-[upload] footer > div.tags_div > input
-    width: calc(100% - 8px)
-
-
-[upload] footer > div.original_label_div.disabled label
-    color: gray
-    text-decoration: line-through
-
-
-[upload] footer > div.button_div .maxpay
-    height: 100%
-    min-width: 10px
-
-    min-height: 10px
-    float: left
-    grid-area: maxpay
-    text-align: center
-    height: 100%
-    line-height: 2em
-
-
-[upload] footer > div.button_div .maxpay > *
-    display: inline
-    vertical-align: sub
-    line-height: 100%
-    position: relative
-
-:root
-    -webkit-user-select: none
-    -moz-user-select: none
-    -ms-user-select: none
-    user-select: none
-    font-family: Roboto, Helvetica Neue, Helvetica, Arial, sans-serif
-    margin: 0
-
-.selectable
-    -webkit-user-select: text
-    -moz-user-select: text
-    -ms-user-select: text
-    user-select: text
-
-html
-
-    margin: 0
-
-
-@media screen and (min-width: 1400px) 
-    body
-        grid-template-columns: auto 800px auto
-        grid-gap: 20px
-    
-    a.☰
-        display: none
-    
-
-@media screen and (min-width: 1000px) and (max-width:1399px) 
-    body
-        grid-template-columns: auto 600px auto
-        grid-gap: 20px
-    
-    a.☰
-        display: none
-    
-
-@media screen and (min-width: 800px) and (max-width: 999px)
-    body
-        grid-template-columns: auto 500px 0
-        grid-gap: 20px
-    
-    a.☰
-        display: inline
-    
-
-/* @media screen and (min-width: 400px) and (max-width: 799px)
-    body
-        grid-template-columns: auto 200px 0 
-    
- */
-@media screen and (max-width: 799px)
-    main#posts_container
-        margin: 10px
-    
-    button.sidemenu
-        display: inline-block
-        position: absolute
-    
-    body
-        /*! grid-gap: 10px */
-    
-    body:not(.sidemenu)
-        grid-template-columns: 0 calc(100%) 0
-    
-    a.☰
-        display: inline
-    
-    body.sidemenu
-        grid-template-columns: 100% 0 0
-
-body
-    background-color: #151719
-    color: rgb(252, 252, 252)
-    text-align: center
-    grid-template-areas: "header header header" "asideleft main asideright"
-    display: inline-grid
-    width: 100%
-    margin: 0
-
-
-body > header
-    text-align: left
-    background-color: #262b35
-    /*! font-size: 13px */
-    height: 50px
-    line-height: 50px
-    /*! top: 0 */
-    /*! left: 0 */
-    grid-area: header
-    margin: 0
-    display: inline-grid
-    grid-template: "banner menu profile"
-    grid-gap: 20px
-    grid-template-columns: max-content auto max-content
-    position: relative
-    width: 100%
-    overflow: hidden
-
-body > header .sitename
-    margin-left: 15px
-    font-size: 25px
-    display: inline
-    grid-area: banner
-
-body > header nav
-    grid-area: menu
-
-body > header .userprofile
-    margin-right: 20px
-    grid-area: profile
-    height: 50px
-    line-height: 45px
-
-
-main#posts_container
-    text-align: left
-    grid-area: main
-
-
-main#posts_container > section
-    margin-bottom: 30px
-    background-color: #1d2023
-    overflow: hidden
-    box-shadow: 2px 2px 7px gray
-    border-radius: 15px
-
-
-main#posts_container > section :is(h2,.section_media,div.section_body,.section_openclose)
-    margin-left: 20px
-    margin-right: 20px
-
-.section_openclose
-    text-align: center
-    display: inline-block
-    float:  right
-    margin: 10px
-    cursor: pointer
-    text-decoration: underline
-    font-weight: bold
-    font-style: italic
-
-section:not(.open) .section_openclose:before
-    content: "View Post"
-
-section.open .section_openclose:before
-    content: "Close Post"
-
-main#posts_container > section img
-    /*! width: 90% */
     max-width: 90%
     height: auto
     display: inline-block
@@ -564,8 +134,7 @@ aside.right
 .section_media > *
     max-width: 100%
 
-.section_media,
-.section_body
+.section_media, .section_body
     width: calc(100% - 40px)
     position: relative
     display: inline-block
@@ -576,10 +145,9 @@ section:not(.open) > .section_body
     overflow: hidden
 
 .section_body
-
     overflow: visible
     height: auto
-
+    margin: 20px
 
 .section_footer
     min-height: 50px
@@ -592,20 +160,6 @@ a
     color: inherit
     text-decoration: inherit
 
-[upload] .titulo_textarea
-    width: calc(100% - 46px)
-    resize: vertical
-    font-size: 22px
-    max-height: 200px
-    min-height: 50px
-    margin: 20px
-
-
-[upload] .upload_section
-    text-align: center
-    margin: 20px
-    vertical-align: middle
-
 
 div.bigimage
     background-color: #000000cc
@@ -615,14 +169,13 @@ div.bigimage
     z-index: 10
     overflow: scroll
 
-
-div.bigimage img
-    position: absolute
-    margin: auto
-    top: 0
-    left: 0
-    right: 0
-    bottom: 0
+    img
+        position: absolute
+        margin: auto
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
 
 
 a.section_author
@@ -632,46 +185,55 @@ a.section_author
 .section_header
     text-align: right
 
-.section_header h2
-    text-align: left
+    h2
+        text-align: left
 
-
-.section_header > a.section_author
-    margin-right: 20px
-    font-size: 14px
-    font-style: italic
+    & > a.section_author
+        margin-right: 20px
+        font-size: 14px
+        font-style: italic
 
 
 section:empty
     display: none
 
+.userprofile
 
-.userprofile:not([logado]) > a.loggedon,
-.userprofile[logado] > a.loggedoff
-    display: none
+    &:not([logado]) > a.loggedon, &[logado] > a.loggedoff
+        display: none
 
 
-.userprofile[logado] > a.loggedon,
-.userprofile:not([logado]) > a.loggedoff
-    display: inline
+    &[logado] > a.loggedon, &:not([logado]) > a.loggedoff
+        display: inline
 
-.userprofile a.loggedon span
-    font-size: 13px
+    a.loggedon
+        span
+            font-size: 13px
 
-.userprofile a.loggedon img
-    height: 70%
-    position: relative
-    display: inline
-    border-radius: 25px
-    vertical-align: middle
-    margin-right: 5px
-
-.userprofile span:before
-    content: "@"
-
+        img
+            height: 70%
+            position: relative
+            display: inline
+            border-radius: 25px
+            vertical-align: middle
+            margin-right: 5px
+    span:before
+        content: "@"
 
 [upload]
     text-align: left
+    .titulo_textarea
+        width: calc(100% - 46px)
+        resize: vertical
+        font-size: 22px
+        max-height: 200px
+        min-height: 50px
+        margin: 20px
+
+    .upload_section
+        text-align: center
+        margin: 20px
+        vertical-align: middle
     input[type="file"]
         display: none
 
@@ -797,6 +359,21 @@ section:empty
         & > div.original_label_div.disabled label
             color: gray
             text-decoration: line-through
+        & > div.button_div .maxpay
+            height: 100%
+            min-width: 10px
+
+            min-height: 10px
+            float: left
+            grid-area: maxpay
+            text-align: center
+            height: 100%
+            line-height: 2em
+            & > *
+                display: inline
+                vertical-align: sub
+                line-height: 100%
+                position: relative
 
 
 footer
