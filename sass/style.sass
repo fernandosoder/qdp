@@ -670,275 +670,243 @@ section:empty
     content: "@"
 
 
-[upload] input[type="file"]
-    display: none
-
-
-[upload] .mediaobject
-    width: calc(100% - 40px)
-    margin-left: 20px
-    border: 1px dotted
-    cursor: pointer
-    position: relative
-    transition: 0.1s linear
-
-
-[upload] .mediaobject:not(:empty):before
-    content: "X"
-    position: absolute
-    display: inline-block
-    background-color: #808080
-
-    height: 30px
-    width: 30px
-    vertical-align: middle
-    line-height: 30px
-    border-radius: 5px
-    top: 5px
-    left: 5px
-    opacity: 0.6
-
-
-[upload] .mediaobject > *
-    max-width: 100%
-
-
-[upload] .mediaobject:not(.dragenter):empty:before
-    content: "Click Here or paste URL below to choose a file"
-    line-height: 100px
-
-[upload] .mediaobject:not(.dragenter)
-
-    min-height: 100px
-    /*     height: 100px */
-
-[upload] .mediaobject.dragenter
-    background-color: gray
-    line-height: 100px
-    min-height: 300px
-
-[upload] .mediaobject.dragenter:empty:before
-    content: "Drop file here"
-
-[upload] .mediaobject:empty:before
-    vertical-align: middle
-
-
-[upload] .mediaobject progress
-    background-color: rgb(252, 252, 252)
-    width: calc(100% - 20px)
-    display: inline-block
-    position: absolute
-    left: 10px
-    bottom: 10px
-
-
-[upload] 
+[upload]
     text-align: left
+    input[type="file"]
+        display: none
+
+    .mediaobject
+        width: calc(100% - 40px)
+        margin-left: 20px
+        border: 1px dotted
+        cursor: pointer
+        position: relative
+        transition: 0.1s linear
+
+    .mediaobject:not(:empty):before
+        content: "X"
+        position: absolute
+        display: inline-block
+        background-color: #808080
+        height: 30px
+        width: 30px
+        vertical-align: middle
+        line-height: 30px
+        border-radius: 5px
+        top: 5px
+        left: 5px
+        opacity: 0.6
+
+    .mediaobject > *
+        max-width: 100%
+
+    .mediaobject:not(.dragenter):empty:before
+        content: "Click Here or paste URL below to choose a file"
+        line-height: 100px
+
+    .mediaobject:not(.dragenter)
+        min-height: 100px
+
+    .mediaobject.dragenter
+        background-color: gray
+        line-height: 100px
+        min-height: 300px
+
+    .mediaobject.dragenter:empty:before
+        content: "Drop file here"
+
+    .mediaobject:empty:before
+        vertical-align: middle
 
 
-[upload] input[type="url"]
-    display: inline-block
-    width: calc(100% - 45px)
-    margin-left: 2px
-    margin-top: 3px
+    .mediaobject progress
+        background-color: rgb(252, 252, 252)
+        width: calc(100% - 20px)
+        display: inline-block
+        position: absolute
+        left: 10px
+        bottom: 10px
 
 
-[upload] .comentario_textarea
-    width: calc(100% - 46px)
-    resize: vertical
-    font-size: 16px
-    max-height: 600px
-    min-height: 50px
-    margin: 20px
+
+    input[type="url"]
+        display: inline-block
+        width: calc(100% - 45px)
+        margin-left: 2px
+        margin-top: 3px
 
 
-[upload] footer > div
-    margin-left: 20px
-    margin-right: 20px
-    font-size: 16px
-
-[upload] footer > div:not(.button_div)
-    text-align: left
-    margin-bottom: 10px
-
-[upload] footer > div.button_div
-    text-align: right
-    margin-bottom: 20px
-    display: inline-grid
-    grid-gap: 10px
-    grid-template-areas: "maxpay btm"
-    width: calc(100% - 40px)
-    grid-template-columns: auto min-content
+    .comentario_textarea
+        width: calc(100% - 46px)
+        resize: vertical
+        font-size: 16px
+        max-height: 600px
+        min-height: 50px
+        margin: 20px
 
 
-[upload] footer > div:not(.button_div) :is(label,input[type=checkbox])
-    cursor: pointer
+    footer
+        & > div
+            margin-left: 20px
+            margin-right: 20px
+            font-size: 16px
+
+        & > div:not(.button_div)
+            text-align: left
+            margin-bottom: 10px
+            :is(label,input[type=checkbox])
+                cursor: pointer
+
+        & > div.button_div
+            text-align: right
+            margin-bottom: 20px
+            display: inline-grid
+            grid-gap: 10px
+            grid-template-areas: "maxpay btm"
+            width: calc(100% - 40px)
+            grid-template-columns: auto min-content
+            
+            .maxpay
+                height: 100%
+                min-width: 10px
+                min-height: 10px
+                float: left
+                grid-area: maxpay
+                text-align: center
+                height: 100%
+                line-height: 2em
+
+                & > *
+                    display: inline
+                    vertical-align: sub
+                    line-height: 100%
+                    position: relative
+
+            button
+                font-size: 18px
+                padding-top: 5px
+                padding-bottom: 5px
+                padding-left: 20px
+                padding-right: 20px
+                cursor: pointer
+                grid-area: btm
+
+        & > div.tags_div > input
+            width: calc(100% - 8px)
+
+        & > div.original_label_div.disabled label
+            color: gray
+            text-decoration: line-through
 
 
-[upload] footer > div.button_div button
-    font-size: 18px
-    padding-top: 5px
-    padding-bottom: 5px
-    padding-left: 20px
-    padding-right: 20px
-    cursor: pointer
-    grid-area: btm
+footer
+    button
+        padding: 0px
+        margin-top: 10px
+        margin-bottom: 10px
+        margin-left: 10px
+        background-color: #404040
+        display: inline-grid
+        grid-template: "thumb countvote" "thumb countpower"
+        border-radius: 10px
+        color: white
+        output
+            line-height: 25px
+            margin-right: 10px
+            margin-left: 5px
+            text-align: left
+            font-weight: bold
+        output:empty:before
+            content: "0"
+        output:first-child
+            grid-area: countvote
+        output:last-child
+            grid-area: countpower
+
+    button:before
+        font-size: 35px
+
+        width: 50px
+        height: 50px
+        line-height: 50px
+        display: inline-block
+        grid-area: thumb
+
+    button.downvote output:last-child
+        color: #f55
+
+    button.upvote:before
+        content: "👍"
+
+    button.loading
+        position: relative
+
+    button.loading:before
+        animation-name: updown
+        animation-duration: 1s
+        animation-direction: alternate
+        animation-iteration-count: infinite
+        animation-timing-function: linear
+        position: relative
+
+        @keyframes updown 
+            from 
+                top: -20px
+            to 
+                top: 20px
+    
+    button.downvote:before
+        content: "👎"
+    .tags_container
+        margin: 10px
+        grid-area: tags
+
+    .tag_container
+        margin-right: 10px
+        padding-top: 5px
+        padding-bottom: 5px
+        padding-left: 10px
+        padding-right: 10px
+        background-color: gray
+        border-radius: 15px
+    
+    button.upvote
+        grid-area: upvote
+
+    button.downvote
+        grid-area: downvote
 
 
-[upload] footer > div.tags_div > input
-    width: calc(100% - 8px)
+    button.upvote.myvote
+        background-color: #2d6f00
 
+    button.downvote.myvote
+        background-color: #5e0900
 
-[upload] footer > div.original_label_div.disabled label
-    color: gray
-    text-decoration: line-through
-
-
-[upload] footer > div.button_div .maxpay
-    /*! background-color: red */
-    height: 100%
-    min-width: 10px
-
-    min-height: 10px
-    float: left
-    grid-area: maxpay
-    text-align: center
-    height: 100%
-    line-height: 2em
-
-
-[upload] footer > div.button_div .maxpay > *
-
-    /*! background-color: green */
-    display: inline
-    vertical-align: sub
-    line-height: 100%
-    position: relative
-
-
-footer button
-    padding: 0px
-    margin-top: 10px
-    margin-bottom: 10px
-    margin-left: 10px
-    background-color: #404040
-    display: inline-grid
-    grid-template: "thumb countvote" "thumb countpower"
-    border-radius: 10px
-    color: white
-
-footer button:before
-    font-size: 35px
-
-    width: 50px
-    height: 50px
-    line-height: 50px
-    display: inline-block
-    grid-area: thumb
-
-
-footer button output:empty:before
-    content: "0"
-
-
-footer button output:first-child
-    grid-area: countvote
-
-footer button output:last-child
-    grid-area: countpower
-
-
-footer button.downvote output:last-child
-    color: #f55
-
-
-footer button output
-    line-height: 25px
-    margin-right: 10px
-    margin-left: 5px
-    text-align: left
-    font-weight: bold
-
-
-footer button.upvote:before
-    content: "👍"
-
-footer button.loading
-    position: relative
-
-footer button.loading:before
-    animation-name: updown
-    animation-duration: 1s
-    animation-direction: alternate
-    animation-iteration-count: infinite
-    animation-timing-function: linear
-    position: relative
-
-@keyframes updown 
-    from 
-        top: -20px
-    to 
-        top: 20px
-
-footer button.downvote:before
-    content: "👎"
-
-
-footer .tags_container
-
-    margin: 10px
-    grid-area: tags
-
-footer .tag_container
-    margin-right: 10px
-    padding-top: 5px
-    padding-bottom: 5px
-    padding-left: 10px
-    padding-right: 10px
-    background-color: gray
-    border-radius: 15px
-
-footer button.upvote
-    grid-area: upvote
-
-footer button.downvote
-    grid-area: downvote
-
-
-footer button.upvote.myvote
-    background-color: #2d6f00
-
-footer button.downvote.myvote
-    background-color: #5e0900
-
-footer.section_footer .rpcontainer
-    height: 100%
-    grid-area: rpcontainer
-    display: inline-table
-
-footer.section_footer .rpcontainer > *
-    font-size: 30px
-    display: table-cell
-    vertical-align: middle
-
-footer.section_footer .rpcontainer > *  output 
-    vertical-align: middle
-    margin: 20px
-
-footer.section_footer .rpcontainer > *  output:after
-    font-size: 15px
-    margin-left :5px
-
-footer.section_footer .rpcontainer > *  output:before
-    margin-right :5px
-
-footer.section_footer .replies:after
-    content: "comments"
-footer.section_footer .total_payout:not(.paid):after
-    content: "to be paid"
-footer.section_footer .total_payout.paid:after
-    content: "paid"
-
-footer.section_footer .total_payout:before
-    content: "$"
+    &.section_footer
+        .rpcontainer
+            height: 100%
+            grid-area: rpcontainer
+            display: inline-table
+        .rpcontainer
+            & > *
+                font-size: 30px
+                display: table-cell
+                vertical-align: middle
+                output 
+                    vertical-align: middle
+                    margin: 20px
+                output:after
+                    font-size: 15px
+                    margin-left: 5px
+                output:before
+                    margin-right: 5px
+        .replies:after
+            content: "comments"
+        .total_payout
+            &:not(.paid):after
+                content: "to be paid"
+            &.paid:after
+                content: "paid"
+            &:before
+                content: "$"
