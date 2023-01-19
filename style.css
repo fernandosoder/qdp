@@ -681,7 +681,7 @@ section:not(.open) > .section_body{
     display: grid;
     grid-template: "tags tags tags" "upvote downvote rpcontainer";
     grid-column-gap: 10px;
-    grid-auto-columns: max-content max-content auto;
+    grid-auto-columns: max-content max-content minmax(max-content,100%);
 }
 a{
     color: inherit;
