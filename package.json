@@ -1,0 +1,22 @@
+{
+  "name": "qdp",
+  "version": "1.0.0",
+  "description": "Simple frontend to Hive",
+  "scripts": {
+    "sass-watch": "sass --watch sass/style.sass css/style.css",
+    "sass-build": "sass sass/style.sass css/style.css --style compressed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fernandosoder/qdp.git"
+  },
+  "author": "fernandosoder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fernandosoder/qdp/issues"
+  },
+  "homepage": "https://github.com/fernandosoder/qdp#readme",
+  "dependencies": {
+    "sass": "^1.57.1"
+  }
+}

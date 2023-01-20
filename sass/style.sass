@@ -1,0 +1,489 @@
+:root
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+    font-family: Roboto, Helvetica Neue, Helvetica, Arial, sans-serif
+    margin: 0
+
+.selectable
+    -webkit-user-select: text
+    -moz-user-select: text
+    -ms-user-select: text
+    user-select: text
+
+html
+    margin: 0
+
+a.☰
+    display: none
+    @media (max-width: 999px)
+        display: inline
+
+button.sidemenu
+    @media (max-width: 799px)
+        display: inline-block
+        position: absolute
+
+
+body
+    background-color: #151719
+    color: rgb(252, 252, 252)
+    text-align: center
+    grid-template-areas: "header header header" "asideleft main asideright"
+    display: inline-grid
+    width: 100%
+    margin: 0
+    @media (max-width: 799px)
+        &:not(.sidemenu)
+            grid-template-columns: 0 calc(100%) 0
+        &.sidemenu
+            grid-template-columns: 100% 0 0
+
+    @media screen and (min-width: 1400px) 
+        grid-template-columns: auto 800px auto
+        grid-gap: 20px
+    @media screen and (min-width: 1000px) and (max-width:1399px)
+        grid-template-columns: auto 600px auto
+        grid-gap: 20px
+    @media screen and (min-width: 800px) and (max-width: 999px)
+        grid-template-columns: auto 500px 0
+        grid-gap: 20px
+
+    & > header
+        text-align: left
+        background-color: #262b35
+        height: 50px
+        line-height: 50px
+        grid-area: header
+        margin: 0
+        display: inline-grid
+        grid-template: "banner menu profile"
+        grid-gap: 20px
+        grid-template-columns: max-content auto max-content
+        position: relative
+        width: 100%
+        overflow: hidden
+
+        .sitename
+            margin-left: 15px
+            font-size: 25px
+            display: inline
+            grid-area: banner
+
+        nav
+            grid-area: menu
+
+        .userprofile
+            margin-right: 20px
+            grid-area: profile
+            height: 50px
+            line-height: 45px
+
+
+main#posts_container
+    text-align: left
+    grid-area: main
+
+    @media (max-width: 799px)
+        margin: 10px
+
+    & > section
+        margin-bottom: 30px
+        background-color: #1d2023
+        overflow: hidden
+        box-shadow: 2px 2px 7px gray
+        border-radius: 15px
+
+
+        :is(h2,.section_media,div.section_body,.section_openclose)
+            margin-left: 20px
+            margin-right: 20px
+
+.section_openclose
+    text-align: center
+    display: inline-block
+    float:  right
+    margin: 10px
+    cursor: pointer
+    text-decoration: underline
+    font-weight: bold
+    font-style: italic
+
+section:not(.open) .section_openclose:before
+    content: "View Post"
+
+section.open .section_openclose:before
+    content: "Close Post"
+
+main#posts_container > section img
+    max-width: 90%
+    height: auto
+    display: inline-block
+
+aside.left
+    grid-area: asideleft
+
+aside.right
+    grid-area: asideright
+
+.section_media
+    min-height: 40px
+    text-align: center
+
+.section_media > *
+    max-width: 100%
+
+.section_media, .section_body
+    width: calc(100% - 40px)
+    position: relative
+    display: inline-block
+
+
+section:not(.open) > .section_body
+    max-height: 120px
+    overflow: hidden
+
+.section_body
+    overflow: visible
+    height: auto
+    margin: 20px
+
+.section_footer
+    min-height: 50px
+    display: grid
+    grid-template: "tags tags tags" "upvote downvote rpcontainer"
+    grid-column-gap: 10px
+    grid-auto-columns: max-content max-content minmax(max-content,100%)
+
+a
+    color: inherit
+    text-decoration: inherit
+
+
+div.bigimage
+    background-color: #000000cc
+    position: fixed
+    min-height: 100%
+    width: 100%
+    z-index: 10
+    overflow: scroll
+
+    img
+        position: absolute
+        margin: auto
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+
+
+a.section_author
+    display: inline-block
+
+
+.section_header
+    text-align: right
+
+    h2
+        text-align: left
+
+    & > a.section_author
+        margin-right: 20px
+        font-size: 14px
+        font-style: italic
+
+
+section:empty
+    display: none
+
+.userprofile
+
+    &:not([logado]) > a.loggedon, &[logado] > a.loggedoff
+        display: none
+
+
+    &[logado] > a.loggedon, &:not([logado]) > a.loggedoff
+        display: inline
+
+    a.loggedon
+        span
+            font-size: 13px
+
+        img
+            height: 70%
+            position: relative
+            display: inline
+            border-radius: 25px
+            vertical-align: middle
+            margin-right: 5px
+    span:before
+        content: "@"
+
+[upload]
+    text-align: left
+    .titulo_textarea
+        width: calc(100% - 46px)
+        resize: vertical
+        font-size: 22px
+        max-height: 200px
+        min-height: 50px
+        margin: 20px
+
+    .upload_section
+        text-align: center
+        margin: 20px
+        vertical-align: middle
+    input[type="file"]
+        display: none
+
+    .mediaobject
+        width: calc(100% - 40px)
+        margin-left: 20px
+        border: 1px dotted
+        cursor: pointer
+        position: relative
+        transition: 0.1s linear
+
+    .mediaobject:not(:empty):before
+        content: "X"
+        position: absolute
+        display: inline-block
+        background-color: #808080
+        height: 30px
+        width: 30px
+        vertical-align: middle
+        line-height: 30px
+        border-radius: 5px
+        top: 5px
+        left: 5px
+        opacity: 0.6
+
+    .mediaobject > *
+        max-width: 100%
+
+    .mediaobject:not(.dragenter):empty:before
+        content: "Click Here or paste URL below to choose a file"
+        line-height: 100px
+
+    .mediaobject:not(.dragenter)
+        min-height: 100px
+
+    .mediaobject.dragenter
+        background-color: gray
+        line-height: 100px
+        min-height: 300px
+
+    .mediaobject.dragenter:empty:before
+        content: "Drop file here"
+
+    .mediaobject:empty:before
+        vertical-align: middle
+
+
+    .mediaobject progress
+        background-color: rgb(252, 252, 252)
+        width: calc(100% - 20px)
+        display: inline-block
+        position: absolute
+        left: 10px
+        bottom: 10px
+
+
+
+    input[type="url"]
+        display: inline-block
+        width: calc(100% - 45px)
+        margin-left: 2px
+        margin-top: 3px
+
+
+    .comentario_textarea
+        width: calc(100% - 46px)
+        resize: vertical
+        font-size: 16px
+        max-height: 600px
+        min-height: 50px
+        margin: 20px
+
+
+    footer
+        & > div
+            margin-left: 20px
+            margin-right: 20px
+            font-size: 16px
+
+        & > div:not(.button_div)
+            text-align: left
+            margin-bottom: 10px
+            :is(label,input[type=checkbox])
+                cursor: pointer
+
+        & > div.button_div
+            text-align: right
+            margin-bottom: 20px
+            display: inline-grid
+            grid-gap: 10px
+            grid-template-areas: "maxpay btm"
+            width: calc(100% - 40px)
+            grid-template-columns: auto min-content
+            
+            .maxpay
+                height: 100%
+                min-width: 10px
+                min-height: 10px
+                float: left
+                grid-area: maxpay
+                text-align: center
+                height: 100%
+                line-height: 2em
+
+                & > *
+                    display: inline
+                    vertical-align: sub
+                    line-height: 100%
+                    position: relative
+
+            button
+                font-size: 18px
+                padding-top: 5px
+                padding-bottom: 5px
+                padding-left: 20px
+                padding-right: 20px
+                cursor: pointer
+                grid-area: btm
+
+        & > div.tags_div > input
+            width: calc(100% - 8px)
+
+        & > div.original_label_div.disabled label
+            color: gray
+            text-decoration: line-through
+        & > div.button_div .maxpay
+            height: 100%
+            min-width: 10px
+
+            min-height: 10px
+            float: left
+            grid-area: maxpay
+            text-align: center
+            height: 100%
+            line-height: 2em
+            & > *
+                display: inline
+                vertical-align: sub
+                line-height: 100%
+                position: relative
+
+
+footer
+    button
+        padding: 0px
+        margin-top: 10px
+        margin-bottom: 10px
+        margin-left: 10px
+        background-color: #404040
+        display: inline-grid
+        grid-template: "thumb countvote" "thumb countpower"
+        border-radius: 10px
+        color: white
+        output
+            line-height: 25px
+            margin-right: 10px
+            margin-left: 5px
+            text-align: left
+            font-weight: bold
+        output:empty:before
+            content: "0"
+        output:first-child
+            grid-area: countvote
+        output:last-child
+            grid-area: countpower
+
+    button:before
+        font-size: 35px
+
+        width: 50px
+        height: 50px
+        line-height: 50px
+        display: inline-block
+        grid-area: thumb
+
+    button.downvote output:last-child
+        color: #f55
+
+    button.upvote:before
+        content: "👍"
+
+    button.loading
+        position: relative
+
+    button.loading:before
+        animation-name: updown
+        animation-duration: 1s
+        animation-direction: alternate
+        animation-iteration-count: infinite
+        animation-timing-function: linear
+        position: relative
+
+        @keyframes updown 
+            from 
+                top: -20px
+            to 
+                top: 20px
+    
+    button.downvote:before
+        content: "👎"
+    .tags_container
+        margin: 10px
+        grid-area: tags
+
+    .tag_container
+        margin-right: 10px
+        padding-top: 5px
+        padding-bottom: 5px
+        padding-left: 10px
+        padding-right: 10px
+        background-color: gray
+        border-radius: 15px
+    
+    button.upvote
+        grid-area: upvote
+
+    button.downvote
+        grid-area: downvote
+
+
+    button.upvote.myvote
+        background-color: #2d6f00
+
+    button.downvote.myvote
+        background-color: #5e0900
+
+    &.section_footer
+        .rpcontainer
+            height: 100%
+            grid-area: rpcontainer
+            display: inline-table
+        .rpcontainer
+            & > *
+                font-size: 30px
+                display: table-cell
+                vertical-align: middle
+                output 
+                    vertical-align: middle
+                    margin: 20px
+                output:after
+                    font-size: 15px
+                    margin-left: 5px
+                output:before
+                    margin-right: 5px
+        .replies:after
+            content: "comments"
+        .total_payout
+            &:not(.paid):after
+                content: "to be paid"
+            &.paid:after
+                content: "paid"
+            &:before
+                content: "$"
