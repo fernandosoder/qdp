@@ -79,10 +79,18 @@ main#posts_container
     width: 60%
     margin: 0 auto
     margin-top: 2rem
+    transition: .2s all
+
+    @media (max-width: 992px)
+        width: 70%
 
     @media (max-width: 799px)
         margin-top: 10px
         margin-bottom: 10px
+
+    @media (max-width: 767px)
+        width: 90%
+        margin-top: 25px
 
     & > section
         margin-bottom: 30px
