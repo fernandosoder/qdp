@@ -15,25 +15,26 @@
         }
     ?>>
         <header>
-            <hgroup class="sitename">
-                <a class="☰">☰</a>
-                <a href="<?php echo $rootUrl;?>">QDPost</a>
-            </hgroup>
-            <nav class="topmenu">
-                <a href="<?php echo $rootUrl;?>upload">Upload</a>
-            </nav>
-            <hgroup class="userprofile">
-                <a class="loggedon" href="<?php echo $rootUrl;?>"><img src="" alt=""/><span></span></a>
-                <a class="loggedoff">Login</a>
-            </hgroup>
+            <div class="content">
+                <hgroup class="sitename">
+                    <a class="☰">☰</a>
+                    <a href="<?php echo $rootUrl;?>">QDPost</a>
+                </hgroup>
+                <nav class="topmenu">
+                    <a href="<?php echo $rootUrl;?>upload">Upload</a>
+                </nav>
+                <hgroup class="userprofile">
+                    <a class="loggedon" href="<?php echo $rootUrl;?>"><img src="" alt=""/><span></span></a>
+                    <a class="loggedoff">Login</a>
+                </hgroup>
+            </div>
         </header>
-        <aside class="left"></aside>
-        <main id="posts_container">
-            
-        </main>
-        <aside class="right"></aside>
+        <div class="row">
+            <main id="posts_container">
+            </main>
+        </div>
         <footer>
-            
+            <a id="upload-link" href="<?php echo $rootUrl;?>upload">+</a>
         </footer>
     </body>
 </html>

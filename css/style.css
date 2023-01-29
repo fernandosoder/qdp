@@ -36,78 +36,74 @@ a.☰ {
 }
 
 body {
-  background-color: #151719;
+  background-color: #212121;
   color: rgb(252, 252, 252);
   text-align: center;
-  grid-template-areas: "header header header" "asideleft main asideright";
-  display: inline-grid;
+  display: block;
   width: 100%;
   margin: 0;
-}
-@media (max-width: 799px) {
-  body:not(.sidemenu) {
-    grid-template-columns: 0 100% 0;
-  }
-  body.sidemenu {
-    grid-template-columns: 100% 0 0;
-  }
-}
-@media screen and (min-width: 1400px) {
-  body {
-    grid-template-columns: auto 800px auto;
-    grid-gap: 20px;
-  }
-}
-@media screen and (min-width: 1000px) and (max-width: 1399px) {
-  body {
-    grid-template-columns: auto 600px auto;
-    grid-gap: 20px;
-  }
-}
-@media screen and (min-width: 800px) and (max-width: 999px) {
-  body {
-    grid-template-columns: auto 500px 0;
-    grid-gap: 20px;
-  }
 }
 body > header {
   text-align: left;
   background-color: #262b35;
   height: 50px;
   line-height: 50px;
-  grid-area: header;
   margin: 0;
-  display: inline-grid;
-  grid-template: "banner menu profile";
-  grid-gap: 20px;
-  grid-template-columns: max-content auto max-content;
+  display: flex;
+  flex-wrap: wrap;
   position: relative;
   width: 100%;
-  overflow: hidden;
+}
+body > header .content {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
 }
 body > header .sitename {
-  margin-left: 15px;
   font-size: 25px;
-  display: inline;
-  grid-area: banner;
+  width: 15%;
 }
-body > header nav {
-  grid-area: menu;
+@media (max-width: 992px) {
+  body > header .sitename {
+    width: 50%;
+  }
+}
+body > header .topmenu {
+  width: 65%;
+}
+@media (max-width: 992px) {
+  body > header .topmenu {
+    display: none;
+  }
 }
 body > header .userprofile {
-  margin-right: 20px;
-  grid-area: profile;
   height: 50px;
   line-height: 45px;
+  width: 20%;
+  text-align: right;
+}
+@media (max-width: 992px) {
+  body > header .userprofile {
+    width: 50%;
+  }
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 main#posts_container {
-  text-align: left;
-  grid-area: main;
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 2rem;
 }
 @media (max-width: 799px) {
   main#posts_container {
-    margin: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 }
 main#posts_container > section {
@@ -147,14 +143,6 @@ main#posts_container > section img {
   display: inline-block;
 }
 
-aside.left {
-  grid-area: asideleft;
-}
-
-aside.right {
-  grid-area: asideright;
-}
-
 .section_media {
   min-height: 40px;
   text-align: center;
@@ -183,10 +171,6 @@ section:not(.open) > .section_body {
 
 .section_footer {
   min-height: 50px;
-  display: grid;
-  grid-template: "tags tags tags" "upvote downvote rpcontainer";
-  grid-column-gap: 10px;
-  grid-auto-columns: max-content max-content minmax(max-content, 100%);
 }
 
 a {
@@ -353,11 +337,8 @@ section:empty {
 [upload] footer > div.button_div {
   text-align: right;
   margin-bottom: 20px;
-  display: inline-grid;
-  grid-gap: 10px;
-  grid-template-areas: "maxpay btm";
+  display: inline;
   width: calc(100% - 40px);
-  grid-template-columns: auto min-content;
 }
 [upload] footer > div.button_div .maxpay {
   height: 100%;
@@ -408,14 +389,30 @@ section:empty {
   position: relative;
 }
 
+footer #upload-link {
+  position: fixed;
+  width: 75px;
+  height: 75px;
+  line-height: 75px;
+  font-size: 50px;
+  border-radius: 100%;
+  background-color: #558B2F;
+  box-shadow: 0 0 7px #689F38;
+  right: 35px;
+  bottom: 30px;
+  display: block;
+  transition: ease-in 0.2s;
+}
+footer #upload-link:hover {
+  background-color: #1B5E20;
+  box-shadow: 0 0 7px #2E7D32;
+}
 footer button {
   padding: 0px;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 10px;
   background-color: #404040;
-  display: inline-grid;
-  grid-template: "thumb countvote" "thumb countpower";
   border-radius: 10px;
   color: white;
 }
