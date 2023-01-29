@@ -1,3 +1,9 @@
+$bodyColor: #212121
+$textColor: #FCFCFC
+$headerColor: #262b35
+$postColor: #1d2023
+$cardColor: #455A64
+
 :root
     -webkit-user-select: none
     -moz-user-select: none
@@ -27,8 +33,8 @@ button.sidemenu
 
 
 body
-    background-color: #212121
-    color: rgb(252, 252, 252)
+    background-color: $bodyColor
+    color: $textColor
     text-align: center
     display: block
     width: 100%
@@ -36,7 +42,7 @@ body
     
     & > header
         text-align: left
-        background-color: #262b35
+        background-color: $headerColor
         height: 50px
         line-height: 50px
         margin: 0
@@ -94,9 +100,9 @@ main#posts_container
 
     & > section
         margin-bottom: 30px
-        background-color: #1d2023
+        background-color: $postColor
         overflow: hidden
-        box-shadow: 2px 2px 7px gray
+        box-shadow: 2px 2px 7px $cardColor
         border-radius: 15px
 
 
@@ -219,24 +225,27 @@ section:empty
 [upload]
     text-align: left
     .titulo_textarea
-        width: calc(100% - 46px)
+        width: 100%
         resize: vertical
         font-size: 22px
         max-height: 200px
         min-height: 50px
-        margin: 20px
+        margin-bottom: 20px
 
     .upload_section
         text-align: center
         margin: 20px
+        padding: 20px
         vertical-align: middle
     input[type="file"]
         display: none
 
     .mediaobject
-        width: calc(100% - 40px)
-        margin-left: 20px
-        border: 1px dotted
+        width: 100%
+        margin: 0 auto
+        margin-bottom: 20px
+        border: 1px dotted #37474F
+        background: radial-gradient(circle, #546E7A 0%, #455A64 20%, #37474F 30%, $bodyColor 65%, $postColor 82%)
         cursor: pointer
         position: relative
         transition: 0.1s linear
@@ -261,6 +270,7 @@ section:empty
     .mediaobject:not(.dragenter):empty:before
         content: "Click Here or paste URL below to choose a file"
         line-height: 100px
+        text-shadow: 0 0 13px black, 0 0 10px black, 0 0 7px black
 
     .mediaobject:not(.dragenter)
         min-height: 100px
@@ -278,7 +288,7 @@ section:empty
 
 
     .mediaobject progress
-        background-color: rgb(252, 252, 252)
+        background-color: $textColor
         width: calc(100% - 20px)
         display: inline-block
         position: absolute
@@ -289,24 +299,22 @@ section:empty
 
     input[type="url"]
         display: inline-block
-        width: calc(100% - 45px)
+        width: 100%
         margin-left: 2px
         margin-top: 3px
-
+        margin-bottom: 20px
 
     .comentario_textarea
-        width: calc(100% - 46px)
+        width: 100%
         resize: vertical
         font-size: 16px
         max-height: 600px
         min-height: 50px
-        margin: 20px
+        margin-bottom: 20px
 
 
     footer
         & > div
-            margin-left: 20px
-            margin-right: 20px
             font-size: 16px
 
         & > div:not(.button_div)
@@ -317,9 +325,7 @@ section:empty
 
         & > div.button_div
             text-align: right
-            margin-bottom: 20px
-            display: inline
-            width: calc(100% - 40px)
+            width: 100%
             
             .maxpay
                 height: 100%
@@ -343,11 +349,12 @@ section:empty
                 padding-bottom: 5px
                 padding-left: 20px
                 padding-right: 20px
-                cursor: pointer
-                grid-area: btm
+                margin: unset
+                margin-left: auto
+                cursor: pointe
 
         & > div.tags_div > input
-            width: calc(100% - 8px)
+            width: 100%
 
         & > div.original_label_div.disabled label
             color: gray
@@ -358,7 +365,6 @@ section:empty
 
             min-height: 10px
             float: left
-            grid-area: maxpay
             text-align: center
             height: 100%
             line-height: 2em
@@ -376,6 +382,7 @@ footer
         width: $tamanhoBotao
         height: $tamanhoBotao
         line-height: $tamanhoBotao
+        text-align: center
         font-size: 50px
         border-radius: 100%
         background-color: #558B2F
