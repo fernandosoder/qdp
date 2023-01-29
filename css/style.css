@@ -15,6 +15,10 @@
   user-select: text;
 }
 
+.text-justify {
+  text-align: justify !important;
+}
+
 html {
   margin: 0;
 }
@@ -358,14 +362,12 @@ section:empty {
   min-width: 10px;
   min-height: 10px;
   float: left;
-  grid-area: maxpay;
   text-align: center;
   height: 100%;
   line-height: 2em;
 }
 [upload] footer > div.button_div .maxpay > * {
   display: inline;
-  vertical-align: sub;
   line-height: 100%;
   position: relative;
 }
@@ -440,19 +442,12 @@ footer button output {
 footer button output:empty:before {
   content: "0";
 }
-footer button output:first-child {
-  grid-area: countvote;
-}
-footer button output:last-child {
-  grid-area: countpower;
-}
 footer button:before {
   font-size: 35px;
   width: 50px;
   height: 50px;
   line-height: 50px;
   display: inline-block;
-  grid-area: thumb;
 }
 footer button.downvote output:last-child {
   color: #f55;
@@ -484,22 +479,42 @@ footer button.downvote:before {
 }
 footer .tags_container {
   margin: 10px;
-  grid-area: tags;
+  margin-bottom: 2rem;
+  width: 100%;
 }
 footer .tag_container {
+  display: inline-block;
   margin-right: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: gray;
+  background-color: #455A64;
+  box-shadow: 0 0 3px 3px #455A64;
   border-radius: 15px;
 }
-footer button.upvote {
-  grid-area: upvote;
+footer .vote_block {
+  display: flex;
+  width: 50%;
+  padding-top: 0.75rem;
 }
-footer button.downvote {
-  grid-area: downvote;
+footer button.upvote, footer button.downvote {
+  cursor: pointer;
+  height: 3.6rem;
+  display: flex;
+  transition: ease-in 0.3s all;
+}
+footer button.upvote:hover, footer button.downvote:hover {
+  background: #263137;
+}
+footer button.upvote .content, footer button.downvote .content {
+  width: calc(100% - 50px);
+  display: flex;
+  flex-wrap: wrap;
+}
+footer button.upvote .content output, footer button.downvote .content output {
+  width: 100%;
+  text-align: center;
 }
 footer button.upvote.myvote {
   background-color: #2d6f00;
@@ -507,15 +522,25 @@ footer button.upvote.myvote {
 footer button.downvote.myvote {
   background-color: #5e0900;
 }
+footer.section_footer {
+  padding: 0 1rem;
+  display: flex;
+  flex-wrap: wrap;
+}
 footer.section_footer .rpcontainer {
   height: 100%;
-  grid-area: rpcontainer;
+  width: 50%;
   display: inline-table;
 }
 footer.section_footer .rpcontainer > * {
   font-size: 30px;
-  display: table-cell;
-  vertical-align: middle;
+  display: flex;
+  flex-wrap: wrap;
+}
+footer.section_footer .rpcontainer > * > * {
+  width: 100%;
+  text-align: left;
+  padding-left: 2rem;
 }
 footer.section_footer .rpcontainer > * output {
   vertical-align: middle;

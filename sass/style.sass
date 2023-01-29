@@ -18,6 +18,9 @@ $cardColor: #455A64
     -ms-user-select: text
     user-select: text
 
+.text-justify
+    text-align: justify !important
+
 html
     margin: 0
 
@@ -332,14 +335,12 @@ section:empty
                 min-width: 10px
                 min-height: 10px
                 float: left
-                grid-area: maxpay
                 text-align: center
                 height: 100%
                 line-height: 2em
 
                 & > *
                     display: inline
-                    vertical-align: sub
                     line-height: 100%
                     position: relative
 
@@ -410,10 +411,6 @@ footer
             font-weight: bold
         output:empty:before
             content: "0"
-        output:first-child
-            grid-area: countvote
-        output:last-child
-            grid-area: countpower
 
     button:before
         font-size: 35px
@@ -422,7 +419,6 @@ footer
         height: 50px
         line-height: 50px
         display: inline-block
-        grid-area: thumb
 
     button.downvote output:last-child
         color: #f55
@@ -451,23 +447,39 @@ footer
         content: "👎"
     .tags_container
         margin: 10px
-        grid-area: tags
+        margin-bottom: 2rem
+        width: 100%
 
     .tag_container
+        display: inline-block
         margin-right: 10px
         padding-top: 5px
         padding-bottom: 5px
         padding-left: 10px
         padding-right: 10px
-        background-color: gray
+        background-color: $cardColor
+        box-shadow: 0 0 3px 3px $cardColor
         border-radius: 15px
-    
-    button.upvote
-        grid-area: upvote
 
-    button.downvote
-        grid-area: downvote
+    .vote_block
+        display: flex
+        width: 50%
+        padding-top: 0.75rem
 
+    button.upvote, button.downvote
+        cursor: pointer
+        height: 3.6rem
+        display: flex
+        transition: ease-in 0.3s all
+        &:hover
+            background: darken($cardColor, 15%)
+        .content
+            width: calc( 100% - 50px )
+            display: flex
+            flex-wrap: wrap
+            output
+                width: 100%
+                text-align: center
 
     button.upvote.myvote
         background-color: #2d6f00
@@ -476,15 +488,21 @@ footer
         background-color: #5e0900
 
     &.section_footer
+        padding: 0 1rem
+        display: flex
+        flex-wrap: wrap
         .rpcontainer
             height: 100%
-            grid-area: rpcontainer
+            width: 50%
             display: inline-table
-        .rpcontainer
             & > *
                 font-size: 30px
-                display: table-cell
-                vertical-align: middle
+                display: flex
+                flex-wrap: wrap
+                & > *
+                    width: 100%
+                    text-align: left
+                    padding-left: 2rem
                 output 
                     vertical-align: middle
                     margin: 20px
