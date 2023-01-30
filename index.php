@@ -1,13 +1,14 @@
 <?php
    $rootUrl = "https://qdp.hivetasks.com/";
-   header('Link: <' . $rootUrl . 'css/style.css>; rel=preload; as=style', false);
-   header('Link: <' . $rootUrl . 'script.js>; rel=preload; as=script', false);
+   $v = date('Ymdh');
+   header('Link: <' . $rootUrl . 'css/style.css?' . $v . '>; rel=preload; as=style', false);
+   header('Link: <' . $rootUrl . 'script.js?' . $v . '>; rel=preload; as=script', false);
 ?><!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <link href="<?php echo $rootUrl;?>css/style.css" rel="stylesheet" />
-        <script src="<?php echo $rootUrl;?>script.js" type="text/javascript" defer></script>
+        <link href="<?php echo $rootUrl;?>css/style.css?<?= $v ?>" rel="stylesheet" />
+        <script src="<?php echo $rootUrl;?>script.js?<?= $v ?>" type="text/javascript" defer></script>
     </head>
     <body<?php
         foreach ($_GET as $key => $value) {
