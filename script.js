@@ -214,12 +214,18 @@ var loadPost = (post, open = false) => {
         upvote.classList.add("upvote");
         downvote.classList.add("downvote");
 
-        upvote.append(document.createElement("output"));
-        upvote.append(document.createElement("output"));
+        let upvoteContent = document.createElement('div')
+        upvoteContent.classList.add('content')
+        let downvoteContent = document.createElement('div')
+        downvoteContent.classList.add('content')
 
-        downvote.append(document.createElement("output"));
-        downvote.append(document.createElement("output"));
-        downvote.append("");
+        upvoteContent.append(document.createElement("output"));
+        upvoteContent.append(document.createElement("output"));
+        upvote.append(upvoteContent);
+
+        downvoteContent.append(document.createElement("output"));
+        downvoteContent.append(document.createElement("output"));
+        downvote.append(downvoteContent);
 
 
 
@@ -288,9 +294,13 @@ var loadPost = (post, open = false) => {
             tags.appendChild(tag_container);
         });
 
+        let voteBlock = document.createElement('div');
+        voteBlock.classList.add('vote_block');
+        voteBlock.appendChild(upvote);
+        voteBlock.appendChild(downvote);
+
         section_footer.appendChild(tags);
-        section_footer.appendChild(upvote);
-        section_footer.appendChild(downvote);
+        section_footer.appendChild(voteBlock);
 
         section_title.appendChild(title_a);
         section_title.classList.add("section_title");

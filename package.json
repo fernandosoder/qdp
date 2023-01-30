@@ -16,7 +16,7 @@
     "url": "https://github.com/fernandosoder/qdp/issues"
   },
   "homepage": "https://github.com/fernandosoder/qdp#readme",
-  "dependencies": {
+  "devDependencies": {
     "sass": "^1.57.1"
   }
 }

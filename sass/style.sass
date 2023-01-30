@@ -1,3 +1,9 @@
+$bodyColor: #212121
+$textColor: #FCFCFC
+$headerColor: #262b35
+$postColor: #1d2023
+$cardColor: #455A64
+
 :root
     -webkit-user-select: none
     -moz-user-select: none
@@ -11,6 +17,9 @@
     -moz-user-select: text
     -ms-user-select: text
     user-select: text
+
+.text-justify
+    text-align: justify !important
 
 html
     margin: 0
@@ -27,72 +36,76 @@ button.sidemenu
 
 
 body
-    background-color: #151719
-    color: rgb(252, 252, 252)
+    background-color: $bodyColor
+    color: $textColor
     text-align: center
-    grid-template-areas: "header header header" "asideleft main asideright"
-    display: inline-grid
+    display: block
     width: 100%
     margin: 0
-    @media (max-width: 799px)
-        &:not(.sidemenu)
-            grid-template-columns: 0 calc(100%) 0
-        &.sidemenu
-            grid-template-columns: 100% 0 0
-
-    @media screen and (min-width: 1400px) 
-        grid-template-columns: auto 800px auto
-        grid-gap: 20px
-    @media screen and (min-width: 1000px) and (max-width:1399px)
-        grid-template-columns: auto 600px auto
-        grid-gap: 20px
-    @media screen and (min-width: 800px) and (max-width: 999px)
-        grid-template-columns: auto 500px 0
-        grid-gap: 20px
-
+    
     & > header
         text-align: left
-        background-color: #262b35
+        background-color: $headerColor
         height: 50px
         line-height: 50px
-        grid-area: header
         margin: 0
-        display: inline-grid
-        grid-template: "banner menu profile"
-        grid-gap: 20px
-        grid-template-columns: max-content auto max-content
+        display: flex
+        flex-wrap: wrap
         position: relative
         width: 100%
-        overflow: hidden
+        .content
+            width: 90%
+            display: flex
+            flex-wrap: wrap
+            margin: 0 auto
 
         .sitename
-            margin-left: 15px
             font-size: 25px
-            display: inline
-            grid-area: banner
-
-        nav
-            grid-area: menu
+            width: 15%
+            @media (max-width: 992px)
+                width: 50%
+        
+        .topmenu
+            width: 65%
+            @media (max-width: 992px)
+                display: none
 
         .userprofile
-            margin-right: 20px
-            grid-area: profile
             height: 50px
             line-height: 45px
+            width: 20%
+            text-align: right
+            @media (max-width: 992px)
+                width: 50%
 
+.row
+    width: 100%
+    display: flex
+    flex-wrap: wrap
 
 main#posts_container
-    text-align: left
-    grid-area: main
+
+    width: 60%
+    margin: 0 auto
+    margin-top: 2rem
+    transition: .2s all
+
+    @media (max-width: 992px)
+        width: 70%
 
     @media (max-width: 799px)
-        margin: 10px
+        margin-top: 10px
+        margin-bottom: 10px
+
+    @media (max-width: 767px)
+        width: 90%
+        margin-top: 25px
 
     & > section
         margin-bottom: 30px
-        background-color: #1d2023
+        background-color: $postColor
         overflow: hidden
-        box-shadow: 2px 2px 7px gray
+        box-shadow: 0px 0px 7px $cardColor, 4px 4px 7px $cardColor
         border-radius: 15px
 
 
@@ -121,12 +134,6 @@ main#posts_container > section img
     height: auto
     display: inline-block
 
-aside.left
-    grid-area: asideleft
-
-aside.right
-    grid-area: asideright
-
 .section_media
     min-height: 40px
     text-align: center
@@ -151,10 +158,6 @@ section:not(.open) > .section_body
 
 .section_footer
     min-height: 50px
-    display: grid
-    grid-template: "tags tags tags" "upvote downvote rpcontainer"
-    grid-column-gap: 10px
-    grid-auto-columns: max-content max-content minmax(max-content,100%)
 
 a
     color: inherit
@@ -187,6 +190,8 @@ a.section_author
 
     h2
         text-align: left
+        color: #fff
+        text-shadow: 0 0 3px #aaa
 
     & > a.section_author
         margin-right: 20px
@@ -223,24 +228,27 @@ section:empty
 [upload]
     text-align: left
     .titulo_textarea
-        width: calc(100% - 46px)
+        width: 100%
         resize: vertical
         font-size: 22px
         max-height: 200px
         min-height: 50px
-        margin: 20px
+        margin-bottom: 20px
 
     .upload_section
         text-align: center
         margin: 20px
+        padding: 20px
         vertical-align: middle
     input[type="file"]
         display: none
 
     .mediaobject
-        width: calc(100% - 40px)
-        margin-left: 20px
-        border: 1px dotted
+        width: 100%
+        margin: 0 auto
+        margin-bottom: 20px
+        border: 1px dotted #37474F
+        background: radial-gradient(circle, #546E7A 0%, #455A64 20%, #37474F 30%, $bodyColor 65%, $postColor 82%)
         cursor: pointer
         position: relative
         transition: 0.1s linear
@@ -265,6 +273,7 @@ section:empty
     .mediaobject:not(.dragenter):empty:before
         content: "Click Here or paste URL below to choose a file"
         line-height: 100px
+        text-shadow: 0 0 13px black, 0 0 10px black, 0 0 7px black
 
     .mediaobject:not(.dragenter)
         min-height: 100px
@@ -282,7 +291,7 @@ section:empty
 
 
     .mediaobject progress
-        background-color: rgb(252, 252, 252)
+        background-color: $textColor
         width: calc(100% - 20px)
         display: inline-block
         position: absolute
@@ -293,24 +302,22 @@ section:empty
 
     input[type="url"]
         display: inline-block
-        width: calc(100% - 45px)
+        width: 100%
         margin-left: 2px
         margin-top: 3px
-
+        margin-bottom: 20px
 
     .comentario_textarea
-        width: calc(100% - 46px)
+        width: 100%
         resize: vertical
         font-size: 16px
         max-height: 600px
         min-height: 50px
-        margin: 20px
+        margin-bottom: 20px
 
 
     footer
         & > div
-            margin-left: 20px
-            margin-right: 20px
             font-size: 16px
 
         & > div:not(.button_div)
@@ -321,26 +328,19 @@ section:empty
 
         & > div.button_div
             text-align: right
-            margin-bottom: 20px
-            display: inline-grid
-            grid-gap: 10px
-            grid-template-areas: "maxpay btm"
-            width: calc(100% - 40px)
-            grid-template-columns: auto min-content
+            width: 100%
             
             .maxpay
                 height: 100%
                 min-width: 10px
                 min-height: 10px
                 float: left
-                grid-area: maxpay
                 text-align: center
                 height: 100%
                 line-height: 2em
 
                 & > *
                     display: inline
-                    vertical-align: sub
                     line-height: 100%
                     position: relative
 
@@ -350,11 +350,12 @@ section:empty
                 padding-bottom: 5px
                 padding-left: 20px
                 padding-right: 20px
-                cursor: pointer
-                grid-area: btm
+                margin: unset
+                margin-left: auto
+                cursor: pointe
 
         & > div.tags_div > input
-            width: calc(100% - 8px)
+            width: 100%
 
         & > div.original_label_div.disabled label
             color: gray
@@ -365,7 +366,6 @@ section:empty
 
             min-height: 10px
             float: left
-            grid-area: maxpay
             text-align: center
             height: 100%
             line-height: 2em
@@ -377,14 +377,30 @@ section:empty
 
 
 footer
+    #upload-link
+        $tamanhoBotao: 75px
+        position: fixed
+        width: $tamanhoBotao
+        height: $tamanhoBotao
+        line-height: $tamanhoBotao
+        text-align: center
+        font-size: 50px
+        border-radius: 100%
+        background-color: #558B2F
+        box-shadow: 0 0 7px #689F38
+        right: 35px
+        bottom: 30px
+        display: block
+        transition: ease-in .2s
+        &:hover
+            background-color: #1B5E20
+            box-shadow: 0 0 7px #2E7D32
     button
         padding: 0px
         margin-top: 10px
         margin-bottom: 10px
         margin-left: 10px
         background-color: #404040
-        display: inline-grid
-        grid-template: "thumb countvote" "thumb countpower"
         border-radius: 10px
         color: white
         output
@@ -395,10 +411,6 @@ footer
             font-weight: bold
         output:empty:before
             content: "0"
-        output:first-child
-            grid-area: countvote
-        output:last-child
-            grid-area: countpower
 
     button:before
         font-size: 35px
@@ -407,7 +419,6 @@ footer
         height: 50px
         line-height: 50px
         display: inline-block
-        grid-area: thumb
 
     button.downvote output:last-child
         color: #f55
@@ -436,23 +447,39 @@ footer
         content: "👎"
     .tags_container
         margin: 10px
-        grid-area: tags
+        margin-bottom: 2rem
+        width: 100%
 
     .tag_container
+        display: inline-block
         margin-right: 10px
         padding-top: 5px
         padding-bottom: 5px
         padding-left: 10px
         padding-right: 10px
-        background-color: gray
+        background-color: $cardColor
+        box-shadow: 0 0 3px 3px $cardColor
         border-radius: 15px
-    
-    button.upvote
-        grid-area: upvote
 
-    button.downvote
-        grid-area: downvote
+    .vote_block
+        display: flex
+        width: 50%
+        padding-top: 0.75rem
 
+    button.upvote, button.downvote
+        cursor: pointer
+        height: 3.6rem
+        display: flex
+        transition: ease-in 0.3s all
+        &:hover
+            background: darken($cardColor, 15%)
+        .content
+            width: calc( 100% - 50px )
+            display: flex
+            flex-wrap: wrap
+            output
+                width: 100%
+                text-align: center
 
     button.upvote.myvote
         background-color: #2d6f00
@@ -461,15 +488,21 @@ footer
         background-color: #5e0900
 
     &.section_footer
+        padding: 0 1rem
+        display: flex
+        flex-wrap: wrap
         .rpcontainer
             height: 100%
-            grid-area: rpcontainer
+            width: 50%
             display: inline-table
-        .rpcontainer
             & > *
                 font-size: 30px
-                display: table-cell
-                vertical-align: middle
+                display: flex
+                flex-wrap: wrap
+                & > *
+                    width: 100%
+                    text-align: left
+                    padding-left: 2rem
                 output 
                     vertical-align: middle
                     margin: 20px
