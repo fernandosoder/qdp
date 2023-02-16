@@ -527,8 +527,23 @@ var createUploadWindow = () => {
     media.addEventListener('drop', (evt) => {
         document.querySelector("div.mediaobject").classList.remove("dragenter");
         let dt = evt.dataTransfer;
+        console.log(dt.items);
         let files = dt.files;
-        prepareFile(files[0]);
+        if (files.length > 0) {
+            prepareFile(files[0]);
+            return;
+        }
+        for (const item of dt.items) {
+            try {
+                if (item.type.includes("url")){
+                    item.getAsString((data) => {
+                        prepareFile(data);
+                    });
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        }
     }, false);
 
     let fileurl = document.createElement("input");
@@ -689,7 +704,11 @@ var logar = (username) => {
 
 var prepareFile = (arquivo) => {
     let formData = new FormData();
-    formData.append("uploadfile", arquivo);
+    if (typeof arquivo === "string")
+        formData.append("url", arquivo);
+    else
+        formData.append("uploadfile", arquivo);
+
     document.querySelector(".mediaobject").innerHTML = "";
     document.querySelector(".mediaobject").append(document.createElement("progress"));
     uploadFile(formData, function (resposta) {
