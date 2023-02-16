@@ -5,7 +5,9 @@ error_reporting(E_ALL);
 if(isset($_POST["url"])){
     $target_url = "http://127.0.0.1:5001/api/v0/add?stream-channels=true&pin=false&wrap-with-directory=true&arg=/file&progress=false";
     $content = file_get_contents($_POST["url"]);
-    var_dump($http_response_header);
+    foreach($http_response_header as $header ){
+        echo $header;
+    }
     $post = array('file' => $content);
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $target_url);
