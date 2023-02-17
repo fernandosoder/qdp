@@ -564,7 +564,7 @@ var createUploadWindow = () => {
     let comments_preview = document.createElement("div");
     comments.classList.add("comentario_textarea");
     comments_preview.classList.add("comentario_preview");
-    comments.placeholder = "Optional comments.";
+    comments.placeholder = "Optional comments(HTML tags accepted).";
     comments_div.appendChild(comments);
     comments_div.appendChild(comments_preview);
     comments_div.classList.add("comentario_container");
