@@ -370,7 +370,11 @@ var updatePostData = (author, permlink, timeout = 5000) => {
             let post_element = document.querySelector("[author=" + author + "][permlink=" + permlink + "] ");
             let post = JSON.parse(res.target.response)["result"];
 //            console.log(post);
-            let payout = post.is_paidout ? post.author_payout_value.split(" ")[0] : post.max_accepted_payout.split(" ")[0] < post.pending_payout_value.split(" ")[0] ? post.max_accepted_payout.split(" ")[0] : post.pending_payout_value.split(" ")[0];
+            try {
+                let payout = post.is_paidout ? post.author_payout_value.split(" ")[0] : post.max_accepted_payout.split(" ")[0] < post.pending_payout_value.split(" ")[0] ? post.max_accepted_payout.split(" ")[0] : post.pending_payout_value.split(" ")[0];
+            } catch (err) {
+
+            }
             let upvotes = 0;
             let downvotes = 0;
             let upower = 0;
@@ -535,7 +539,7 @@ var createUploadWindow = () => {
         }
         for (const item of dt.items) {
             try {
-                if (item.type.includes("url")){
+                if (item.type.includes("url")) {
                     item.getAsString((data) => {
                         prepareFile(data);
                     });
@@ -557,11 +561,20 @@ var createUploadWindow = () => {
 
     let comments_div = document.createElement("div");
     let comments = document.createElement("textarea");
+    let comments_preview = document.createElement("div");
     comments.classList.add("comentario_textarea");
+    comments_preview.classList.add("comentario_preview");
     comments.placeholder = "Optional comments.";
     comments_div.appendChild(comments);
+    comments_div.appendChild(comments_preview);
+    comments_div.classList.add("comentario_container");
     upload_section.appendChild(comments_div);
-    comments.oninput = recalcMaxVal;
+    comments.oninput = (arg) => {
+        let texto = document.querySelector(".comentario_textarea").value;
+        texto = markdownParser(texto);
+        document.querySelector(".comentario_preview").innerHTML = texto;
+        recalcMaxVal(arg);
+    };
 
 
     let footer = document.createElement("footer");
@@ -897,7 +910,7 @@ var createPostContent = (permlink = null) => {
 
     comment.classList.add("comment");
     comment.classList.add("text-justify");
-    comment.append(document.querySelector(".comentario_textarea").value);
+    comment.append(document.querySelector(".comentario_preview").innerHTML);
 
     let ul = document.createElement("ul");
     declarations.appendChild(ul);
@@ -923,4 +936,22 @@ var createPostContent = (permlink = null) => {
 
     console.log(postData.outerHTML);
     return postData;
+};
+
+
+var markdownParser = (markdown) => {
+    const htmlText = markdown
+            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+            .replace(/^#### (.*$)/gim, '<h4>$1</h4>')
+            .replace(/^##### (.*$)/gim, '<h5>$1</h5>')
+            .replace(/^###### (.*$)/gim, '<h6>$1</h6>')
+            .replace(/\*\*(.+)\*\*/gim, '<strong>$1</strong>')
+            .replace(/\*(.+)\*/gim, '<em>$1</em>')
+            .replace(/\!\[(.*)\]\((.*)\)/gim, '<img src="$2" alt="$1" />')
+            .replace(/[^\!]\[(.*)\]\((.*)\)/gim, '<a href="$2" target="_blank">$1</a>')
+            .replace(/^(.*$)/gim, '$1<br />')
+            .replace(/^\\(.*$)/gim, '$1');
+    return htmlText.trim();
 };

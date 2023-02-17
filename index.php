@@ -34,6 +34,9 @@ header('Link: <' . $rootUrl . 'script.js?' . $v . '>; rel=preload; as=script', f
             </div>
         </header>
         <div class="row">
+            <div class="topics">
+                
+            </div>
             <main id="posts_container">
             </main>
         </div>
