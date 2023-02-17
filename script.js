@@ -917,7 +917,7 @@ var createPostContent = (permlink = null) => {
 
     comment.classList.add("comment");
     comment.classList.add("text-justify");
-    comment.append(document.querySelector(".comentario_preview").innerHTML);
+    comment.appendChild(new DOMParser().parseFromString("<div>" + markdownParser(document.querySelector(".comentario_textarea").value) + "</div>", "text/xml").firstChild);
 
     let ul = document.createElement("ul");
     declarations.appendChild(ul);
@@ -949,20 +949,20 @@ var createPostContent = (permlink = null) => {
 var markdownParser = (markdown) => {
     const htmlText = markdown
 //     .replace(/\n\n(.*)\n\n/gim, '\n\n<p>$1</p>\n\n')
-            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-            .replace(/^#### (.*$)/gim, '<h4>$1</h4>')
-            .replace(/^##### (.*$)/gim, '<h5>$1</h5>')
-            .replace(/^###### (.*$)/gim, '<h6>$1</h6>')
-            .replace(/^\> (.*$)\n/gim, '<blockquote><q><em>$1</em></q></blockquote>')
-            .replace(/^(.*$)/gim, '$1<br />')
-            .replace(/\*\*(.+)\*\*/gim, '<strong>$1</strong>')
-            .replace(/\*(.+)\*/gim, '<em>$1</em>')
-            .replace(/\!\[(.*)\]\((.*)\)/gim, '<img src="$2" alt="$1" />')
-            .replace(/[^\!]\[(.*)\]\((.*)\)/gim, '<a href="$2" target="_blank">$1</a>')
-
-            .replace(/^\\(.*$)/gim, '$1')
-            .replace(/([^\/]\>)[ \r\n]*\<br \/\>[ \r\n]*(\<)?/gim, '$1$2');
+//            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+//            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+//            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+//            .replace(/^#### (.*$)/gim, '<h4>$1</h4>')
+//            .replace(/^##### (.*$)/gim, '<h5>$1</h5>')
+//            .replace(/^###### (.*$)/gim, '<h6>$1</h6>')
+//            .replace(/^\> (.*$)\n/gim, '<blockquote><q><em>$1</em></q></blockquote>')
+//            .replace(/^(.*$)/gim, '$1<br />')
+//            .replace(/ \*\*(.+)\*\*/gim, '<strong> $1</strong>')
+//            .replace(/ \*(.+)\* /gim, '<em>$1</em>')
+//            .replace(/\!\[(.*)\]\((.*)\)/gim, '<img src="$2" alt="$1" />')
+//            .replace(/[^\!]\[(.*)\]\((.*)\)/gim, '<a href="$2" target="_blank">$1</a>')
+//
+//            .replace(/^\\(.*$)/gim, '$1')
+//            .replace(/([^\/]\>)[ \r\n]*\<br \/\>[ \r\n]*(\<)?/gim, '$1$2');
     return htmlText.trim();
 };
