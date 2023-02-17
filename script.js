@@ -569,13 +569,20 @@ var createUploadWindow = () => {
     comments_div.appendChild(comments_preview);
     comments_div.classList.add("comentario_container");
     upload_section.appendChild(comments_div);
-    comments.oninput = (arg) => {
+    let ta_input = (arg) => {
+        document.querySelector(".comentario_textarea").style.height = Number(document.querySelector(".comentario_textarea").scrollHeight - 4) + "px";
         let texto = document.querySelector(".comentario_textarea").value;
         texto = markdownParser(texto);
         document.querySelector(".comentario_preview").innerHTML = texto;
         recalcMaxVal(arg);
+        if (document.querySelector(".comentario_textarea").value.length > 0)
+            return;
+        document.querySelector(".comentario_preview").innerHTML = "";
+        document.querySelector(".comentario_textarea").style.height = "";
     };
 
+    comments.oninput = ta_input;
+    comments.onkeypress = ta_input;
 
     let footer = document.createElement("footer");
     let original_label_div = document.createElement("div");
@@ -941,17 +948,21 @@ var createPostContent = (permlink = null) => {
 
 var markdownParser = (markdown) => {
     const htmlText = markdown
+//     .replace(/\n\n(.*)\n\n/gim, '\n\n<p>$1</p>\n\n')
             .replace(/^# (.*$)/gim, '<h1>$1</h1>')
             .replace(/^## (.*$)/gim, '<h2>$1</h2>')
             .replace(/^### (.*$)/gim, '<h3>$1</h3>')
             .replace(/^#### (.*$)/gim, '<h4>$1</h4>')
             .replace(/^##### (.*$)/gim, '<h5>$1</h5>')
             .replace(/^###### (.*$)/gim, '<h6>$1</h6>')
+            .replace(/^\> (.*$)\n/gim, '<blockquote><q><em>$1</em></q></blockquote>')
+            .replace(/^(.*$)/gim, '$1<br />')
             .replace(/\*\*(.+)\*\*/gim, '<strong>$1</strong>')
             .replace(/\*(.+)\*/gim, '<em>$1</em>')
             .replace(/\!\[(.*)\]\((.*)\)/gim, '<img src="$2" alt="$1" />')
             .replace(/[^\!]\[(.*)\]\((.*)\)/gim, '<a href="$2" target="_blank">$1</a>')
-            .replace(/^(.*$)/gim, '$1<br />')
-            .replace(/^\\(.*$)/gim, '$1');
+
+            .replace(/^\\(.*$)/gim, '$1')
+            .replace(/([^\/]\>)[ \r\n]*\<br \/\>[ \r\n]*(\<)?/gim, '$1$2');
     return htmlText.trim();
 };
