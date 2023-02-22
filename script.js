@@ -2,6 +2,7 @@ localStorage.hiveNode === undefined ? localStorage.hiveNode = "https://api.hive.
 localStorage.target === undefined ? localStorage.target = "" : localStorage.target;
 localStorage.username === undefined ? localStorage.username = "" : localStorage.username;
 const rootUrl = "https://qdp.hivetasks.com/";
+const publicIPFS = "https://ipfs.io/ipfs/";
 var loaded = true;
 var idrequest = 0;
 var postsPerRequest = 5;
@@ -49,6 +50,7 @@ window.onload = () => {
         };
         req.send(JSON.stringify(request));
     }
+    getTopTags();
 };
 
 var getDiscussion = (post, callback) => {
@@ -154,25 +156,42 @@ var loadPost = (post, open = false) => {
     section.setAttribute("author", post.author);
     section.setAttribute("permlink", post.permlink);
     if (!(post.json_metadata.image === undefined && post.json_metadata.video === undefined)) {
-
-
-
         let section_media = document.createElement("div");
         section_media.classList.add("section_media");
         if (post.json_metadata.image.length > 0) {
             let image = document.createElement("img");
             image.onclick = imageFullScreen;
-            image.src = post.json_metadata.image[0];
+            image.src = publicIPFS + post.json_metadata.image[0].split("ipfs/")[1];
+            let qtd = document.getElementById("posts_container").children.length;
+            setTimeout(() => {
+                if (!image.complete || !image.naturalWidth)
+                {
+                    let image2 = document.createElement("img");
+                    image2.src = post.json_metadata.image[0];
+                    image.style.display = "none";
+                    image.parentElement.appendChild(image2);
+                }
+            }, qtd > 4 ? 5000 : (qtd + 1) * 1000);
             section_media.appendChild(image);
         }
         if (post.json_metadata.video.length > 0) {
             let video = document.createElement("video");
-            let source = document.createElement("source");
-            source.src = post.json_metadata.video[0];
-            video.appendChild(source);
+//            let source_1 = document.createElement("source");
+//            let source_2 = document.createElement("source");
+            video.src = publicIPFS + post.json_metadata.video[0].split("ipfs/")[1];
+//            source_1.src = "https://ipfs.io/ipfs/" + post.json_metadata.video[0].split("ipfs/")[1];
+//            source_2.src = post.json_metadata.video[0];
+//            video.appendChild(source_1);
+//            video.appendChild(source_2);
             video.setAttribute("controls", "");
             video.setAttribute("loop", "");
             video.setAttribute("mute", "");
+            setTimeout(() => {
+                if (video.readyState < 3)
+                {
+                    video.src = post.json_metadata.video[0];
+                }
+            }, 5000);
             section_media.appendChild(video);
         }
 
@@ -966,3 +985,45 @@ var markdownParser = (markdown) => {
 //            .replace(/([^\/]\>)[ \r\n]*\<br \/\>[ \r\n]*(\<)?/gim, '$1$2');
     return htmlText.trim();
 };
+
+var getTopTags = () => {
+    document.querySelector(".topics").innerHTML = "";
+    document.querySelector(".topics").append(document.createElement("ul"));
+    let req = new XMLHttpRequest();
+    req.addEventListener("load", (res) => {
+        let posts = JSON.parse(res.target.response)["result"];
+        posts.forEach((post) => {
+            let arr = post.json_metadata.tags;
+            arr.splice(arr.indexOf("hive-179234"), 1);
+            arr.forEach((item) => {
+                if (document.querySelector(".topics ul li#" + item) === null) {
+                    let li = document.createElement("li");
+                    li.id = item;
+                    li.setAttribute("qtd", 1);
+                    li.append(item);
+                    document.querySelector(".topics ul").append(li)
+                    return;
+                }
+                let li = document.querySelector(".topics ul li#" + item);
+                li.setAttribute("qtd", Number(li.getAttribute("qtd")) + 1);
+            });
+            Array.from(document.querySelectorAll(".topics ul li")).sort((a, b) => Number(a.getAttribute("qtd")) < Number(b.getAttribute("qtd"))).forEach(el => el.parentNode.appendChild(el));
+        });
+    });
+    req.open("POST", localStorage.hiveNode);
+
+    request = {
+        "id": idrequest++,
+        "jsonrpc": "2.0",
+        "method": "bridge.get_ranked_posts",
+        "params": {
+            "tag": "hive-179234",
+            "sort": "created",
+            "limit": 20,
+            "start_author": null,
+            "start_permlink": null,
+            "observer": localStorage.username
+        }
+    };
+    req.send(JSON.stringify(request));
+}
