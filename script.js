@@ -173,7 +173,7 @@ var loadPost = (post, open = false) => {
                     image.style.display = "none";
                     image.parentElement.appendChild(image2);
                 }
-            }, qtd > 4 ? 6000 : (qtd + 2) * 1000);
+            }, qtd > 4 ? 5000 : (qtd + 1) * 1000);
             section_media.appendChild(image);
         }
         if (post.json_metadata.video.length > 0) {
