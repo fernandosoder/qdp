@@ -7,7 +7,7 @@ RewriteRule ^\/?\@([^\/]+)\/?$ ./index.php?author=$1
 RewriteRule ^\/?\@([^\/]+)\/([^\/]+)\/?$ ./index.php?author=$1&permlink=$2
 RewriteRule ^\/?(upload)\/?$ ./index.php?upload=true
 RewriteRule ^\/?(ipfshandler)\/?$ ./ipfshandler.php
-RewriteRule ^\/tag\/([^\/]+)\/?$ ./index.php?tag=$1
+RewriteRule ^\/?(tag)\/([^\/]+)\/?$ ./index.php?tag=$2
 
 <ifModule mod_headers.c>
     <FilesMatch "index\.php">
