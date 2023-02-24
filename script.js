@@ -50,7 +50,7 @@ window.onload = () => {
         };
         req.send(JSON.stringify(request));
     }
-    getTopTags();
+    setTimeout(getTopTags,2000);
 };
 
 var getDiscussion = (post, callback) => {
