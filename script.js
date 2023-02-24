@@ -50,7 +50,7 @@ window.onload = () => {
         };
         req.send(JSON.stringify(request));
     }
-    setTimeout(getTopTags,2000);
+    getTopTags();
 };
 
 var getDiscussion = (post, callback) => {
@@ -115,7 +115,7 @@ var pricesLoaded = () => {
         request = {
             "id": idrequest++,
             "jsonrpc": "2.0",
-            "method": "bridge.get_ranked_post",
+            "method": "bridge.get_ranked_posts",
             "params": {
                 "tag": "hive-179234",
                 "sort": "created",
