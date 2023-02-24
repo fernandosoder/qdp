@@ -162,12 +162,14 @@ var loadPost = (post, open = false) => {
             let image = document.createElement("img");
             image.onclick = imageFullScreen;
             image.src = publicIPFS + post.json_metadata.image[0].split("ipfs/")[1];
+            image.alt = image.src;
             let qtd = document.getElementById("posts_container").children.length;
             setTimeout(() => {
                 if (!image.complete || !image.naturalWidth)
                 {
                     let image2 = document.createElement("img");
                     image2.src = post.json_metadata.image[0];
+                    image2.alt = image.src;
                     image.style.display = "none";
                     image.parentElement.appendChild(image2);
                 }
