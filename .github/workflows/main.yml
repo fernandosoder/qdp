@@ -1,0 +1,15 @@
+name: Build & Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  clone:
+    name: Clone
+    runs-on: debian
+    steps:
+    - name: Setup GitHub SSH
+      with:
+        host: qdp.hivetasks.com
+        private-key: ${{ secrets.QDP_KEY }}
+        private-key-name: qdpkey
