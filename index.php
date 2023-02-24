@@ -21,7 +21,7 @@ header('Link: <' . $rootUrl . 'script.js?' . $v . '>; rel=preload; as=script', f
             <div class="content">
                     <a class="☰">☰</a>
                 <a id="logo" href="<?php echo $rootUrl; ?>">
-                    <img src="logo.png" alt="QDPost">
+                    <img src="logo.png" alt="QDPost" style="position: relative;height: 50px;width: auto;">
                     </a>
                 <nav class="topmenu">
                     <a href="<?php echo $rootUrl; ?>upload">Upload</a>
