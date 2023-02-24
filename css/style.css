@@ -109,6 +109,38 @@ body > header a.☰ {
   flex-wrap: wrap;
 }
 
+.topics {
+  width: 20%;
+  display: block;
+}
+.topics ul {
+  list-style: none;
+  text-align: justify;
+}
+.topics ul li {
+  display: inline-block;
+  padding: 0.5rem 0.4rem;
+  margin-bottom: 0.25rem;
+  margin-right: 5px;
+  border-radius: 15px;
+  background-color: #455A64;
+}
+@media (max-width: 991px) {
+  .topics {
+    width: 100%;
+    max-height: 0;
+    position: fixed;
+    overflow: hidden;
+    background-color: #262626;
+    z-index: 999;
+    transition: max-height 0.5s ease-out;
+  }
+}
+
+body.sidemenu .topics {
+  max-height: 100%;
+}
+
 main#posts_container {
   width: 60%;
   margin: 0 auto;
