@@ -20,11 +20,6 @@
 html
     margin: 0
 
-a.☰
-    display: none
-    @media (max-width: 999px)
-        display: inline
-
 button.sidemenu
     @media (max-width: 799px)
         display: inline-block
@@ -42,8 +37,7 @@ body
     & > header
         text-align: left
         background-color: $headerColor
-        height: 50px
-        line-height: 50px
+        height: 5rem
         margin: 0
         display: flex
         flex-wrap: wrap
@@ -53,6 +47,7 @@ body
             height: 7rem
         .content
             width: 90%
+            max-height: 100%
             display: flex
             flex-wrap: wrap
             margin: 0 auto
@@ -60,20 +55,13 @@ body
             align-items: center
 
         #logo
-            position: relative
-            display: flex
-            height: 50px
-            width: auto
-            align-items: center
+            display: block
             text-decoration: none
-            margin-bottom: 0
-
-            @media (max-width: $xsmax)
-                height: 110px
             
             img
                 max-width: 100%
-                max-height: 100%
+                max-height: 3.5rem
+
         
         .topmenu
             display: flex
@@ -82,7 +70,7 @@ body
             width: auto
             justify-content: center
 
-            @media (max-width: 992px)
+            @media (max-width: $smmax)
                 display: none
 
             a
@@ -95,6 +83,11 @@ body
             height: 50px
             line-height: 45px
             text-align: right
+
+        a.☰
+            display: none
+            @media (max-width: $smmax)
+                display: inline
 
 .row
     width: 100%
