@@ -151,6 +151,11 @@ main#posts_container
             margin-left: 20px
             margin-right: 20px
 
+        .comment
+            font-size: 18px
+            @media ($xsmax)
+                font-size: 20px
+
 .section_openclose
     text-align: center
     display: inline-block
@@ -493,6 +498,7 @@ footer
     .tag_container
         display: inline-block
         margin-right: 10px
+        margin-bottom: 8px
         padding-top: 5px
         padding-bottom: 5px
         padding-left: 10px
@@ -505,6 +511,8 @@ footer
         display: flex
         width: 50%
         padding-top: 0.75rem
+        @media (max-width: $xxsmax)
+            width: 100%
 
     button.upvote, button.downvote
         cursor: pointer
@@ -535,6 +543,8 @@ footer
             height: 100%
             width: 50%
             display: inline-table
+            @media (max-width: $xxsmax)
+                width: 100%
             & > *
                 font-size: 30px
                 display: flex

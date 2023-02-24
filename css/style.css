@@ -175,6 +175,14 @@ main#posts_container > section :is(h2, .section_media, div.section_body, .sectio
   margin-left: 20px;
   margin-right: 20px;
 }
+main#posts_container > section .comment {
+  font-size: 18px;
+}
+@media (767px) {
+  main#posts_container > section .comment {
+    font-size: 20px;
+  }
+}
 
 .section_openclose {
   text-align: center;
@@ -530,6 +538,7 @@ footer .tags_container {
 footer .tag_container {
   display: inline-block;
   margin-right: 10px;
+  margin-bottom: 8px;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 10px;
@@ -542,6 +551,11 @@ footer .vote_block {
   display: flex;
   width: 50%;
   padding-top: 0.75rem;
+}
+@media (max-width: 490px) {
+  footer .vote_block {
+    width: 100%;
+  }
 }
 footer button.upvote, footer button.downvote {
   cursor: pointer;
@@ -576,6 +590,11 @@ footer.section_footer .rpcontainer {
   height: 100%;
   width: 50%;
   display: inline-table;
+}
+@media (max-width: 490px) {
+  footer.section_footer .rpcontainer {
+    width: 100%;
+  }
 }
 footer.section_footer .rpcontainer > * {
   font-size: 30px;
