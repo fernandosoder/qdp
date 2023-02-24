@@ -19,12 +19,10 @@ header('Link: <' . $rootUrl . 'script.js?' . $v . '>; rel=preload; as=script', f
     ?>>
         <header>
             <div class="content">
-                <hgroup class="sitename">
                     <a class="☰">☰</a>
-                    <a href="<?php echo $rootUrl; ?>">
-                        <img src="logo.png" alt="QDPost" style="position: relative;height: 50px;width: auto;">
+                <a id="logo" href="<?php echo $rootUrl; ?>">
+                    <img src="logo.png" alt="QDPost">
                     </a>
-                </hgroup>
                 <nav class="topmenu">
                     <a href="<?php echo $rootUrl; ?>upload">Upload</a>
                 </nav>

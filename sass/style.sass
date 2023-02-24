@@ -1,8 +1,4 @@
-$bodyColor: #212121
-$textColor: #FCFCFC
-$headerColor: #262b35
-$postColor: #1d2023
-$cardColor: #455A64
+@import "_variables"
 
 :root
     -webkit-user-select: none
@@ -53,30 +49,52 @@ body
         flex-wrap: wrap
         position: relative
         width: 100%
+        @media (max-width: $xsmax)
+            height: 7rem
         .content
             width: 90%
             display: flex
             flex-wrap: wrap
             margin: 0 auto
+            justify-content: space-between
+            align-items: center
 
-        .sitename
-            font-size: 25px
-            width: 15%
-            @media (max-width: 992px)
-                width: 50%
+        #logo
+            position: relative
+            display: flex
+            height: 50px
+            width: auto
+            align-items: center
+            text-decoration: none
+            margin-bottom: 0
+
+            @media (max-width: $xsmax)
+                height: 110px
+            
+            img
+                max-width: 100%
+                max-height: 100%
         
         .topmenu
-            width: 65%
+            display: flex
+            flex-wrap: wrap
+            flex: 0 0 auto
+            width: auto
+            justify-content: center
+
             @media (max-width: 992px)
                 display: none
+
+            a
+                color: $textColor
+                transition: ease-in .3s all
+                &:hover
+                    color: darken($textColor, 20%)
 
         .userprofile
             height: 50px
             line-height: 45px
-            width: 20%
             text-align: right
-            @media (max-width: 992px)
-                width: 50%
 
 .row
     width: 100%
