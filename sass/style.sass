@@ -1,8 +1,4 @@
-$bodyColor: #212121
-$textColor: #FCFCFC
-$headerColor: #262b35
-$postColor: #1d2023
-$cardColor: #455A64
+@import "_variables"
 
 :root
     -webkit-user-select: none
@@ -24,11 +20,6 @@ $cardColor: #455A64
 html
     margin: 0
 
-a.☰
-    display: none
-    @media (max-width: 999px)
-        display: inline
-
 button.sidemenu
     @media (max-width: 799px)
         display: inline-block
@@ -46,42 +37,89 @@ body
     & > header
         text-align: left
         background-color: $headerColor
-        height: 50px
-        line-height: 50px
+        height: 5rem
         margin: 0
         display: flex
         flex-wrap: wrap
         position: relative
         width: 100%
+        @media (max-width: $xsmax)
+            height: 7rem
         .content
             width: 90%
+            max-height: 100%
             display: flex
             flex-wrap: wrap
             margin: 0 auto
+            justify-content: space-between
+            align-items: center
 
-        .sitename
-            font-size: 25px
-            width: 15%
-            @media (max-width: 992px)
-                width: 50%
+        #logo
+            display: block
+            text-decoration: none
+            
+            img
+                max-width: 100%
+                max-height: 3.5rem
+
         
         .topmenu
-            width: 65%
-            @media (max-width: 992px)
+            display: flex
+            flex-wrap: wrap
+            flex: 0 0 auto
+            width: auto
+            justify-content: center
+
+            @media (max-width: $smmax)
                 display: none
+
+            a
+                color: $textColor
+                transition: ease-in .3s all
+                &:hover
+                    color: darken($textColor, 20%)
 
         .userprofile
             height: 50px
             line-height: 45px
-            width: 20%
             text-align: right
-            @media (max-width: 992px)
-                width: 50%
+
+        a.☰
+            display: none
+            @media (max-width: $smmax)
+                display: inline
 
 .row
     width: 100%
     display: flex
     flex-wrap: wrap
+
+.topics
+    width: 20%
+    display: block
+    ul
+        list-style: none
+        text-align: justify
+        li
+            display: inline-block
+            padding: .5rem .4rem
+            margin-bottom: .25rem
+            margin-right: 5px
+            border-radius: 15px
+            background-color: $cardColor
+    @media (max-width: $smmax)
+        width: 100%
+        max-height: 0
+        position: fixed
+        overflow: hidden
+        background-color: lighten($bodyColor, 2%)
+        z-index: 999
+        transition: max-height .5s ease-out
+
+body.sidemenu
+    .topics
+        max-height: 100%
+
 
 main#posts_container
 
@@ -112,6 +150,11 @@ main#posts_container
         :is(h2,.section_media,div.section_body,.section_openclose)
             margin-left: 20px
             margin-right: 20px
+
+        .comment
+            font-size: 18px
+            @media ($xsmax)
+                font-size: 20px
 
 .section_openclose
     text-align: center
@@ -455,6 +498,7 @@ footer
     .tag_container
         display: inline-block
         margin-right: 10px
+        margin-bottom: 8px
         padding-top: 5px
         padding-bottom: 5px
         padding-left: 10px
@@ -467,6 +511,8 @@ footer
         display: flex
         width: 50%
         padding-top: 0.75rem
+        @media (max-width: $xxsmax)
+            width: 100%
 
     button.upvote, button.downvote
         cursor: pointer
@@ -497,6 +543,8 @@ footer
             height: 100%
             width: 50%
             display: inline-table
+            @media (max-width: $xxsmax)
+                width: 100%
             & > *
                 font-size: 30px
                 display: flex
