@@ -998,9 +998,12 @@ var getTopTags = () => {
             arr.forEach((item) => {
                 if (document.querySelector(".topics ul li#" + item) === null) {
                     let li = document.createElement("li");
+                    let a = document.createElement("a");
+                    a.href = rootUrl + "tag/" + item;
+                    a.append(item);
                     li.id = item;
                     li.setAttribute("qtd", 1);
-                    li.append(item);
+                    li.append(a);
                     document.querySelector(".topics ul").append(li)
                     return;
                 }
