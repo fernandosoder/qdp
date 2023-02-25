@@ -31,7 +31,7 @@ html {
 }
 
 body {
-  background-color: #212121;
+  background-color: #060623;
   color: #FCFCFC;
   text-align: center;
   display: block;
@@ -40,7 +40,7 @@ body {
 }
 body > header {
   text-align: left;
-  background-color: #262b35;
+  background-color: #323357;
   height: 5rem;
   margin: 0;
   display: flex;
@@ -123,7 +123,7 @@ body > header a.☰ {
   margin-bottom: 0.25rem;
   margin-right: 5px;
   border-radius: 15px;
-  background-color: #455A64;
+  background-color: #446F7D;
 }
 @media (max-width: 991px) {
   .topics {
@@ -131,7 +131,7 @@ body > header a.☰ {
     max-height: 0;
     position: fixed;
     overflow: hidden;
-    background-color: #262626;
+    background-color: #07072c;
     z-index: 999;
     transition: max-height 0.5s ease-out;
   }
@@ -166,9 +166,8 @@ main#posts_container {
 }
 main#posts_container > section {
   margin-bottom: 30px;
-  background-color: #1d2023;
+  background-color: #323357;
   overflow: hidden;
-  box-shadow: 0px 0px 7px #455A64, 4px 4px 7px #455A64;
   border-radius: 15px;
 }
 main#posts_container > section :is(h2, .section_media, div.section_body, .section_openclose) {
@@ -329,7 +328,7 @@ section:empty {
   margin: 0 auto;
   margin-bottom: 20px;
   border: 1px dotted #37474F;
-  background: radial-gradient(circle, #546E7A 0%, #455A64 20%, #37474F 30%, #212121 65%, #1d2023 82%);
+  background: radial-gradient(circle, #546E7A 0%, #455A64 20%, #37474F 30%, #060623 65%, #323357 82%);
   cursor: pointer;
   position: relative;
   transition: 0.1s linear;
@@ -540,8 +539,8 @@ footer .tag_container {
   padding-bottom: 5px;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: #455A64;
-  box-shadow: 0 0 3px 3px #455A64;
+  background-color: #446F7D;
+  box-shadow: 0 0 3px 3px #446F7D;
   border-radius: 15px;
 }
 footer .vote_block {
@@ -561,7 +560,7 @@ footer button.upvote, footer button.downvote {
   transition: ease-in 0.3s all;
 }
 footer button.upvote:hover, footer button.downvote:hover {
-  background: #263137;
+  background: #29434b;
 }
 footer button.upvote .content, footer button.downvote .content {
   width: calc(100% - 50px);
