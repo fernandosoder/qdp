@@ -385,9 +385,6 @@ section:empty {
   margin-top: 3px;
   margin-bottom: 20px;
 }
-[upload] .comentario_container {
-  background-color: red;
-}
 [upload] .comentario_container .comentario_textarea {
   width: 100%;
   resize: vertical;
