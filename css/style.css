@@ -186,6 +186,7 @@ main#posts_container > section .comment {
 .section_openclose {
   text-align: center;
   display: inline-block;
+  color: #9DEFCF;
   float: right;
   margin: 10px;
   cursor: pointer;
@@ -473,13 +474,16 @@ footer #upload-link:hover {
   box-shadow: 0 0 7px #2E7D32;
 }
 footer button {
+  background: none;
+  border: 2px solid #FCFCFC;
+  border-radius: 15px;
+  outline: inherit;
   padding: 0px;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 10px;
-  background-color: #404040;
   border-radius: 10px;
-  color: white;
+  color: #FCFCFC;
 }
 footer button output {
   line-height: 25px;
@@ -593,7 +597,7 @@ footer.section_footer .rpcontainer {
   }
 }
 footer.section_footer .rpcontainer > * {
-  font-size: 30px;
+  font-size: 25px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -607,11 +611,15 @@ footer.section_footer .rpcontainer > * output {
   margin: 20px;
 }
 footer.section_footer .rpcontainer > * output:after {
-  font-size: 15px;
+  font-size: 18px;
   margin-left: 5px;
 }
 footer.section_footer .rpcontainer > * output:before {
   margin-right: 5px;
+}
+footer.section_footer .replies {
+  color: #9DEFCF;
+  border-bottom: 1px solid #9DEFCF;
 }
 footer.section_footer .replies:after {
   content: "comments";

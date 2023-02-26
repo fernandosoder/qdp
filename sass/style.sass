@@ -158,6 +158,7 @@ main#posts_container
 .section_openclose
     text-align: center
     display: inline-block
+    color: $cardCommentsColor
     float:  right
     margin: 10px
     cursor: pointer
@@ -439,13 +440,16 @@ footer
             background-color: #1B5E20
             box-shadow: 0 0 7px #2E7D32
     button
+        background: none
+        border: 2px solid $textColor
+        border-radius: 15px
+        outline: inherit
         padding: 0px
         margin-top: 10px
         margin-bottom: 10px
         margin-left: 10px
-        background-color: #404040
         border-radius: 10px
-        color: white
+        color: $textColor
         output
             line-height: 25px
             margin-right: 10px
@@ -544,7 +548,7 @@ footer
             @media (max-width: $xxsmax)
                 width: 100%
             & > *
-                font-size: 30px
+                font-size: 25px
                 display: flex
                 flex-wrap: wrap
                 & > *
@@ -555,12 +559,15 @@ footer
                     vertical-align: middle
                     margin: 20px
                 output:after
-                    font-size: 15px
+                    font-size: 18px
                     margin-left: 5px
                 output:before
                     margin-right: 5px
-        .replies:after
-            content: "comments"
+        .replies
+            color: $cardCommentsColor
+            border-bottom: 1px solid $cardCommentsColor
+            &:after
+                content: "comments"
         .total_payout
             &:not(.paid):after
                 content: "to be paid"
