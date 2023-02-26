@@ -362,7 +362,6 @@ var loadPost = (post, open = false) => {
         section_body.classList.add("section_body");
         section_footer.classList.add("section_footer");
         section.appendChild(section_title_container);
-        section.appendChild(document.createElement("hr"));
         section.appendChild(section_media);
 //        console.log(section_body.innerText.length);
         if (section_body.innerText.length > 0 && !open)
