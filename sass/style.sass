@@ -471,7 +471,8 @@ footer
         color: #f55
 
     button.upvote:before
-        content: "👍"
+        content: "▲"
+        color: $upvoteColor
 
     button.loading
         position: relative
@@ -491,7 +492,8 @@ footer
                 top: 20px
     
     button.downvote:before
-        content: "👎"
+        content: "▼"
+        color: $downvoteColor
     .tags_container
         margin: 10px
         margin-bottom: 2rem
@@ -532,10 +534,14 @@ footer
                 text-align: center
 
     button.upvote.myvote
-        background-color: #2d6f00
+        background-color: darken($upvoteColor, 20%)
+        &:before
+            color: $textColor
 
     button.downvote.myvote
-        background-color: #5e0900
+        background-color: darken($downvoteColor, 20%)
+        &:before
+            color: $textColor
 
     &.section_footer
         padding: 0 1rem

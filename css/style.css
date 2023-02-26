@@ -506,7 +506,8 @@ footer button.downvote output:last-child {
   color: #f55;
 }
 footer button.upvote:before {
-  content: "👍";
+  content: "▲";
+  color: #03FE80;
 }
 footer button.loading {
   position: relative;
@@ -528,7 +529,8 @@ footer button.loading:before {
   }
 }
 footer button.downvote:before {
-  content: "👎";
+  content: "▼";
+  color: #FE6386;
 }
 footer .tags_container {
   margin: 10px;
@@ -576,10 +578,16 @@ footer button.upvote .content output, footer button.downvote .content output {
   text-align: center;
 }
 footer button.upvote.myvote {
-  background-color: #2d6f00;
+  background-color: #019a4d;
+}
+footer button.upvote.myvote:before {
+  color: #FCFCFC;
 }
 footer button.downvote.myvote {
-  background-color: #5e0900;
+  background-color: #f9023a;
+}
+footer button.downvote.myvote:before {
+  color: #FCFCFC;
 }
 footer.section_footer {
   padding: 0 1rem;
