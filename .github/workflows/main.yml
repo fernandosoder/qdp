@@ -11,7 +11,8 @@ jobs:
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
       with:
-        host: ${{ secrets.HOST }}
         key: ${{ secrets.QDP_KEY }}
         known_hosts: unnecessary
         if_key_exists: ignore
+    - name: Deploy with rsync
+      run: ls
