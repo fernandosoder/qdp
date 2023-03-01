@@ -11,5 +11,8 @@ jobs:
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
       with:
-        key: ${{ secrets.QDP_KEY }} 
-        known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.QDP_KEY }}
+        port: ${{ secrets.PORT }}
+        script: whoami
