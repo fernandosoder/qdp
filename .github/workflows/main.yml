@@ -4,10 +4,4 @@ on:
     branches:
       - main
 jobs:
-  clone:
-    name: Clone
-    runs-on: self-hosted
-    steps:
-      - name: deploy
-        run:
-          - ls
+  run: bash ls
