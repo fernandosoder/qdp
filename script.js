@@ -497,14 +497,13 @@ var onLoadedPost = (res) => {
 window.onscroll = function () {
     if (typeof document.body.attributes['upload'] !== "undefined")
         return;
-    if (document.querySelectorAll("#posts_container .feedisover").length === 0)
+    if (document.querySelectorAll("#posts_container .feedisover").length > 0)
         return;
     if (document.querySelectorAll("[permlink='qdp-2023-01-10-13-43']").length === 0) {
         let section = document.createElement("section");
         let h1 = document.createElement("h1");
         h1.append("Feed is Over");
         section.classList.add("feedisover");
-        section.innerHTML = "";
         section.append(h1);
         document.querySelectorAll("#posts_container").appendChild(section);
         return;
