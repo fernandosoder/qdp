@@ -5,7 +5,7 @@ on:
       - main
 jobs:
   clone:
-    name: Clone
+    name: Pull
     runs-on: self-hosted
     steps:
     - name: Install SSH Key
@@ -14,7 +14,6 @@ jobs:
         key: ${{ secrets.QDP_KEY }}
         known_hosts: unnecessary
         if_key_exists: ignore
-      with:
         script: |
           cd /var/www/qdp
           git pull
