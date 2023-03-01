@@ -312,8 +312,11 @@ var loadPost = (post, open = false) => {
             if (tag === post.community)
                 return;
             let tag_container = document.createElement("span");
+            let tag_a = document.createElement("a");
             tag_container.classList.add("tag_container");
-            tag_container.append(tag);
+            tag_a.append(tag);
+            tag_a.href = rootUrl+ "tag/" + tag;
+            tag_container.append(tag_a);
             tags.appendChild(tag_container);
         });
 
