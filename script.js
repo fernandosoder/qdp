@@ -374,9 +374,9 @@ var loadPost = (post, open = false) => {
         section_footer.classList.add("section_footer");
         let isValid = true;
         if (typeof document.body.attributes['tag'] !== "undefined") {
-            console.log(document.body.attributes['tag']);
+            console.log(document.body.attributes['tag'].value);
             console.log(post.json_metadata.tags);
-            isValid = (post.json_metadata.tags.indexOf(document.body.attributes['tag']) > -1);
+            isValid = (post.json_metadata.tags.indexOf(document.body.attributes['tag'].value) > -1);
         } else if (typeof document.body.attributes['author'] !== "undefined") {
             isValid = section.getAttribute("author") === document.body.attributes['author'];
         }
