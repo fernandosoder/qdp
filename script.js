@@ -503,7 +503,7 @@ var feedIsOver = () => {
         h1.append("Feed is Over");
         section.classList.add("feedisover");
         section.append(h1);
-        document.getElementById("posts_container").appendChild(section);
+        document.getElementById("posts_container").append(section);
         return;
     }
 };
