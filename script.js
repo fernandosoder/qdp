@@ -1,3 +1,5 @@
+/* global hive_keychain */
+
 localStorage.hiveNode === undefined ? localStorage.hiveNode = "https://api.hive.blog" : localStorage.hiveNode;
 localStorage.target === undefined ? localStorage.target = "" : localStorage.target;
 localStorage.username === undefined ? localStorage.username = "" : localStorage.username;
