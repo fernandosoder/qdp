@@ -505,7 +505,7 @@ window.onscroll = function () {
         h1.append("Feed is Over");
         section.classList.add("feedisover");
         section.append(h1);
-        document.querySelectorAll("#posts_container").appendChild(section);
+        document.querySelectorAll("#posts_container")[0].appendChild(section);
         return;
     }
     if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 100) {
