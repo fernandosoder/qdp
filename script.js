@@ -163,7 +163,26 @@ var loadPost = (post, open = false) => {
     let section = document.createElement("section");
     section.setAttribute("author", post.author);
     section.setAttribute("permlink", post.permlink);
-    if (!(post.json_metadata.image === undefined && post.json_metadata.video === undefined)) {
+    let isValid = true;
+    if (typeof document.body.attributes['tag'] !== "undefined") {
+        isValid = (post.json_metadata.tags.indexOf(document.body.attributes['tag'].value) > -1);
+    } else if (typeof document.body.attributes['author'] !== "undefined") {
+        isValid = section.getAttribute("author") === document.body.attributes['author'];
+    }
+    if (isValid) {
+        section.appendChild(section_title_container);
+        section.appendChild(document.createElement("hr"));
+        section.appendChild(section_media);
+//        console.log(section_body.innerText.length);
+        if (section_body.innerText.length > 0 && !open)
+            section.appendChild(section_openclose);
+        else
+            section.classList.toggle("open");
+
+        section.appendChild(section_body);
+        section.appendChild(section_footer);
+    }
+    if (isValid && !(post.json_metadata.image === undefined && post.json_metadata.video === undefined)) {
         let section_media = document.createElement("div");
         section_media.classList.add("section_media");
         if (post.json_metadata.image.length > 0) {
@@ -372,27 +391,6 @@ var loadPost = (post, open = false) => {
 
         section_body.classList.add("section_body");
         section_footer.classList.add("section_footer");
-        let isValid = true;
-        if (typeof document.body.attributes['tag'] !== "undefined") {
-            console.log(document.body.attributes['tag'].value);
-            console.log(post.json_metadata.tags);
-            isValid = (post.json_metadata.tags.indexOf(document.body.attributes['tag'].value) > -1);
-        } else if (typeof document.body.attributes['author'] !== "undefined") {
-            isValid = section.getAttribute("author") === document.body.attributes['author'];
-        }
-        if (isValid) {
-            section.appendChild(section_title_container);
-            section.appendChild(document.createElement("hr"));
-            section.appendChild(section_media);
-//        console.log(section_body.innerText.length);
-            if (section_body.innerText.length > 0 && !open)
-                section.appendChild(section_openclose);
-            else
-                section.classList.toggle("open");
-
-            section.appendChild(section_body);
-            section.appendChild(section_footer);
-        }
     }
     document.getElementById("posts_container").append(section);
     getDiscussion(section, (res) => {
