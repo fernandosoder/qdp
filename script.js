@@ -473,7 +473,7 @@ var onLoadedPosts = (res) => {
     loaded = true;
     if(window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 100 &&
         document.querySelectorAll("[permlink='qdp-2023-01-10-13-43']").length === 0)
-        window.onscroll();
+        setTimeout(()=>{window.onscroll();},100);
 };
 
 var imageFullScreen = (evt) => {
