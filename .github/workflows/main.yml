@@ -4,4 +4,4 @@ on:
     branches:
       - main
 jobs:
-  run: bash ls
+  run: bash "ls"
