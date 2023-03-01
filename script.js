@@ -475,6 +475,7 @@ var onLoadedPosts = (res) => {
         let section = document.querySelectorAll("[permlink='qdp-2023-01-10-13-43']")[0];
         let h1 = document.createElement("h1");
         h1.append("Feed is Over");
+        section.innerHTML = "";
         section.append(h1);
     }
 };
