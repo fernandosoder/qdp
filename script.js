@@ -169,14 +169,6 @@ var loadPost = (post, open = false) => {
     } else if (typeof document.body.attributes['author'] !== "undefined") {
         isValid = section.getAttribute("author") === document.body.attributes['author'];
     }
-    if (isValid) {
-        section.appendChild(section_title_container);
-        section.appendChild(document.createElement("hr"));
-        section.appendChild(section_media);
-//        console.log(section_body.innerText.length);
-        section.appendChild(section_body);
-        section.appendChild(section_footer);
-    }
     if (isValid && !(post.json_metadata.image === undefined && post.json_metadata.video === undefined)) {
         let section_media = document.createElement("div");
         section_media.classList.add("section_media");
@@ -389,6 +381,12 @@ var loadPost = (post, open = false) => {
             section.classList.toggle("open");
         section_body.classList.add("section_body");
         section_footer.classList.add("section_footer");
+        section.appendChild(section_title_container);
+        section.appendChild(document.createElement("hr"));
+        section.appendChild(section_media);
+//        console.log(section_body.innerText.length);
+        section.appendChild(section_body);
+        section.appendChild(section_footer);
     }
     document.getElementById("posts_container").append(section);
     getDiscussion(section, (res) => {
