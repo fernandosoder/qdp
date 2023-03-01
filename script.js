@@ -174,11 +174,6 @@ var loadPost = (post, open = false) => {
         section.appendChild(document.createElement("hr"));
         section.appendChild(section_media);
 //        console.log(section_body.innerText.length);
-        if (section_body.innerText.length > 0 && !open)
-            section.appendChild(section_openclose);
-        else
-            section.classList.toggle("open");
-
         section.appendChild(section_body);
         section.appendChild(section_footer);
     }
@@ -388,7 +383,10 @@ var loadPost = (post, open = false) => {
         replies.innerHTML = post.children;
         total_payout.innerHTML = payout;
         total_payout.classList.toggle("paid", post.is_paidout);
-
+        if (section_body.innerText.length > 0 && !open)
+            section.appendChild(section_openclose);
+        else
+            section.classList.toggle("open");
         section_body.classList.add("section_body");
         section_footer.classList.add("section_footer");
     }
