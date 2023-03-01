@@ -114,27 +114,27 @@ var pricesLoaded = () => {
             req.send(JSON.stringify(request));
             return;
         }
-        let req = new XMLHttpRequest();
-        req.addEventListener("load", onLoadedPosts);
-        req.open("POST", localStorage.hiveNode);
-        request = {
-            /***
-             * TODO: filtrar postagens por autor aqui
-             */
-            "id": idrequest++,
-            "jsonrpc": "2.0",
-            "method": "bridge.get_account_posts",
-            "params": {
-                "tag": "hive-179234",
-                "sort": "created",
-                "limit": postsPerRequest,
-                "start_author": null,
-                "start_permlink": null,
-                "observer": localStorage.username
-            }
-        };
-        req.send(JSON.stringify(request));
-        return;
+//        let req = new XMLHttpRequest();
+//        req.addEventListener("load", onLoadedPosts);
+//        req.open("POST", localStorage.hiveNode);
+//        request = {
+//            /***
+//             * TODO: filtrar postagens por autor aqui
+//             */
+//            "id": idrequest++,
+//            "jsonrpc": "2.0",
+//            "method": "bridge.get_account_posts",
+//            "params": {
+//                "tag": "hive-179234",
+//                "sort": "created",
+//                "limit": postsPerRequest,
+//                "start_author": null,
+//                "start_permlink": null,
+//                "observer": localStorage.username
+//            }
+//        };
+//        req.send(JSON.stringify(request));
+//        return;
     }
 
     let req = new XMLHttpRequest();
