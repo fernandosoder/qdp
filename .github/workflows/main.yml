@@ -14,5 +14,7 @@ jobs:
         key: ${{ secrets.QDP_KEY }}
         known_hosts: unnecessary
         if_key_exists: ignore
-    - name: Deploy with rsync
-      run: ls
+      with:
+        script: |
+          cd /var/www/qdp
+          git pull
