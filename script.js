@@ -167,7 +167,7 @@ var loadPost = (post, open = false) => {
     if (typeof document.body.attributes['tag'] !== "undefined") {
         isValid = (post.json_metadata.tags.indexOf(document.body.attributes['tag'].value) > -1);
     } else if (typeof document.body.attributes['author'] !== "undefined") {
-        isValid = section.getAttribute("author") === document.body.attributes['author'];
+        isValid = section.getAttribute("author") === document.body.attributes['author'].value;
     }
     if (isValid && !(post.json_metadata.image === undefined && post.json_metadata.video === undefined)) {
         let section_media = document.createElement("div");
