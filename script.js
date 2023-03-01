@@ -193,7 +193,7 @@ var loadPost = (post, open = false) => {
                 {
                     video.src = post.json_metadata.video[0];
                 }
-            }, 5000);
+            }, 3000);
             section_media.appendChild(video);
         }
 
