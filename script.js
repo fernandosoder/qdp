@@ -471,8 +471,7 @@ var onLoadedPosts = (res) => {
         loadPost(post, false);
     });
     loaded = true;
-    if(window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 100)
-        window.onscroll();
+
 };
 
 var imageFullScreen = (evt) => {
