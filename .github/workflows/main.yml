@@ -4,4 +4,12 @@ on:
     branches:
       - main
 jobs:
-  run: bash "ls"
+  obs:
+    example-job:
+      name: Save output
+      steps:
+      - uses: actions/checkout@v2
+      - name: Run script file
+        run: |
+          ls
+        shell: bash
