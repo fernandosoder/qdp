@@ -11,9 +11,10 @@ jobs:
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
       with:
-        if_key_exists: replace
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.QDP_KEY }}
         port: ${{ secrets.PORT }}
+        known_hosts: unnecessary
+        if_key_exists: ignore
         script: whoami
