@@ -93,6 +93,9 @@ var pricesLoaded = () => {
         createUploadWindow();
         return;
     }
+    if (typeof document.body.attributes['tag'] !== "undefined") {
+
+    }
     if (typeof document.body.attributes['author'] !== "undefined") {
         if (typeof document.body.attributes['permlink'] !== "undefined") {
             let req = new XMLHttpRequest();
@@ -115,9 +118,12 @@ var pricesLoaded = () => {
         req.addEventListener("load", onLoadedPosts);
         req.open("POST", localStorage.hiveNode);
         request = {
+            /***
+             * TODO: filtrar postagens por autor aqui
+             */
             "id": idrequest++,
             "jsonrpc": "2.0",
-            "method": "bridge.get_ranked_posts",
+            "method": "bridge.get_account_posts",
             "params": {
                 "tag": "hive-179234",
                 "sort": "created",
@@ -315,7 +321,7 @@ var loadPost = (post, open = false) => {
             let tag_a = document.createElement("a");
             tag_container.classList.add("tag_container");
             tag_a.append(tag);
-            tag_a.href = rootUrl+ "tag/" + tag;
+            tag_a.href = rootUrl + "tag/" + tag;
             tag_container.append(tag_a);
             tags.appendChild(tag_container);
         });
@@ -366,17 +372,23 @@ var loadPost = (post, open = false) => {
 
         section_body.classList.add("section_body");
         section_footer.classList.add("section_footer");
-        section.appendChild(section_title_container);
-        section.appendChild(document.createElement("hr"));
-        section.appendChild(section_media);
+        let isValid = true;
+        if(typeof document.body.attributes['tag'] !== "undefined"){
+            console.log(post.json_metadata.tags);
+        }
+        if (isValid) {
+            section.appendChild(section_title_container);
+            section.appendChild(document.createElement("hr"));
+            section.appendChild(section_media);
 //        console.log(section_body.innerText.length);
-        if (section_body.innerText.length > 0 && !open)
-            section.appendChild(section_openclose);
-        else
-            section.classList.toggle("open");
+            if (section_body.innerText.length > 0 && !open)
+                section.appendChild(section_openclose);
+            else
+                section.classList.toggle("open");
 
-        section.appendChild(section_body);
-        section.appendChild(section_footer);
+            section.appendChild(section_body);
+            section.appendChild(section_footer);
+        }
     }
     document.getElementById("posts_container").append(section);
     getDiscussion(section, (res) => {
