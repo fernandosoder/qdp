@@ -471,13 +471,7 @@ var onLoadedPosts = (res) => {
         setTimeout(() => {
             window.onscroll();
         }, 500);
-    if (document.querySelectorAll("[permlink='qdp-2023-01-10-13-43']").length === 0) {
-        let section = document.querySelectorAll("[permlink='qdp-2023-01-10-13-43']")[0];
-        let h1 = document.createElement("h1");
-        h1.append("Feed is Over");
-        section.innerHTML = "";
-        section.append(h1);
-    }
+
 };
 
 var imageFullScreen = (evt) => {
@@ -501,31 +495,44 @@ var onLoadedPost = (res) => {
 
 
 window.onscroll = function () {
-    if (typeof document.body.attributes['upload'] === "undefined")
-        if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 100) {
-            if (!loaded)
-                return;
-            loaded = false;
-            let last = document.querySelector("#posts_container").lastChild;
-            let req = new XMLHttpRequest();
-            req.addEventListener("load", onLoadedPosts);
-            req.open("POST", localStorage.hiveNode);
-            request = {
-                "id": idrequest++,
-                "jsonrpc": "2.0",
-                "method": "bridge.get_ranked_posts",
-                "params": {
-                    "tag": "hive-179234",
-                    "sort": "created",
-                    "limit": postsPerRequest,
-                    "start_author": last.getAttribute("author"),
-                    "start_permlink": last.getAttribute("permlink"),
-                    "observer": localStorage.username
-                }
-            };
-            req.send(JSON.stringify(request));
-            postsPerRequest = 50;
-        }
+    if (typeof document.body.attributes['upload'] !== "undefined")
+        return;
+    if (document.querySelectorAll("#posts_container .feedisover").length === 0)
+        return;
+    if (document.querySelectorAll("[permlink='qdp-2023-01-10-13-43']").length === 0) {
+        let section = document.createElement("section");
+        let h1 = document.createElement("h1");
+        h1.append("Feed is Over");
+        section.classList.add("feedisover");
+        section.innerHTML = "";
+        section.append(h1);
+        document.querySelectorAll("#posts_container").appendChild(section);
+        return;
+    }
+    if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 100) {
+        if (!loaded)
+            return;
+        loaded = false;
+        let last = document.querySelector("#posts_container").lastChild;
+        let req = new XMLHttpRequest();
+        req.addEventListener("load", onLoadedPosts);
+        req.open("POST", localStorage.hiveNode);
+        request = {
+            "id": idrequest++,
+            "jsonrpc": "2.0",
+            "method": "bridge.get_ranked_posts",
+            "params": {
+                "tag": "hive-179234",
+                "sort": "created",
+                "limit": postsPerRequest,
+                "start_author": last.getAttribute("author"),
+                "start_permlink": last.getAttribute("permlink"),
+                "observer": localStorage.username
+            }
+        };
+        req.send(JSON.stringify(request));
+        postsPerRequest = 50;
+    }
 };
 
 var createUploadWindow = () => {
