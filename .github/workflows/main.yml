@@ -8,4 +8,4 @@ jobs:
     name: Pull
     runs-on: self-hosted
     steps:
-      - run: echo "It Works!"
+      - run: ls
