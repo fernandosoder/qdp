@@ -8,4 +8,4 @@ jobs:
     name: Pull
     runs-on: self-hosted
     steps:
-      - run: cd /var/www/qdp ; git pull
+      - run: cd /var/www/qdp ; git pull https://github.com/fernandosoder/qdp.git
