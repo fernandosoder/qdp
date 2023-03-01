@@ -470,6 +470,15 @@ var onLoadedPosts = (res) => {
             document.querySelectorAll("[permlink='qdp-2023-01-10-13-43']").length === 0)
         setTimeout(() => {
             window.onscroll();
+            if (document.querySelectorAll("[permlink='qdp-2023-01-10-13-43']").length > 0) {
+                let section = document.createElement("section");
+                let h1 = document.createElement("h1");
+                h1.append("Feed is Over");
+                section.classList.add("feedisover");
+                section.append(h1);
+                document.querySelectorAll("#posts_container")[0].appendChild(section);
+                return;
+            }
         }, 500);
 
 };
@@ -499,15 +508,6 @@ window.onscroll = function () {
         return;
     if (document.querySelectorAll("#posts_container .feedisover").length > 0)
         return;
-    if (document.querySelectorAll("[permlink='qdp-2023-01-10-13-43']").length > 0) {
-        let section = document.createElement("section");
-        let h1 = document.createElement("h1");
-        h1.append("Feed is Over");
-        section.classList.add("feedisover");
-        section.append(h1);
-        document.querySelectorAll("#posts_container")[0].appendChild(section);
-        return;
-    }
     if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 100) {
         if (!loaded)
             return;
