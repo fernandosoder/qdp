@@ -373,10 +373,11 @@ var loadPost = (post, open = false) => {
         section_body.classList.add("section_body");
         section_footer.classList.add("section_footer");
         let isValid = true;
-        if(typeof document.body.attributes['tag'] !== "undefined"){
+        if (typeof document.body.attributes['tag'] !== "undefined") {
+            console.log(document.body.attributes['tag']);
+            console.log(post.json_metadata.tags);
             isValid = (post.json_metadata.tags.indexOf(document.body.attributes['tag']) > -1);
-        }
-        if(typeof document.body.attributes['author'] !== "undefined"){
+        } else if (typeof document.body.attributes['author'] !== "undefined") {
             isValid = section.getAttribute("author") === document.body.attributes['author'];
         }
         if (isValid) {
@@ -471,9 +472,11 @@ var onLoadedPosts = (res) => {
         loadPost(post, false);
     });
     loaded = true;
-    if(window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 100 &&
-        document.querySelectorAll("[permlink='qdp-2023-01-10-13-43']").length === 0)
-        setTimeout(()=>{window.onscroll();},100);
+    if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 100 &&
+            document.querySelectorAll("[permlink='qdp-2023-01-10-13-43']").length === 0)
+        setTimeout(() => {
+            window.onscroll();
+        }, 500);
 };
 
 var imageFullScreen = (evt) => {
