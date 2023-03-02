@@ -684,7 +684,7 @@ var createUploadWindow = () => {
     maxpay.classList.add("maxpay");
     button_div.appendChild(maxpay);
     button_div.appendChild(button);
-    button.innerHTML = "Publish";
+    button.classList.add("button_publish");
     button.onclick = createPost;
 
     let tags_div = document.createElement("div");

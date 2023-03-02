@@ -17,6 +17,7 @@
     --upload-high-value-post:   "High value post";
     --upload-high-value-post-w: "Only select this option if you believe this post can be regarded as a high value post. Misuse of this option can cause downvotes.";
     --upload-tags:              "Tags(separated by space)";
+    --upload-tags-w:            "Tags(separated by space). Misuse of tags can cause downvotes.";
     --upload-max-payment:       "Maximum payment set to $";
     --upload-publish-button:    "Publish";
     --feed-feedisover:          "Feed is over";

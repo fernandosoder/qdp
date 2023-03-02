@@ -12,10 +12,11 @@
     --upload-title-post:        "Título da postagem(obrigatório)";
     --upload-optional-comments: "Comentários opcionais(tags HTML aceitas)";
     --upload-original-media:    "Mídia original";
-    --upload-original-media-w:  "WARNING: Only select this option if you are the creator of shared media above. Misuse of this option can cause downvotes.";
+    --upload-original-media-w:  "CUIDADO: Only select this option if you are the creator of shared media above. Misuse of this option can cause downvotes.";
     --upload-high-value-post:   "Postagem de alto valor";
     --upload-high-value-post-w: "Only select this option if you believe this post can be regarded as a high value post. Misuse of this option can cause downvotes.";
     --upload-tags:              "Tags(separadas por espaço)";
+    --upload-tags-w:            "CUIDADO: Uso incorreto de tags não relacionadas pode causar downvotes.";
     --upload-max-payment:       "Pagamento máximo definido como $";
     --upload-publish-button:    "Publicar";
     --feed-feedisover:          "Fim do Feed";
