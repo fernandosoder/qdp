@@ -5,6 +5,7 @@ localStorage.target === undefined ? localStorage.target = "" : localStorage.targ
 localStorage.username === undefined ? localStorage.username = "" : localStorage.username;
 const rootUrl = "https://qdp.hivetasks.com/";
 const publicIPFS = "https://ipfs.io/ipfs/";
+const getCssString = (name)=>{return getComputedStyle(document.documentElement).getPropertyValue(name);};
 var loaded = true;
 var idrequest = 0;
 var postsPerRequest = 5;
@@ -392,7 +393,7 @@ var loadPost = (post, open = false) => {
     if (post.permlink === 'qdp-2023-01-10-13-43') {
         let section = document.createElement("section");
         let h1 = document.createElement("h1");
-        h1.append("Feed is Over");
+        h1.append(getCssString("--feed-feedisover"));
         section.classList.add("feedisover");
         section.append(h1);
         document.getElementById("posts_container").append(section);

@@ -26,11 +26,11 @@ header('Link: <' . $rootUrl . 'script.js?' . $v . '>; rel=preload; as=script', f
                     <img src="<?php echo $rootUrl; ?>logo.png" alt="QDPost" style="position: relative;height: 50px;width: auto;">
                     </a>
                 <nav class="topmenu">
-                    <a href="<?php echo $rootUrl; ?>upload">Upload</a>
+                    <a class="menu-upload" href="<?php echo $rootUrl; ?>upload"></a>
                 </nav>
                 <hgroup class="userprofile">
                     <a class="loggedon" href="<?php echo $rootUrl; ?>"><img src="" alt=""/><span></span></a>
-                    <a class="loggedoff">Login</a>
+                    <a class="loggedoff"></a>
                 </hgroup>
             </div>
         </header>
