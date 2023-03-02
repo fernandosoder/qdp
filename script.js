@@ -159,7 +159,7 @@ var pricesLoaded = () => {
 
 var loadPost = (post, open = false) => {
 //    console.log(post);
-    if (post.json_metadata.app.split(" ")[0] !== "QDPost")
+    if (post.community !== "hive-179234")
         return;
     let section = document.createElement("section");
     section.setAttribute("author", post.author);
