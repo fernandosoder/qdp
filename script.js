@@ -667,7 +667,7 @@ var createUploadWindow = () => {
     highvalue_label.title = getCssString("--upload-high-value-post-w");
     let highvalue = document.createElement("input");
     highvalue_label.appendChild(highvalue);
-    highvalue_label.append("High value post");
+    highvalue_label.classList.add("highvalue_label");
     highvalue_label_div.appendChild(highvalue_label);
     highvalue.setAttribute("type", "checkbox");
     highvalue.onchange = recalcMaxVal;
