@@ -202,6 +202,7 @@ var loadPost = (post, open = false) => {
 //            source_2.src = post.json_metadata.video[0];
 //            video.appendChild(source_1);
 //            video.appendChild(source_2);
+
             video.setAttribute("controls", "");
             video.setAttribute("loop", "");
             video.setAttribute("mute", "");
