@@ -616,7 +616,7 @@ var createUploadWindow = () => {
 
     let fileurl = document.createElement("input");
     fileurl.type = "url";
-    fileurl.classList.add("fileurl");
+    fileurl.placeholder = getCssString("--upload-media-file-url");;
     fileurl.pattern = "https://.*";
     fileurl.onchange = (evt) => {
         setUploadedMedia(evt.srcElement.value);
@@ -628,7 +628,7 @@ var createUploadWindow = () => {
     let comments_preview = document.createElement("div");
     comments.classList.add("comentario_textarea");
     comments_preview.classList.add("comentario_preview");
-    
+    comments.placeholder = getCssString("--upload-optional-comments");
     comments_div.appendChild(comments);
     comments_div.appendChild(comments_preview);
     comments_div.classList.add("comentario_container");
@@ -652,10 +652,10 @@ var createUploadWindow = () => {
     let original_label_div = document.createElement("div");
     original_label_div.classList.add("original_label_div");
     let original_label = document.createElement("label");
-    original_label.title = "WARNING: Only select this option if you are the creator of shared media above. Misuse of this option can cause downvotes.";
+    original_label.title = getCssString("--upload-original-media-w");
     let original = document.createElement("input");
     original_label.appendChild(original);
-    original_label.append("Original media");
+    original_label.classList.add("original_label");
     original_label_div.appendChild(original_label);
     original.setAttribute("type", "checkbox");
     original.onchange = recalcMaxVal;
@@ -663,10 +663,10 @@ var createUploadWindow = () => {
     let highvalue_label_div = document.createElement("div");
     highvalue_label_div.classList.add("highvalue_label_div");
     let highvalue_label = document.createElement("label");
-    highvalue_label.title = "Only select this option if you believe this post can be regarded as a high value post. Misuse of this option can cause downvotes.";
+    highvalue_label.title = getCssString("--upload-high-value-post-w");
     let highvalue = document.createElement("input");
     highvalue_label.appendChild(highvalue);
-    highvalue_label.append("High value post");
+    highvalue_label.classList.add("highvalue_label");
     highvalue_label_div.appendChild(highvalue_label);
     highvalue.setAttribute("type", "checkbox");
     highvalue.onchange = recalcMaxVal;
