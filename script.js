@@ -322,9 +322,9 @@ var loadPost = (post, open = false) => {
         upvote.classList.toggle("myvote", myvote > 0);
         downvote.classList.toggle("myvote", myvote < 0);
 
-        upvote.querySelector("output:first-child").innerHTML = upvotes + " votes";
+        upvote.querySelector("output:first-child").innerHTML = upvotes ;
         upvote.querySelector("output:last-child").innerHTML = "$ " + (upower / reward_fund.recent_claims * reward_fund.reward_balance.split(" ")[0] * median_price.base.split(" ")[0]).toFixed(3);
-        downvote.querySelector("output:first-child").innerHTML = downvotes + " votes";
+        downvote.querySelector("output:first-child").innerHTML = downvotes ;
         downvote.querySelector("output:last-child").innerHTML = "$ " + (dpower / reward_fund.recent_claims * reward_fund.reward_balance.split(" ")[0] * median_price.base.split(" ")[0]).toFixed(3);
 
 

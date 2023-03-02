@@ -472,6 +472,8 @@ footer
 
     button.upvote:before
         content: "👍"
+        :first-child:after
+            content: var(--feed-button-votes)
 
     button.loading
         position: relative
@@ -492,6 +494,8 @@ footer
     
     button.downvote:before
         content: "👎"
+        :first-child:after
+            content: var(--feed-button-votes)
     .tags_container
         margin: 10px
         margin-bottom: 2rem
