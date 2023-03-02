@@ -1,0 +1,20 @@
+:root {
+    --menu-upload:              "Enviar";
+    --feed-view-post:           "Visualizar postagem";
+    --feed-close-post:          "Fechar postagem";
+    --feed-button-votes:        " votos";
+    --feed-tobepaid:            "a ser pago";
+    --feed-paid:                "pago";
+    --feed-comments:            "Comentários";
+    --upload-filedrop-area:     "Clique aqui ou cole a URL do arquivo abaixo";
+    --upload-dropfilehere:      "Solte o arquivo aqui";
+    --upload-media-file-url:    "URL do arquivo de mídia";
+    --upload-title-post:        "Título da postagem(obrigatório)";
+    --upload-optional-comments: "Comentários opcionais(tags HTML aceitas)";
+    --upload-original-media:    "Mídia original";
+    --upload-high-value-post:   "Postagem de alto valor";
+    --upload-tags:              "Tags(separadas por espaço)";
+    --upload-max-payment:       "Pagamento máximo definido como $";
+    --upload-publish-button:    "Publicar";
+    --feed-feedisover:          "Fim do Feed";
+}

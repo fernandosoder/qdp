@@ -11,6 +11,7 @@ header('Link: <' . $rootUrl . 'script.js?' . $v . '>; rel=preload; as=script', f
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" href="/logo.png">
         <link href="<?php echo $rootUrl; ?>strings/en_us.css?<?= $v ?>" rel="stylesheet" />
+        <link href="<?php echo $rootUrl; ?>strings/pt_br.css?<?= $v ?>" rel="stylesheet" disable />
         <link href="<?php echo $rootUrl; ?>css/style.css?<?= $v ?>" rel="stylesheet" />
         <script src="<?php echo $rootUrl; ?>script.js?<?= $v ?>" type="text/javascript" defer></script>
     </head>
