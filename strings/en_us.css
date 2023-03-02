@@ -1,23 +1,23 @@
 
 :root {
-    --menu-upload:              Upload;
-    --feed-view-post:           View Post;
-    --feed-close-post:          Close Post;
-    --feed-button-votes:         votes;
-    --feed-tobepaid:            to be paid;
-    --feed-paid:                paid;
-    --feed-comments:            Comments;
-    --upload-filedrop-area:     Click Here or paste URL below to choose a file;
-    --upload-dropfilehere:      Drop file here;
-    --upload-media-file-url:    Media file URL;
-    --upload-title-post:        Post Title(required);
-    --upload-optional-comments: Optional comments(HTML tags accepted);
-    --upload-original-media:    Original media;
-    --upload-original-media-w:  WARNING\: Only select this option if you are the creator of shared media above\. Misuse of this option can cause downvotes\.;
-    --upload-high-value-post:   High value post;
-    --upload-high-value-post-w: Only select this option if you believe this post can be regarded as a high value post\. Misuse of this option can cause downvotes\.;
-    --upload-tags:              Tags(separated by space);
-    --upload-max-payment:       Maximum payment set to \$;
-    --upload-publish-button:    Publish;
-    --feed-feedisover:          Feed is over;
+    --menu-upload:              "Upload";
+    --feed-view-post:           "View Post";
+    --feed-close-post:          "Close Post";
+    --feed-button-votes:        " votes";
+    --feed-tobepaid:            "to be paid";
+    --feed-paid:                "paid";
+    --feed-comments:            "Comments";
+    --upload-filedrop-area:     "Click Here or paste URL below to choose a file";
+    --upload-dropfilehere:      "Drop file here";
+    --upload-media-file-url:    "Media file URL";
+    --upload-title-post:        "Post Title(required)";
+    --upload-optional-comments: "Optional comments(HTML tags accepted)";
+    --upload-original-media:    "Original media";
+    --upload-original-media-w:  "WARNING: Only select this option if you are the creator of shared media above. Misuse of this option can cause downvotes.";
+    --upload-high-value-post:   "High value post";
+    --upload-high-value-post-w: "Only select this option if you believe this post can be regarded as a high value post. Misuse of this option can cause downvotes.";
+    --upload-tags:              "Tags(separated by space)";
+    --upload-max-payment:       "Maximum payment set to $";
+    --upload-publish-button:    "Publish";
+    --feed-feedisover:          "Feed is over";
 }

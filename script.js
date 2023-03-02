@@ -6,7 +6,8 @@ localStorage.username === undefined ? localStorage.username = "" : localStorage.
 const rootUrl = "https://qdp.hivetasks.com/";
 const publicIPFS = "https://ipfs.io/ipfs/";
 const getCssString = (name) => {
-    return getComputedStyle(document.documentElement).getPropertyValue(name);
+    let val = getComputedStyle(document.documentElement).getPropertyValue(name);
+    return val.substring(1, val.length-1);
 };
 var loaded = true;
 var idrequest = 0;
