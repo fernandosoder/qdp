@@ -14,7 +14,7 @@ header('Link: <' . $rootUrl . 'script.js?' . $v . '>; rel=preload; as=script', f
             $langs = explode(",", $_SERVER["HTTP_ACCEPT_LANGUAGE"]);
             foreach ($langs as $i => $lang) {
                 $fn = str_replace("-", "_", explode(";", $lang)[0]);
-                ?><link href="<?php echo $rootUrl; ?>strings/<?php echo strtolower($fn); ?>.css" rel="stylesheet" <?php echo $langs[0] != $lang ? "disable" : ""; ?> />
+                ?><link href="<?php echo $rootUrl; ?>strings/<?php echo strtolower($fn); ?>.css" rel="stylesheet" <?php echo $langs[0] != $lang ? "disabled" : ""; ?> />
                 <?php
             }
         } catch (Exception $ex) {
