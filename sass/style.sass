@@ -170,10 +170,10 @@ main#posts_container
     font-style: italic
 
 section:not(.open) .section_openclose:before
-    content: "View Post"
+    content: var(--view-post)
 
 section.open .section_openclose:before
-    content: "Close Post"
+    content: var(--close-post)
 
 main#posts_container > section img
     max-width: 90%

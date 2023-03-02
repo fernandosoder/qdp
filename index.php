@@ -2,6 +2,7 @@
 $rootUrl = "https://qdp.hivetasks.com/";
 $v = date('Ymdh');
 header('Link: <' . $rootUrl . 'css/style.css?' . $v . '>; rel=preload; as=style', false);
+header('Link: <' . $rootUrl . 'strings/en_us.css?' . $v . '>; rel=preload; as=style', false);
 header('Link: <' . $rootUrl . 'script.js?' . $v . '>; rel=preload; as=script', false);
 ?><!DOCTYPE html>
 <html>
