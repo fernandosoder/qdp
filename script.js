@@ -249,10 +249,10 @@ var loadPost = (post, open = false) => {
         upvote.classList.add("upvote");
         downvote.classList.add("downvote");
 
-        let upvoteContent = document.createElement('div')
-        upvoteContent.classList.add('content')
-        let downvoteContent = document.createElement('div')
-        downvoteContent.classList.add('content')
+        let upvoteContent = document.createElement('div');
+        upvoteContent.classList.add('content');
+        let downvoteContent = document.createElement('div');
+        downvoteContent.classList.add('content');
 
         upvoteContent.append(document.createElement("output"));
         upvoteContent.append(document.createElement("output"));
@@ -389,6 +389,14 @@ var loadPost = (post, open = false) => {
         section.appendChild(section_footer);
     }
     document.getElementById("posts_container").append(section);
+    if (post.permlink === 'qdp-2023-01-10-13-43') {
+        let section = document.createElement("section");
+        let h1 = document.createElement("h1");
+        h1.append("Feed is Over");
+        section.classList.add("feedisover");
+        section.append(h1);
+        document.getElementById("posts_container").append(section);
+    }
     getDiscussion(section, (res) => {
         section.querySelector(".rpcontainer .replies").innerHTML;
         console.log(JSON.parse(res.target.response).result);
@@ -491,21 +499,6 @@ var onLoadedPost = (res) => {
     let post = JSON.parse(res.target.response)["result"];
     console.log(post);
     loadPost(post, true);
-    setTimeout(feedIsOver, 1000);
-};
-
-var feedIsOver = () => {
-    if (document.querySelectorAll("#posts_container .feedisover").length > 0)
-        return;
-    if (document.querySelectorAll("[permlink='qdp-2023-01-10-13-43']").length > 0) {
-        let section = document.createElement("section");
-        let h1 = document.createElement("h1");
-        h1.append("Feed is Over");
-        section.classList.add("feedisover");
-        section.append(h1);
-        document.getElementById("posts_container").append(section);
-        return;
-    }
 };
 
 window.onscroll = function () {
@@ -513,7 +506,6 @@ window.onscroll = function () {
         return;
     if (document.querySelectorAll("#posts_container .feedisover").length > 0)
         return;
-    setTimeout(feedIsOver, 1000);
     if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 100) {
         if (!loaded)
             return;
@@ -815,7 +807,7 @@ var uploadFile = function (formData, callback, progress) {
             progress(e.loaded, e.total);
         };
     request.onreadystatechange = function () {
-        if (request.readyState == XMLHttpRequest.DONE) {
+        if (request.readyState === XMLHttpRequest.DONE) {
             callback(this.response);
         }
     };
