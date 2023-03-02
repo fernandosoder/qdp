@@ -553,7 +553,7 @@ var createUploadWindow = () => {
 
     let titulo = document.createElement("textarea");
     titulo.classList.add("titulo_textarea");
-    
+    titulo.placeholder = getCssString("--upload-title-post");
     upload_section.appendChild(titulo);
 
     let uploadfile = document.createElement("input");
@@ -667,7 +667,7 @@ var createUploadWindow = () => {
     highvalue_label.title = getCssString("--upload-high-value-post-w");
     let highvalue = document.createElement("input");
     highvalue_label.appendChild(highvalue);
-    highvalue_label.classList.add("highvalue_label");
+    highvalue_label.append("High value post");
     highvalue_label_div.appendChild(highvalue_label);
     highvalue.setAttribute("type", "checkbox");
     highvalue.onchange = recalcMaxVal;
