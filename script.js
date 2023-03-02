@@ -5,7 +5,9 @@ localStorage.target === undefined ? localStorage.target = "" : localStorage.targ
 localStorage.username === undefined ? localStorage.username = "" : localStorage.username;
 const rootUrl = "https://qdp.hivetasks.com/";
 const publicIPFS = "https://ipfs.io/ipfs/";
-const getCssString = (name)=>{return getComputedStyle(document.documentElement).getPropertyValue(name);};
+const getCssString = (name) => {
+    return getComputedStyle(document.documentElement).getPropertyValue(name);
+};
 var loaded = true;
 var idrequest = 0;
 var postsPerRequest = 5;
@@ -190,7 +192,7 @@ var loadPost = (post, open = false) => {
                 }
             }, qtd > 4 ? 5000 : (qtd + 1) * 1000);
             section_media.appendChild(image);
-        }
+        } else
         if (post.json_metadata.video.length > 0) {
             let video = document.createElement("video");
 //            let source_1 = document.createElement("source");
@@ -210,6 +212,11 @@ var loadPost = (post, open = false) => {
                 }
             }, 3000);
             section_media.appendChild(video);
+        } else {
+            let parser = new DOMParser();
+            let doc = parser.parseFromString(post.body, "text/html");
+            if (doc.querySelector(".media") !== null)
+                section_media.append(doc.querySelector(".media"));
         }
 
         let section_title_container = document.createElement("header");
