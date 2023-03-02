@@ -1,34 +1,30 @@
 <?php
 $rootUrl = "https://qdp.hivetasks.com/";
-$v = date('Ymdh');
-header('Link: <' . $rootUrl . 'css/style.css?' . $v . '>; rel=preload; as=style', false);
-header('Link: <' . $rootUrl . 'script.js?' . $v . '>; rel=preload; as=script', false);
+header('Link: <' . $rootUrl . 'css/style.css>; rel=preload; as=style', false);
+header('Link: <' . $rootUrl . 'script.js>; rel=preload; as=script', false);
 ?><!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" href="/logo.png">
+        <link href="<?php echo $rootUrl; ?>strings/en_us.css" rel="stylesheet" />
         <?php
         try {
             $langs = explode(",", $_SERVER["HTTP_ACCEPT_LANGUAGE"]);
-            foreach ($langs as $i => $lang) {
-                $fn = str_replace("-", "_", explode(";", $lang)[0]);
-                ?><link href="<?php echo $rootUrl; ?>strings/<?php echo strtolower($fn); ?>.css" rel="stylesheet" <?php echo $langs[0] != $lang ? "disabled" : ""; ?> />
-                <?php
-            }
-        } catch (Exception $ex) {
+            $fn = str_replace("-", "_", explode(";", $langs[0])[0]);
+            ?><link href="<?php echo $rootUrl; ?>strings/<?php echo strtolower($fn); ?>.css" rel="stylesheet" />
+        <?php } catch (Exception $ex) {
             
-        }
-        ?>
-        <link href="<?php echo $rootUrl; ?>css/style.css?<?= $v ?>" rel="stylesheet" />
-        <script src="<?php echo $rootUrl; ?>script.js?<?= $v ?>" type="text/javascript" defer></script>
+        } ?>
+        <link href="<?php echo $rootUrl; ?>css/style.css" rel="stylesheet" />
+        <script src="<?php echo $rootUrl; ?>script.js" type="text/javascript" defer></script>
     </head>
     <body<?php
-        foreach ($_GET as $key => $value) {
-            echo " " . $key . '="' . $value . '"';
-        }
-        ?>>
+    foreach ($_GET as $key => $value) {
+        echo " " . $key . '="' . $value . '"';
+    }
+    ?>>
         <header>
             <div class="content">
                 <a class="☰">☰</a>

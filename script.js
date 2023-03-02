@@ -678,7 +678,7 @@ var createUploadWindow = () => {
     let maxpay = document.createElement("div");
     let maxpay_output = document.createElement("output");
     let maxpay_span = document.createElement("span");
-    maxpay_span.innerHTML = "Maximum payment set to $ ";
+    maxpay_span.classList.add("maxpay_span");
     maxpay.append(maxpay_span);
     maxpay.append(maxpay_output);
     maxpay.classList.add("maxpay");
