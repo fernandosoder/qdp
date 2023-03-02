@@ -317,7 +317,7 @@ section:empty
         max-width: 100%
 
     .mediaobject:not(.dragenter):empty:before
-        content: "Click Here or paste URL below to choose a file"
+        content: var(--filedrop-area)
         line-height: 100px
         text-shadow: 0 0 13px black, 0 0 10px black, 0 0 7px black
 
@@ -330,7 +330,7 @@ section:empty
         min-height: 300px
 
     .mediaobject.dragenter:empty:before
-        content: "Drop file here"
+        content: var(--upload-dropfilehere)
 
     .mediaobject:empty:before
         vertical-align: middle
@@ -567,8 +567,8 @@ footer
             content: "comments"
         .total_payout
             &:not(.paid):after
-                content: "to be paid"
+                content: var(--feed-tobepaid)
             &.paid:after
-                content: "paid"
+                content: var(--feed-paid)
             &:before
                 content: "$"
