@@ -692,8 +692,8 @@ var createUploadWindow = () => {
     let tags = document.createElement("input");
     tags_div.appendChild(tags);
     tags.classList.add("tags");
-    tags.placeholder = "Tags(separated by space)";
-    tags.title = "Tags(separated by space). Misuse of tags can cause downvotes.";
+    tags.placeholder = getCssString("--upload-tags");
+    tags.title = getCssString("--upload-tags-w");;
 
 
     footer.appendChild(original_label_div);
