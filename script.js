@@ -552,7 +552,7 @@ var createUploadWindow = () => {
 
     let titulo = document.createElement("textarea");
     titulo.classList.add("titulo_textarea");
-    titulo.placeholder = "Post Title(required)";
+    
     upload_section.appendChild(titulo);
 
     let uploadfile = document.createElement("input");
@@ -616,7 +616,7 @@ var createUploadWindow = () => {
 
     let fileurl = document.createElement("input");
     fileurl.type = "url";
-    fileurl.placeholder = "Media file URL";
+    fileurl.classList.add("fileurl");
     fileurl.pattern = "https://.*";
     fileurl.onchange = (evt) => {
         setUploadedMedia(evt.srcElement.value);
@@ -628,7 +628,7 @@ var createUploadWindow = () => {
     let comments_preview = document.createElement("div");
     comments.classList.add("comentario_textarea");
     comments_preview.classList.add("comentario_preview");
-    comments.placeholder = "Optional comments(HTML tags accepted).";
+    
     comments_div.appendChild(comments);
     comments_div.appendChild(comments_preview);
     comments_div.classList.add("comentario_container");
