@@ -146,7 +146,6 @@ main#posts_container
         margin-bottom: 30px
         background-color: $postColor
         overflow: hidden
-        box-shadow: 0px 0px 7px $cardColor, 4px 4px 7px $cardColor
         border-radius: 15px
 
 
@@ -162,6 +161,7 @@ main#posts_container
 .section_openclose
     text-align: center
     display: inline-block
+    color: $cardCommentsColor
     float:  right
     margin: 10px
     cursor: pointer
@@ -443,13 +443,17 @@ footer
             background-color: #1B5E20
             box-shadow: 0 0 7px #2E7D32
     button
+        background: none
+        border: 2px solid $textColor
+        border-radius: 15px
+        outline: inherit
         padding: 0px
         margin-top: 10px
         margin-bottom: 10px
         margin-left: 10px
         background-color: #404040
         border-radius: 10px
-        color: white
+        color: $textColor
         output
             line-height: 25px
             margin-right: 10px
@@ -471,7 +475,8 @@ footer
         color: #f55
 
     button.upvote:before
-        content: "👍"
+        content: "▲"
+        color: $upvoteColor
         :first-child:after
             content: var(--feed-button-votes)
 
@@ -493,7 +498,8 @@ footer
                 top: 20px
     
     button.downvote:before
-        content: "👎"
+        content: "▼"
+        color: $downvoteColor
         :first-child:after
             content: var(--feed-button-votes)
     .tags_container
@@ -536,10 +542,14 @@ footer
                 text-align: center
 
     button.upvote.myvote
-        background-color: #2d6f00
+        background-color: darken($upvoteColor, 20%)
+        &:before
+            color: $textColor
 
     button.downvote.myvote
-        background-color: #5e0900
+        background-color: darken($downvoteColor, 20%)
+        &:before
+            color: $textColor
 
     &.section_footer
         padding: 0 1rem
@@ -552,7 +562,7 @@ footer
             @media (max-width: $xxsmax)
                 width: 100%
             & > *
-                font-size: 30px
+                font-size: 25px
                 display: flex
                 flex-wrap: wrap
                 & > *
@@ -563,7 +573,7 @@ footer
                     vertical-align: middle
                     margin: 20px
                 output:after
-                    font-size: 15px
+                    font-size: 18px
                     margin-left: 5px
                 output:before
                     margin-right: 5px
