@@ -456,9 +456,9 @@ var updatePostData = (author, permlink, timeout = 5000) => {
             let spanvotes = document.createElement("span");
             spanvotes.classList.add("span_votes");
             upvote.querySelector("output:first-child").innerHTML = upvotes;
-            upvote.querySelector("output:first-child").append(spanvotes);
+//            upvote.querySelector("output:first-child").append(spanvotes);
             upvote.querySelector("output:last-child").innerHTML = "$ " + (upower / reward_fund.recent_claims * reward_fund.reward_balance.split(" ")[0] * median_price.base.split(" ")[0]).toFixed(3);
-            downvote.querySelector("output:first-child").innerHTML = downvotes + " votes";
+            downvote.querySelector("output:first-child").innerHTML = downvotes;
             downvote.querySelector("output:last-child").innerHTML = "$ " + (dpower / reward_fund.recent_claims * reward_fund.reward_balance.split(" ")[0] * median_price.base.split(" ")[0]).toFixed(3);
 
             upvote.classList.toggle("loading", false);
