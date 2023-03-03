@@ -263,12 +263,18 @@ var loadPost = (post, open = false) => {
         upvoteContent.classList.add('content');
         let downvoteContent = document.createElement('div');
         downvoteContent.classList.add('content');
-
-        upvoteContent.append(document.createElement("output"));
+        
+        let uc = document.createElement("output");
+        let dc = document.createElement("output");
+        
+        uc.classList.add("votecounter");
+        dc.classList.add("votecounter");
+        
+        upvoteContent.append(uc);
         upvoteContent.append(document.createElement("output"));
         upvote.append(upvoteContent);
 
-        downvoteContent.append(document.createElement("output"));
+        downvoteContent.append(dc);
         downvoteContent.append(document.createElement("output"));
         downvote.append(downvoteContent);
 
