@@ -7,7 +7,7 @@ const rootUrl = "https://qdp.hivetasks.com/";
 const publicIPFS = "https://ipfs.io/ipfs/";
 const getCssString = (name) => {
     let val = getComputedStyle(document.documentElement).getPropertyValue(name);
-    return val.substring(1, val.length-1);
+    return val.substring(1, val.length - 1);
 };
 var loaded = true;
 var idrequest = 0;
@@ -263,13 +263,13 @@ var loadPost = (post, open = false) => {
         upvoteContent.classList.add('content');
         let downvoteContent = document.createElement('div');
         downvoteContent.classList.add('content');
-        
+
         let uc = document.createElement("output");
         let dc = document.createElement("output");
-        
+
         uc.classList.add("votecounter");
         dc.classList.add("votecounter");
-        
+
         upvoteContent.append(uc);
         upvoteContent.append(document.createElement("output"));
         upvote.append(upvoteContent);
@@ -328,9 +328,9 @@ var loadPost = (post, open = false) => {
         upvote.classList.toggle("myvote", myvote > 0);
         downvote.classList.toggle("myvote", myvote < 0);
 
-        upvote.querySelector("output:first-child").innerHTML = upvotes ;
+        upvote.querySelector("output:first-child").innerHTML = upvotes;
         upvote.querySelector("output:last-child").innerHTML = "$ " + (upower / reward_fund.recent_claims * reward_fund.reward_balance.split(" ")[0] * median_price.base.split(" ")[0]).toFixed(3);
-        downvote.querySelector("output:first-child").innerHTML = downvotes ;
+        downvote.querySelector("output:first-child").innerHTML = downvotes;
         downvote.querySelector("output:last-child").innerHTML = "$ " + (dpower / reward_fund.recent_claims * reward_fund.reward_balance.split(" ")[0] * median_price.base.split(" ")[0]).toFixed(3);
 
 
@@ -391,8 +391,8 @@ var loadPost = (post, open = false) => {
         replies_div.append(replies_a);
         payout_div.append(total_payout);
         payout_div.append(payout_at);
-        
-        
+
+
         rpcontainer.append(replies_div);
         rpcontainer.append(payout_div);
         section_footer.append(ex_rpcontainer);
@@ -400,12 +400,14 @@ var loadPost = (post, open = false) => {
         console.log(post.children);
         replies.innerHTML = post.children;
         total_payout.innerHTML = payout;
+        let date = new Date(post.payout_at);
+        date.toString(date.toString());
         payout_at.innerHTML = post.payout_at;
         total_payout.classList.toggle("paid", post.is_paidout);
         section_body.classList.add("section_body");
         section_footer.classList.add("section_footer");
         section.appendChild(section_title_container);
-        
+
         section.appendChild(section_media);
         if (section_body.innerText.length > 0 && !open)
             section.appendChild(section_openclose);
@@ -634,7 +636,8 @@ var createUploadWindow = () => {
 
     let fileurl = document.createElement("input");
     fileurl.type = "url";
-    fileurl.placeholder = getCssString("--upload-media-file-url");;
+    fileurl.placeholder = getCssString("--upload-media-file-url");
+    ;
     fileurl.pattern = "https://.*";
     fileurl.onchange = (evt) => {
         setUploadedMedia(evt.srcElement.value);
@@ -710,7 +713,8 @@ var createUploadWindow = () => {
     tags_div.appendChild(tags);
     tags.classList.add("tags");
     tags.placeholder = getCssString("--upload-tags");
-    tags.title = getCssString("--upload-tags-w");;
+    tags.title = getCssString("--upload-tags-w");
+    ;
 
 
     footer.appendChild(original_label_div);
