@@ -390,12 +390,13 @@ var loadPost = (post, open = false) => {
         replies_a.target = "_blank";
         replies_div.append(replies_a);
         payout_div.append(total_payout);
-        payout_div.append(payout_at);
+        if (!post.is_paidout)
+            payout_div.append(payout_at);
 
 
         rpcontainer.append(replies_div);
-        if (!post.is_paidout)
-            rpcontainer.append(payout_div);
+
+        rpcontainer.append(payout_div);
         section_footer.append(ex_rpcontainer);
 
         console.log(post.children);
