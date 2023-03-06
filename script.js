@@ -372,6 +372,8 @@ var loadPost = (post, open = false) => {
 
 
         let ex_rpcontainer = document.createElement("div");
+        let replies_div = document.createElement("div");
+        let payout_div = document.createElement("div");
         let replies = document.createElement("output");
         let replies_a = document.createElement("a");
         let total_payout = document.createElement("output");
@@ -386,9 +388,13 @@ var loadPost = (post, open = false) => {
         replies_a.append(replies);
         replies_a.href = "https://hive.blog/@" + post.author + "/" + post.permlink;
         replies_a.target = "_blank";
-        rpcontainer.append(replies_a);
-        rpcontainer.append(total_payout);
-        rpcontainer.append(payout_at);
+        replies_div.append(replies_a);
+        payout_div.append(total_payout);
+        payout_div.append(payout_at);
+        
+        
+        rpcontainer.append(replies_div);
+        rpcontainer.append(payout_div);
         section_footer.append(ex_rpcontainer);
 
         console.log(post.children);
