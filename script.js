@@ -401,7 +401,7 @@ var loadPost = (post, open = false) => {
         replies.innerHTML = post.children;
         total_payout.innerHTML = payout;
         let date = new Date(post.payout_at+"z");
-        date.toString(date.toString());
+        date.toString(date.toLocaleString());
         payout_at.innerHTML = post.payout_at;
         total_payout.classList.toggle("paid", post.is_paidout);
         section_body.classList.add("section_body");
