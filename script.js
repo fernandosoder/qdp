@@ -375,21 +375,25 @@ var loadPost = (post, open = false) => {
         let replies = document.createElement("output");
         let replies_a = document.createElement("a");
         let total_payout = document.createElement("output");
+        let payout_at = document.createElement("output");
         let rpcontainer = document.createElement("div");
         ex_rpcontainer.append(rpcontainer);
         replies.classList.add("replies");
         total_payout.classList.add("total_payout");
+        payout_at.classList.add("payout_at");
         ex_rpcontainer.classList.add("rpcontainer");
         replies_a.append(replies);
         replies_a.href = "https://hive.blog/@" + post.author + "/" + post.permlink;
         replies_a.target = "_blank";
         rpcontainer.append(replies_a);
         rpcontainer.append(total_payout);
+        rpcontainer.append(payout_at);
         section_footer.append(ex_rpcontainer);
 
         console.log(post.children);
         replies.innerHTML = post.children;
         total_payout.innerHTML = payout;
+        payout_at.innerHTML = post.payout_at;
         total_payout.classList.toggle("paid", post.is_paidout);
         section_body.classList.add("section_body");
         section_footer.classList.add("section_footer");
