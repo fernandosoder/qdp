@@ -381,6 +381,7 @@ var loadPost = (post, open = false) => {
         replies.classList.add("replies");
         total_payout.classList.add("total_payout");
         payout_at.classList.add("payout_at");
+        payout_at.style.display = "none";
         ex_rpcontainer.classList.add("rpcontainer");
         replies_a.append(replies);
         replies_a.href = "https://hive.blog/@" + post.author + "/" + post.permlink;
