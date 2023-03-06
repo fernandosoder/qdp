@@ -1074,7 +1074,7 @@ var getTopTags = () => {
         "params": {
             "tag": "hive-179234",
             "sort": "created",
-            "limit": 20,
+            "limit": 50,
             "start_author": null,
             "start_permlink": null,
             "observer": localStorage.username
