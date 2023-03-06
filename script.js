@@ -329,9 +329,9 @@ var loadPost = (post, open = false) => {
         downvote.classList.toggle("myvote", myvote < 0);
 
         upvote.querySelector("output:first-child").innerHTML = upvotes;
-        upvote.querySelector("output:last-child").innerHTML = "$ " + (upower / reward_fund.recent_claims * reward_fund.reward_balance.split(" ")[0] * median_price.base.split(" ")[0]).toFixed(3);
+        upvote.querySelector("output:last-child").innerHTML = "$ " + (upower / reward_fund.recent_claims * reward_fund.reward_balance.split(" ")[0] * median_price.base.split(" ")[0] / 2).toFixed(3);
         downvote.querySelector("output:first-child").innerHTML = downvotes;
-        downvote.querySelector("output:last-child").innerHTML = "$ " + (dpower / reward_fund.recent_claims * reward_fund.reward_balance.split(" ")[0] * median_price.base.split(" ")[0]).toFixed(3);
+        downvote.querySelector("output:last-child").innerHTML = "$ " + (dpower / reward_fund.recent_claims * reward_fund.reward_balance.split(" ")[0] * median_price.base.split(" ")[0] / 2).toFixed(3);
 
 
         let tags = document.createElement("div");
@@ -401,7 +401,7 @@ var loadPost = (post, open = false) => {
 
         console.log(post.children);
         replies.innerHTML = post.children;
-        total_payout.innerHTML =  payout.slice(0,-1) + "<span>" + payout.charAt(payout.length-1) + "</span>" ;
+        total_payout.innerHTML = payout.slice(0, -1) + "<span>" + payout.charAt(payout.length - 1) + "</span>";
         let date = new Date(post.payout_at + ".000+0000");
         let now = new Date();
         payout_at.setAttribute("epoch", date.valueOf() / 1000);
@@ -479,9 +479,9 @@ var updatePostData = (author, permlink, timeout = 5000) => {
             spanvotes.classList.add("span_votes");
             upvote.querySelector("output:first-child").innerHTML = upvotes;
 //            upvote.querySelector("output:first-child").append(spanvotes);
-            upvote.querySelector("output:last-child").innerHTML = "$ " + (upower / reward_fund.recent_claims * reward_fund.reward_balance.split(" ")[0] * median_price.base.split(" ")[0]).toFixed(3);
+            upvote.querySelector("output:last-child").innerHTML = "$ " + (upower / reward_fund.recent_claims * reward_fund.reward_balance.split(" ")[0] * median_price.base.split(" ")[0] / 2).toFixed(3);
             downvote.querySelector("output:first-child").innerHTML = downvotes;
-            downvote.querySelector("output:last-child").innerHTML = "$ " + (dpower / reward_fund.recent_claims * reward_fund.reward_balance.split(" ")[0] * median_price.base.split(" ")[0]).toFixed(3);
+            downvote.querySelector("output:last-child").innerHTML = "$ " + (dpower / reward_fund.recent_claims * reward_fund.reward_balance.split(" ")[0] * median_price.base.split(" ")[0] / 2).toFixed(3);
 
             upvote.classList.toggle("loading", false);
             downvote.classList.toggle("loading", false);
