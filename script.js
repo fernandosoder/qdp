@@ -401,7 +401,7 @@ var loadPost = (post, open = false) => {
 
         console.log(post.children);
         replies.innerHTML = post.children;
-        total_payout.innerHTML = payout.slice(0, -1) + "<span>" + payout.charAt(payout.length - 1) + "</span>";
+        total_payout.innerHTML = (payout + "").slice(0, -1) + "<span>" + (payout + "").charAt((payout + "").length - 1) + "</span>";
         let date = new Date(post.payout_at + ".000+0000");
         let now = new Date();
         payout_at.setAttribute("epoch", date.valueOf() / 1000);
