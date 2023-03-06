@@ -280,7 +280,7 @@ var loadPost = (post, open = false) => {
 
 
 
-        let payout = post.is_paidout ? post.author_payout_value.split(" ")[0] : post.max_accepted_payout.split(" ")[0] < post.pending_payout_value.split(" ")[0] ? post.max_accepted_payout.split(" ")[0] : post.pending_payout_value.split(" ")[0]/2;
+        let payout = post.is_paidout ? post.author_payout_value.split(" ")[0] : post.max_accepted_payout.split(" ")[0] < post.pending_payout_value.split(" ")[0] ? post.max_accepted_payout.split(" ")[0] : (post.pending_payout_value.split(" ")[0]/2).toFixed(3) ;
         let upvotes = 0;
         let downvotes = 0;
         let upower = 0;
@@ -401,7 +401,7 @@ var loadPost = (post, open = false) => {
 
         console.log(post.children);
         replies.innerHTML = post.children;
-        total_payout.innerHTML = payout ;
+        total_payout.innerHTML = (payout + "").slice(0, -1) + "<span>" + (payout + "").charAt((payout + "").length - 1) + "</span>";
         let date = new Date(post.payout_at + ".000+0000");
         let now = new Date();
         payout_at.setAttribute("epoch", date.valueOf() / 1000);
@@ -447,7 +447,7 @@ var updatePostData = (author, permlink, timeout = 5000) => {
             let post = JSON.parse(res.target.response)["result"];
 //            console.log(post);
             try {
-                let payout = post.is_paidout ? post.author_payout_value.split(" ")[0] : post.max_accepted_payout.split(" ")[0] < post.pending_payout_value.split(" ")[0] ? post.max_accepted_payout.split(" ")[0] : post.pending_payout_value.split(" ")[0]/2;
+                let payout = post.is_paidout ? post.author_payout_value.split(" ")[0] : post.max_accepted_payout.split(" ")[0] < post.pending_payout_value.split(" ")[0] ? post.max_accepted_payout.split(" ")[0] : (post.pending_payout_value.split(" ")[0]/2).toFixed(3);
             } catch (err) {
 
             }
