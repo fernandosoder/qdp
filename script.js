@@ -400,7 +400,7 @@ var loadPost = (post, open = false) => {
         console.log(post.children);
         replies.innerHTML = post.children;
         total_payout.innerHTML = payout;
-        let date = new Date(post.payout_at+"z");
+        let date = new Date(post.payout_at);
         payout_at.innerHTML = date.toLocaleString();
         total_payout.classList.toggle("paid", post.is_paidout);
         section_body.classList.add("section_body");
