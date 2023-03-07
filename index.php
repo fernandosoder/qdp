@@ -36,7 +36,7 @@ header('Link: <' . $rootUrl . 'script.js>; rel=preload; as=script', false);
                     <a class="menu-upload" href="<?php echo $rootUrl; ?>upload"></a>
                 </nav>
                 <hgroup class="userprofile">
-                    <div class="loggedon" class="dropdown">
+                    <div class="loggedon dropdown">
                         <a  href="<?php echo $rootUrl; ?>"><img src="" alt=""/><span></span></a>
                         <div class="dropdown-content">
                             <a class="logout"></a>
