@@ -1,7 +1,7 @@
 :root {
     --menu-upload:              "Enviar";
     --menu-login:               "Logar";
-
+    --menu-logout:              "Sair";
     --feed-view-post:           "Visualizar postagem";
     --feed-close-post:          "Fechar postagem";
     --feed-button-votes:        " votos";
