@@ -2,6 +2,7 @@
 :root {
     --menu-upload:              "Upload";
     --menu-login:               "Login";
+    --menu-logout:              "Logout";
     --feed-view-post:           "View Post";
     --feed-close-post:          "Close Post";
     --feed-button-votes:        " votes";

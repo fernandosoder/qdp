@@ -39,7 +39,7 @@ header('Link: <' . $rootUrl . 'script.js>; rel=preload; as=script', false);
                     <div class="loggedon" class="dropdown">
                         <a  href="<?php echo $rootUrl; ?>"><img src="" alt=""/><span></span></a>
                         <div class="dropdown-content">
-                            <a class="loggoff"></a>
+                            <a class="logout"></a>
                         </div>
                     </div>
                     <a class="loggedoff"></a>
