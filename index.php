@@ -16,7 +16,8 @@ header('Link: <' . $rootUrl . 'script.js>; rel=preload; as=script', false);
             ?><link href="<?php echo $rootUrl; ?>strings/<?php echo strtolower($fn); ?>.css" rel="stylesheet" />
         <?php } catch (Exception $ex) {
             
-        } ?>
+        }
+        ?>
         <link href="<?php echo $rootUrl; ?>css/style.css" rel="stylesheet" />
         <script src="<?php echo $rootUrl; ?>script.js" type="text/javascript" defer></script>
     </head>
@@ -35,7 +36,12 @@ header('Link: <' . $rootUrl . 'script.js>; rel=preload; as=script', false);
                     <a class="menu-upload" href="<?php echo $rootUrl; ?>upload"></a>
                 </nav>
                 <hgroup class="userprofile">
-                    <a class="loggedon" href="<?php echo $rootUrl; ?>"><img src="" alt=""/><span></span></a>
+                    <div class="loggedon" class="dropdown">
+                        <a  href="<?php echo $rootUrl; ?>"><img src="" alt=""/><span></span></a>
+                        <div class="dropdown-content">
+                            <a class="loggoff"></a>
+                        </div>
+                    </div>
                     <a class="loggedoff"></a>
                 </hgroup>
             </div>
