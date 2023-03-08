@@ -383,7 +383,7 @@ var loadPost = (post, open = false) => {
         
         let replies_container_div = document.createElement("div");
         
-        replies_div.classList.add("replies_div");
+        replies_container_div.classList.add("replies_container_div");
         ex_rpcontainer.append(rpcontainer);
         replies.classList.add("replies");
         total_payout.classList.add("total_payout");
