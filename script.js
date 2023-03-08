@@ -1063,11 +1063,13 @@ var markdownParser = (markdown) => {
 
 var getTopTags = () => {
     if (tagsLoaded)
-        return ;
+        return;
     document.querySelector(".topics").innerHTML = "";
     document.querySelector(".topics").append(document.createElement("ul"));
     let req = new XMLHttpRequest();
     req.addEventListener("load", (res) => {
+        if (tagsLoaded)
+            return;
         tagsLoaded = true;
         let posts = JSON.parse(res.target.response)["result"];
         posts.forEach((post) => {
