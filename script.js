@@ -539,6 +539,8 @@ var onLoadedPost = (res) => {
 window.onscroll = function () {
     if (typeof document.body.attributes['upload'] !== "undefined")
         return;
+    if (typeof document.body.attributes['permlink'] !== "undefined")
+        return;
     if (document.querySelectorAll("#posts_container .feedisover").length > 0)
         return;
     if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 100) {
