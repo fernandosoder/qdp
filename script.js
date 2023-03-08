@@ -399,12 +399,11 @@ var loadPost = (post, open = false) => {
             payout_div.append(payout_at);
 
 
-
-        rpcontainer.append(replies_container_div);
+        rpcontainer.append(replies_div);
 
         rpcontainer.append(payout_div);
         section_footer.append(ex_rpcontainer);
-        section_footer.append(replies_div);
+        section_footer.append(replies_container_div);
 
         console.log(post.children);
         replies.innerHTML = post.children;
