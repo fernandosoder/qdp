@@ -69,7 +69,8 @@ var getDiscussion = (post, callback) => {
         "method": "bridge.get_discussion",
         "params": {
             "author": post.getAttribute("author"),
-            "permlink": post.getAttribute("permlink")
+            "permlink": post.getAttribute("permlink"),
+            "observer": localStorage.username
         }
     };
     req.send(JSON.stringify(request));
@@ -379,6 +380,10 @@ var loadPost = (post, open = false) => {
         let total_payout = document.createElement("output");
         let payout_at = document.createElement("output");
         let rpcontainer = document.createElement("div");
+        
+        let replies_container_div = document.createElement("div");
+        
+        replies_div.classList.add("replies_div");
         ex_rpcontainer.append(rpcontainer);
         replies.classList.add("replies");
         total_payout.classList.add("total_payout");
@@ -394,10 +399,11 @@ var loadPost = (post, open = false) => {
             payout_div.append(payout_at);
 
 
-        rpcontainer.append(replies_div);
+        rpcontainer.append(replies_container_div);
 
         rpcontainer.append(payout_div);
         section_footer.append(ex_rpcontainer);
+        section_footer.append(replies_div);
 
         console.log(post.children);
         replies.innerHTML = post.children;
@@ -429,12 +435,11 @@ var loadPost = (post, open = false) => {
         section.append(h1);
         document.getElementById("posts_container").append(section);
     }
-    getDiscussion(section, (res) => {
-        section.querySelector(".rpcontainer .replies").innerHTML;
-        console.log(JSON.parse(res.target.response).result);
-    });
-    if (typeof document.body.attributes['permlink'] !== "undefined")
-        loadComments(post.author, post.permlink);
+    if (open)
+        getDiscussion(section, (res) => {
+            section.querySelector(".rpcontainer .replies").innerHTML;
+            console.log(JSON.parse(res.target.response).result);
+        });
 };
 function checkVisible(elm) {
     var rect = elm.getBoundingClientRect();
@@ -1104,26 +1109,3 @@ var getTopTags = () => {
     };
     req.send(JSON.stringify(request));
 }
-
-const loadComments = (author, permlink) => {
-    let req = new XMLHttpRequest();
-    req.addEventListener("load", (res) => {
-        let comments = JSON.parse(res.target.response)["result"];
-        console.log(comments);
-//        comments.forEach(() => {
-//            
-//        });
-    });
-    req.open("POST", localStorage.hiveNode);
-    request = {
-        "id": idrequest++,
-        "jsonrpc": "2.0",
-        "method": "bridge.get_discussion",
-        "params": {
-            "author": author,
-            "permlink": permlink,
-            "observer": localStorage.username
-        }
-    };
-    req.send(JSON.stringify(request));
-};
