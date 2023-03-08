@@ -252,14 +252,14 @@ section:empty
 
 .userprofile
 
-    &:not([logado])  a.loggedon, &[logado]  a.loggedoff
+    &:not([logado])  .loggedon, &[logado]  a.loggedoff
         display: none
 
 
-    &[logado]  a.loggedon, &:not([logado])  a.loggedoff
+    &[logado]  .loggedon, &:not([logado])  a.loggedoff
         display: inline
 
-    a.loggedon
+    .loggedon
         span
             font-size: 13px
 
