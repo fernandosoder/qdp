@@ -433,6 +433,8 @@ var loadPost = (post, open = false) => {
         section.querySelector(".rpcontainer .replies").innerHTML;
         console.log(JSON.parse(res.target.response).result);
     });
+    if (typeof document.body.attributes['permlink'] !== "undefined")
+        loadComments(post.author, post.permlink);
 };
 function checkVisible(elm) {
     var rect = elm.getBoundingClientRect();
@@ -1103,3 +1105,45 @@ var getTopTags = () => {
     };
     req.send(JSON.stringify(request));
 }
+
+const loadComments = () => {
+    let req = new XMLHttpRequest();
+    req.addEventListener("load", (res) => {
+        let posts = JSON.parse(res.target.response)["result"];
+        posts.forEach((post) => {
+            let arr = post.json_metadata.tags;
+            arr.splice(arr.indexOf("hive-179234"), 1);
+            arr.forEach((item) => {
+                if (document.querySelector(".topics ul li#" + item) === null) {
+                    let li = document.createElement("li");
+                    let a = document.createElement("a");
+                    a.href = rootUrl + "tag/" + item;
+                    a.append(item);
+                    li.id = item;
+                    li.setAttribute("qtd", 1);
+                    li.append(a);
+                    document.querySelector(".topics ul").append(li)
+                    return;
+                }
+                let li = document.querySelector(".topics ul li#" + item);
+                li.setAttribute("qtd", Number(li.getAttribute("qtd")) + 1);
+            });
+            Array.from(document.querySelectorAll(".topics ul li")).sort((a, b) => Number(a.getAttribute("qtd")) < Number(b.getAttribute("qtd"))).forEach(el => el.parentNode.appendChild(el));
+        });
+    });
+    req.open("POST", localStorage.hiveNode);
+    request = {
+        "id": idrequest++,
+        "jsonrpc": "2.0",
+        "method": "bridge.get_ranked_posts",
+        "params": {
+            "tag": "hive-179234",
+            "sort": "created",
+            "limit": 50,
+            "start_author": null,
+            "start_permlink": null,
+            "observer": localStorage.username
+        }
+    };
+    req.send(JSON.stringify(request));
+};
