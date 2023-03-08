@@ -879,7 +879,7 @@ var createPost = () => {
             ]
         }
     ];
-    if (maxpay === 0.01) {
+    if (maxpay === 0.02) {
 //        contrib = [];
         if (!tags.includes("penny-post"))
             tags.push("penny-post");
@@ -950,7 +950,7 @@ var createPost = () => {
 };
 
 var recalcMaxVal = () => {
-    let maxval = 0.01;
+    let maxval = 0.02;
     let text = document.querySelector("[upload] .comentario_textarea").value;
     let count = 0;
     let split = text.split(' ');
