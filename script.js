@@ -10,7 +10,6 @@ const getCssString = (name) => {
     return val.substring(1, val.length - 1);
 };
 var loaded = true;
-var tagsLoaded = false;
 var idrequest = 0;
 var postsPerRequest = 5;
 var reward_fund = null;
@@ -29,7 +28,6 @@ setInterval(() => {
 }, 10000);
 window.onload = () => {
     {
-        getTopTags();
         let req = new XMLHttpRequest();
         req.addEventListener("load", (res) => {
             reward_fund = (JSON.parse(res.target.response).result);
@@ -58,6 +56,7 @@ window.onload = () => {
         };
         req.send(JSON.stringify(request));
     }
+    getTopTags();
 };
 
 var getDiscussion = (post, callback) => {
@@ -1062,15 +1061,10 @@ var markdownParser = (markdown) => {
 };
 
 var getTopTags = () => {
-    if (tagsLoaded)
-        return;
     document.querySelector(".topics").innerHTML = "";
     document.querySelector(".topics").append(document.createElement("ul"));
     let req = new XMLHttpRequest();
     req.addEventListener("load", (res) => {
-        if (tagsLoaded)
-            return;
-        tagsLoaded = true;
         let posts = JSON.parse(res.target.response)["result"];
         posts.forEach((post) => {
             let arr = post.json_metadata.tags;
@@ -1112,6 +1106,7 @@ var getTopTags = () => {
 }
 
 const loadComments = () => {
+    return ;
     let req = new XMLHttpRequest();
     req.addEventListener("load", (res) => {
         let posts = JSON.parse(res.target.response)["result"];
