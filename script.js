@@ -470,6 +470,8 @@ var loadPost = (post, open = false) => {
                 let author_name = document.createElement("figcaption");
                 let author_img = document.createElement("img");
                 let text = document.createElement("div");
+                author_img.classList.add("author_img");
+                author_name.classList.add("author_name");
                 author.append(author_img);
                 author.append(author_name);
                 author_link.append(author);
