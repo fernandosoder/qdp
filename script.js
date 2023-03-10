@@ -14,7 +14,30 @@ var idrequest = 0;
 var postsPerRequest = 5;
 var reward_fund = null;
 var median_price = null;
+var profiles = {};
 
+const getProfile = (name, callback) => {
+    if (profiles[name] !== undefined) {
+        callback(profiles[name]);
+        return;
+    }
+    let req = new XMLHttpRequest();
+    req.addEventListener("load", (res) => {
+        profiles[name] = JSON.parse(res.target.response)["result"];
+        callback(JSON.parse(res.target.response)["result"]);
+    });
+    req.open("POST", localStorage.hiveNode);
+    request = {
+        "id": idrequest++,
+        "jsonrpc": "2.0",
+        "method": "bridge.get_profile",
+        "params": {
+            "account": name,
+            "observer": localStorage.username
+        }
+    };
+    req.send(JSON.stringify(request));
+};
 
 
 
@@ -455,7 +478,7 @@ var loadPost = (post, open = false) => {
 
 
                 author_name.append(item.author);
-                
+
                 text.append(item.body);
                 console.log(item);
                 section.querySelector(".replies_container_div").append(comment_section);
