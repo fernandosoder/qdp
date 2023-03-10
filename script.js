@@ -484,7 +484,8 @@ var loadPost = (post, open = false) => {
                 leftside.append(author_link);
                 let parser = new DOMParser();
                 let doc = parser.parseFromString(item.body, "text/html");
-                text.append(doc.body);
+                console.log(doc.body);
+                text.append(doc.body.innerHTML);
                 comment_section.append(text);
                 author_name.append(item.author);
                 getProfile(item.author, (res) => {
