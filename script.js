@@ -439,6 +439,8 @@ var loadPost = (post, open = false) => {
         getDiscussion(section, (res) => {
             let lista = JSON.parse(res.target.response).result;
             Object.values(lista).forEach(item => {
+                if(item.depth === 0)
+                    return;
                 let comment_section = document.createElement("section");
                 let author_link = document.createElement("a");
                 let author = document.createElement("figure");
@@ -448,7 +450,11 @@ var loadPost = (post, open = false) => {
                 author.append(author_name);
                 author_link.append(author);
                 comment_section.append(author_link);
-                console.log(item.depth + " " + item.author + item.permlink );
+                
+                
+                
+                
+                console.log(item);
             section.querySelector(".replies_container_div").append(comment_section);
             });
         });
