@@ -478,6 +478,10 @@ var loadPost = (post, open = false) => {
 
 
                 author_name.append(item.author);
+                getProfile(item.author,(res)=>{
+                    console.log(res);
+//                    author_img.src = res;
+                });
 
                 text.append(item.body);
                 console.log(item);
