@@ -485,7 +485,9 @@ var loadPost = (post, open = false) => {
                 let parser = new DOMParser();
                 let doc = parser.parseFromString(item.body, "text/html");
                 console.log(doc);
-                text.append(doc.querySelectorAll("body > *"));
+                doc.querySelectorAll("body > *").forEach((tag) => {
+                    text.append(tag);
+                });
                 comment_section.append(text);
                 author_name.append(item.author);
                 getProfile(item.author, (res) => {
