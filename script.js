@@ -122,7 +122,7 @@ var pricesLoaded = () => {
         return;
     }
     if (typeof document.body.attributes['tag'] !== "undefined") {
-
+        
     }
     if (typeof document.body.attributes['author'] !== "undefined") {
         if (typeof document.body.attributes['permlink'] !== "undefined") {
@@ -164,7 +164,7 @@ var pricesLoaded = () => {
 //        req.send(JSON.stringify(request));
 //        return;
     }
-
+    
     let req = new XMLHttpRequest();
     req.addEventListener("load", onLoadedPosts);
     req.open("POST", localStorage.hiveNode);
@@ -227,7 +227,7 @@ var loadPost = (post, open = false) => {
 //            source_2.src = post.json_metadata.video[0];
 //            video.appendChild(source_1);
 //            video.appendChild(source_2);
-
+            
             video.setAttribute("controls", "");
             video.setAttribute("loop", "");
             video.setAttribute("mute", "");
@@ -244,73 +244,73 @@ var loadPost = (post, open = false) => {
             if (doc.querySelector(".media") !== null)
                 section_media.append(doc.querySelector(".media"));
         }
-
+        
         let section_title_container = document.createElement("header");
         let section_title = document.createElement("h2");
-
+        
         section_title_container.classList.add("section_header");
         section_title_container.appendChild(section_title);
-
-
+        
+        
         let section_author = document.createElement("a");
         section_author.innerHTML = "@" + post.author;
         section_author.href = rootUrl + "@" + post.author;
         section_author.classList.add("section_author");
         section_title_container.appendChild(section_author);
-
-
+        
+        
         let section_body = document.createElement("div");
         let section_openclose = document.createElement("a");
         let section_footer = document.createElement("footer");
         let title_a = document.createElement("a");
-
+        
         title_a.target = localStorage.target;
-
+        
         section_openclose.classList.add("section_openclose");
         section_openclose.onclick = (evt) => {
             let thisSection = evt.srcElement.parentNode;
             thisSection.classList.toggle("open");
         };
-
+        
         title_a.innerHTML = post.title;
         title_a.href = rootUrl + "@" + post.author + "/" + post.permlink;
-
-
-
+        
+        
+        
         let upvote = document.createElement("button");
         let downvote = document.createElement("button");
-
+        
         upvote.classList.add("upvote");
         downvote.classList.add("downvote");
-
+        
         let upvoteContent = document.createElement('div');
         upvoteContent.classList.add('content');
         let downvoteContent = document.createElement('div');
         downvoteContent.classList.add('content');
-
+        
         let uc = document.createElement("output");
         let dc = document.createElement("output");
-
+        
         uc.classList.add("votecounter");
         dc.classList.add("votecounter");
-
+        
         upvoteContent.append(uc);
         upvoteContent.append(document.createElement("output"));
         upvote.append(upvoteContent);
-
+        
         downvoteContent.append(dc);
         downvoteContent.append(document.createElement("output"));
         downvote.append(downvoteContent);
-
-
-
+        
+        
+        
         let payout = post.is_paidout ? post.author_payout_value.split(" ")[0] : post.max_accepted_payout.split(" ")[0] < post.pending_payout_value.split(" ")[0] ? (post.max_accepted_payout.split(" ")[0] / 2).toFixed(3) : (post.pending_payout_value.split(" ")[0] / 2).toFixed(3);
         let upvotes = 0;
         let downvotes = 0;
         let upower = 0;
         let dpower = 0;
         let myvote = 0;
-
+        
         post.active_votes.forEach((item, index) => {
             if (item.rshares > 0) {
                 upvotes++;
@@ -323,8 +323,8 @@ var loadPost = (post, open = false) => {
             if (item.voter === localStorage.username)
                 myvote = item.rshares;
         });
-
-
+        
+        
         upvote.onclick = (evt) => {
             window.hive_keychain.requestHandshake(() => {
                 vote = myvote > 0 ? 0 : 10000;
@@ -351,13 +351,13 @@ var loadPost = (post, open = false) => {
         };
         upvote.classList.toggle("myvote", myvote > 0);
         downvote.classList.toggle("myvote", myvote < 0);
-
+        
         upvote.querySelector("output:first-child").innerHTML = upvotes;
         upvote.querySelector("output:last-child").innerHTML = "$ " + (upower / reward_fund.recent_claims * reward_fund.reward_balance.split(" ")[0] * median_price.base.split(" ")[0] * 0.45).toFixed(3);
         downvote.querySelector("output:first-child").innerHTML = downvotes;
         downvote.querySelector("output:last-child").innerHTML = "$ " + (dpower / reward_fund.recent_claims * reward_fund.reward_balance.split(" ")[0] * median_price.base.split(" ")[0] * 0.45).toFixed(3);
-
-
+        
+        
         let tags = document.createElement("div");
         tags.classList.add("tags_container");
         post.json_metadata.tags.forEach((tag) => {
@@ -371,18 +371,18 @@ var loadPost = (post, open = false) => {
             tag_container.append(tag_a);
             tags.appendChild(tag_container);
         });
-
+        
         let voteBlock = document.createElement('div');
         voteBlock.classList.add('vote_block');
         voteBlock.appendChild(upvote);
         voteBlock.appendChild(downvote);
-
+        
         section_footer.appendChild(tags);
         section_footer.appendChild(voteBlock);
-
+        
         section_title.appendChild(title_a);
         section_title.classList.add("section_title");
-
+        
         let parser = new DOMParser();
         let doc = parser.parseFromString(post.body, "text/html");
 //        console.log(doc.querySelector(".comment"));
@@ -393,8 +393,8 @@ var loadPost = (post, open = false) => {
             doc.querySelector(".comment").innerHTML = doc.querySelector(".comment").innerHTML.replaceAll("\n", "<br/>");
             section_body.append(doc.querySelector(".comment"));
         }
-
-
+        
+        
         let ex_rpcontainer = document.createElement("div");
         let replies_div = document.createElement("div");
         let payout_div = document.createElement("div");
@@ -403,9 +403,9 @@ var loadPost = (post, open = false) => {
         let total_payout = document.createElement("output");
         let payout_at = document.createElement("output");
         let rpcontainer = document.createElement("div");
-
+        
         let replies_container_div = document.createElement("div");
-
+        
         replies_container_div.classList.add("replies_container_div");
         ex_rpcontainer.append(rpcontainer);
         replies.classList.add("replies");
@@ -420,14 +420,14 @@ var loadPost = (post, open = false) => {
         payout_div.append(total_payout);
         if (!post.is_paidout)
             payout_div.append(payout_at);
-
-
+        
+        
         rpcontainer.append(replies_div);
-
+        
         rpcontainer.append(payout_div);
         section_footer.append(ex_rpcontainer);
         section_footer.append(replies_container_div);
-
+        
         console.log(post.children);
         replies.innerHTML = post.children;
         total_payout.innerHTML = (payout + "").slice(0, -1) + "<span>" + (payout + "").charAt((payout + "").length - 1) + "</span>";
@@ -439,7 +439,7 @@ var loadPost = (post, open = false) => {
         section_body.classList.add("section_body");
         section_footer.classList.add("section_footer");
         section.appendChild(section_title_container);
-
+        
         section.appendChild(section_media);
         if (section_body.innerText.length > 0 && !open)
             section.appendChild(section_openclose);
@@ -485,9 +485,7 @@ var loadPost = (post, open = false) => {
                 let parser = new DOMParser();
                 let doc = parser.parseFromString(item.body, "text/html");
                 console.log(doc);
-                doc.querySelectorAll("body").forEach((tag) => {
-                    text.append(tag);
-                });
+                text.innerHTML = doc.querySelector("body").innerHTML;
                 comment_section.append(text);
                 author_name.append(item.author);
                 getProfile(item.author, (res) => {
@@ -513,7 +511,7 @@ var updatePostData = (author, permlink, timeout = 5000) => {
             try {
                 let payout = post.is_paidout ? post.author_payout_value.split(" ")[0] : post.max_accepted_payout.split(" ")[0] < post.pending_payout_value.split(" ")[0] ? (post.max_accepted_payout.split(" ")[0] / 2).toFixed(3) : (post.pending_payout_value.split(" ")[0] / 2).toFixed(3);
             } catch (err) {
-
+                
             }
             let upvotes = 0;
             let downvotes = 0;
@@ -522,7 +520,7 @@ var updatePostData = (author, permlink, timeout = 5000) => {
             let myvote = 0;
             let upvote = document.querySelector("[author=" + post.author + "][permlink=" + post.permlink + "] button.upvote");
             let downvote = document.querySelector("[author=" + post.author + "][permlink=" + post.permlink + "] button.downvote");
-
+            
             post.active_votes.forEach((item, index) => {
                 if (item.rshares > 0) {
                     upvotes++;
@@ -546,7 +544,7 @@ var updatePostData = (author, permlink, timeout = 5000) => {
             upvote.querySelector("output:last-child").innerHTML = "$ " + (upower / reward_fund.recent_claims * reward_fund.reward_balance.split(" ")[0] * median_price.base.split(" ")[0] * 0.45).toFixed(3);
             downvote.querySelector("output:first-child").innerHTML = downvotes;
             downvote.querySelector("output:last-child").innerHTML = "$ " + (dpower / reward_fund.recent_claims * reward_fund.reward_balance.split(" ")[0] * median_price.base.split(" ")[0] * 0.45).toFixed(3);
-
+            
             upvote.classList.toggle("loading", false);
             downvote.classList.toggle("loading", false);
             post_element.querySelector(".rpcontainer .replies").innerHTML = post.children;
@@ -578,7 +576,7 @@ var onLoadedPosts = (res) => {
         setTimeout(() => {
             window.onscroll();
         }, 500);
-
+    
 };
 
 var imageFullScreen = (evt) => {
@@ -634,15 +632,15 @@ window.onscroll = function () {
 
 var createUploadWindow = () => {
     document.getElementById("posts_container").innerHTML = "";
-
+    
     let upload_section = document.createElement("section");
     upload_section.classList.add("upload_section");
-
+    
     let titulo = document.createElement("textarea");
     titulo.classList.add("titulo_textarea");
     titulo.placeholder = getCssString("--upload-title-post");
     upload_section.appendChild(titulo);
-
+    
     let uploadfile = document.createElement("input");
     uploadfile.classList.add("uploadfile");
     uploadfile.setAttribute("type", "file");
@@ -650,7 +648,7 @@ var createUploadWindow = () => {
     uploadfile.onchange = (fileevent) => {
         prepareFile(document.querySelector("input.uploadfile").files[0]);
     };
-
+    
     let media = document.createElement("div");
     media.classList.add("mediaobject");
     media.onclick = (evt) => {
@@ -662,15 +660,15 @@ var createUploadWindow = () => {
         document.querySelector("input.uploadfile").click();
     };
     upload_section.append(media);
-
+    
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
         media.addEventListener(eventName, (e) => {
             e.preventDefault();
             e.stopPropagation();
         }, false);
     });
-
-
+    
+    
     media.addEventListener('dragenter', (evt) => {
         evt.target.classList.add("dragenter");
     }, false);
@@ -701,7 +699,7 @@ var createUploadWindow = () => {
             }
         }
     }, false);
-
+    
     let fileurl = document.createElement("input");
     fileurl.type = "url";
     fileurl.placeholder = getCssString("--upload-media-file-url");
@@ -711,7 +709,7 @@ var createUploadWindow = () => {
         setUploadedMedia(evt.srcElement.value);
     };
     upload_section.append(fileurl);
-
+    
     let comments_div = document.createElement("div");
     let comments = document.createElement("textarea");
     let comments_preview = document.createElement("div");
@@ -733,10 +731,10 @@ var createUploadWindow = () => {
         document.querySelector(".comentario_preview").innerHTML = "";
         document.querySelector(".comentario_textarea").style.height = "";
     };
-
+    
     comments.oninput = ta_input;
     comments.onkeypress = ta_input;
-
+    
     let footer = document.createElement("footer");
     let original_label_div = document.createElement("div");
     original_label_div.classList.add("original_label_div");
@@ -748,7 +746,7 @@ var createUploadWindow = () => {
     original_label_div.appendChild(original_label);
     original.setAttribute("type", "checkbox");
     original.onchange = recalcMaxVal;
-
+    
     let highvalue_label_div = document.createElement("div");
     highvalue_label_div.classList.add("highvalue_label_div");
     let highvalue_label = document.createElement("label");
@@ -759,7 +757,7 @@ var createUploadWindow = () => {
     highvalue_label_div.appendChild(highvalue_label);
     highvalue.setAttribute("type", "checkbox");
     highvalue.onchange = recalcMaxVal;
-
+    
     let button_div = document.createElement("div");
     button_div.classList.add("button_div");
     let button = document.createElement("button");
@@ -774,7 +772,7 @@ var createUploadWindow = () => {
     button_div.appendChild(button);
     button.classList.add("button_publish");
     button.onclick = createPost;
-
+    
     let tags_div = document.createElement("div");
     tags_div.classList.add("tags_div");
     let tags = document.createElement("input");
@@ -783,22 +781,22 @@ var createUploadWindow = () => {
     tags.placeholder = getCssString("--upload-tags");
     tags.title = getCssString("--upload-tags-w");
     ;
-
-
+    
+    
     footer.appendChild(original_label_div);
     footer.appendChild(highvalue_label_div);
     footer.appendChild(tags_div);
     footer.appendChild(button_div);
     upload_section.appendChild(footer);
-
-
+    
+    
 //    
 //    let canvas = document.createElement("canvas");
 //    canvas.classList.add("imageupload");
 //    upload_section.appendChild(canvas);
 //    
-
-
+    
+    
     document.getElementById("posts_container").appendChild(upload_section);
     recalcMaxVal();
 };
@@ -882,7 +880,7 @@ var prepareFile = (arquivo) => {
         formData.append("url", arquivo);
     else
         formData.append("uploadfile", arquivo);
-
+    
     document.querySelector(".mediaobject").innerHTML = "";
     document.querySelector(".mediaobject").append(document.createElement("progress"));
     uploadFile(formData, function (resposta) {
@@ -928,15 +926,15 @@ var createPost = () => {
     tags = tags.concat(post_tags.split(" ")).filter(element => {
         return element !== '';
     });
-
+    
     if (tags.length > 10) {
         alert("Over 10 tags");
         return;
     }
-
+    
     let maxpay = recalcMaxVal();
     let post_body = createPostContent(permlink).outerHTML;
-
+    
     let contrib = [
         0, {
             "beneficiaries": [
@@ -950,7 +948,7 @@ var createPost = () => {
         if (!tags.includes("penny-post"))
             tags.push("penny-post");
     }
-
+    
     let metadata = {
         app: "QDPost v0.0.1",
         format: "html",
@@ -959,7 +957,7 @@ var createPost = () => {
         image: [],
         video: []
     };
-
+    
     if (document.querySelector(".mediaobject").attributes["ct"].value === "image") {
         metadata.image.push(document.querySelector("input[type=url]").value);
     } else if (document.querySelector(".mediaobject").attributes["ct"].value === "video") {
@@ -967,7 +965,7 @@ var createPost = () => {
         if (!tags.includes("video"))
             tags.push("video");
     }
-
+    
     ops = [
         [
             "comment",
@@ -1062,18 +1060,18 @@ var createPostContent = (permlink = null) => {
     let signature = document.createElement("div");
     let signature_a = document.createElement("a");
     signature.classList.add("dappsignature");
-
+    
     signature_a.href = permlink !== null ? "https://qdp.hivetasks.com/@" + localStorage.username + "/" + permlink : "https://qdp.hivetasks.com";
     signature_a.target = "blank";
     signature_a.append("QDP from Hivetasks");
-
+    
     signature.append("This post was created by ");
     signature.append(signature_a);
-
+    
     comment.classList.add("comment");
     comment.classList.add("text-justify");
     comment.appendChild(new DOMParser().parseFromString("<div>" + markdownParser(document.querySelector(".comentario_textarea").value) + "</div>", "text/xml").firstChild);
-
+    
     let ul = document.createElement("ul");
     declarations.appendChild(ul);
     if (document.querySelector(".original_label_div input").checked) {
@@ -1086,16 +1084,16 @@ var createPostContent = (permlink = null) => {
         li.append("The author declares this post to be of high value.");
         ul.appendChild(li);
     }
-
+    
     postData.appendChild(mediacenter);
     postData.appendChild(comment);
     postData.append(signature);
     declarations.appendChild(ul);
     if (ul.children.length > 0)
         postData.appendChild(declarations);
-
-
-
+    
+    
+    
     console.log(postData.outerHTML);
     return postData;
 };
@@ -1150,7 +1148,7 @@ var getTopTags = () => {
         });
     });
     req.open("POST", localStorage.hiveNode);
-
+    
     request = {
         "id": idrequest++,
         "jsonrpc": "2.0",
