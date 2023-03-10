@@ -440,8 +440,16 @@ var loadPost = (post, open = false) => {
             let lista = JSON.parse(res.target.response).result;
             Object.values(lista).forEach(item => {
                 let comment_section = document.createElement("section");
+                let author_link = document.createElement("a");
+                let author = document.createElement("figure");
+                let author_name = document.createElement("figcaption");
+                let author_img = document.createElement("img");
+                author.append(author_img);
+                author.append(author_name);
+                author_link.append(author);
+                comment_section.append(author_link);
                 console.log(item.depth + " " + item.author + item.permlink );
-            section.querySelector(".rpcontainer .replies").append(comment_section);
+            section.querySelector(".replies_container_div").append(comment_section);
             });
         });
 };
