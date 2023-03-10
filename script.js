@@ -476,21 +476,14 @@ var loadPost = (post, open = false) => {
                 author_link.href = rootUrl + "@" + item.author;
                 author_link.target = "_blank";
                 comment_section.append(author_link);
-
-
                 let parser = new DOMParser();
                 let doc = parser.parseFromString(item.body, "text/html");
-                console.log(doc.body);
                 text.append(doc.body);
                 comment_section.append(text);
-
-
                 author_name.append(item.author);
                 getProfile(item.author, (res) => {
                     author_img.src = res["metadata"]["profile"]["profile_image"];
                 });
-
-                text.append(item.body);
                 console.log(item);
                 section.querySelector(".replies_container_div").append(comment_section);
             });
