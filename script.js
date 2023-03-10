@@ -451,7 +451,7 @@ var loadPost = (post, open = false) => {
                 author_link.append(author);
                 comment_section.append(author_link);
                 
-                
+                author_name.append(item.author);
                 
                 
                 console.log(item);
