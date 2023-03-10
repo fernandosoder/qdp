@@ -479,7 +479,7 @@ var loadPost = (post, open = false) => {
 
 
                 let parser = new DOMParser();
-                let doc = parser.parseFromString(post.body, "text/html");
+                let doc = parser.parseFromString(item.body, "text/html");
                 console.log(doc.body);
                 text.append(doc.body);
                 comment_section.append(text);
