@@ -443,7 +443,6 @@ var loadPost = (post, open = false) => {
             });
 
             section.querySelector(".rpcontainer .replies").innerHTML;
-            console.log();
         });
 };
 function checkVisible(elm) {
