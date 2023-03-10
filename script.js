@@ -439,7 +439,7 @@ var loadPost = (post, open = false) => {
         getDiscussion(section, (res) => {
             let lista = JSON.parse(res.target.response).result;
             Object.values(lista).forEach(item => {
-                console.log(item.depth);
+                console.log(item.depth + " " + item.author + item.permlink );
             });
             section.querySelector(".rpcontainer .replies").innerHTML;
         });
