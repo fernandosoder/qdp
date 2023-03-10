@@ -380,9 +380,9 @@ var loadPost = (post, open = false) => {
         let total_payout = document.createElement("output");
         let payout_at = document.createElement("output");
         let rpcontainer = document.createElement("div");
-        
+
         let replies_container_div = document.createElement("div");
-        
+
         replies_container_div.classList.add("replies_container_div");
         ex_rpcontainer.append(rpcontainer);
         replies.classList.add("replies");
@@ -437,8 +437,13 @@ var loadPost = (post, open = false) => {
     }
     if (open)
         getDiscussion(section, (res) => {
+            let lista = JSON.parse(res.target.response).result;
+            Object.values(lista).forEach(item => {
+                console.log(item);
+            });
+
             section.querySelector(".rpcontainer .replies").innerHTML;
-            console.log(JSON.parse(res.target.response).result);
+            console.log();
         });
 };
 function checkVisible(elm) {
