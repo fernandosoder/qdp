@@ -441,7 +441,6 @@ var loadPost = (post, open = false) => {
             Object.values(lista).forEach(item => {
                 console.log(item);
             });
-
             section.querySelector(".rpcontainer .replies").innerHTML;
         });
 };
