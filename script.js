@@ -485,7 +485,7 @@ var loadPost = (post, open = false) => {
                 let parser = new DOMParser();
                 let doc = parser.parseFromString(item.body, "text/html");
                 console.log(doc.body);
-                text.append(doc.body.innerHTML);
+                text.append(doc.body.firstChild());
                 comment_section.append(text);
                 author_name.append(item.author);
                 getProfile(item.author, (res) => {
