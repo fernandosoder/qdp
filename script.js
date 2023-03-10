@@ -465,6 +465,7 @@ var loadPost = (post, open = false) => {
                 if (item.depth === 0)
                     return;
                 let comment_section = document.createElement("section");
+                let leftside = document.createElement("div");
                 let author_link = document.createElement("a");
                 let author = document.createElement("figure");
                 let author_name = document.createElement("figcaption");
@@ -472,12 +473,14 @@ var loadPost = (post, open = false) => {
                 let text = document.createElement("div");
                 author_img.classList.add("author_img");
                 author_name.classList.add("author_name");
+                leftside.classList.add("leftside");
                 author.append(author_img);
                 author.append(author_name);
                 author_link.append(author);
                 author_link.href = rootUrl + "@" + item.author;
                 author_link.target = "_blank";
-                comment_section.append(author_link);
+                comment_section.append(leftside);
+                leftside.append(author_link);
                 let parser = new DOMParser();
                 let doc = parser.parseFromString(item.body, "text/html");
                 text.append(doc.body);
