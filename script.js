@@ -439,9 +439,10 @@ var loadPost = (post, open = false) => {
         getDiscussion(section, (res) => {
             let lista = JSON.parse(res.target.response).result;
             Object.values(lista).forEach(item => {
+                let comment_section = document.createElement("section");
                 console.log(item.depth + " " + item.author + item.permlink );
+            section.querySelector(".rpcontainer .replies").append(comment_section);
             });
-            section.querySelector(".rpcontainer .replies").innerHTML;
         });
 };
 function checkVisible(elm) {
