@@ -471,6 +471,7 @@ var loadPost = (post, open = false) => {
                 let author_name = document.createElement("figcaption");
                 let author_img = document.createElement("img");
                 let text = document.createElement("div");
+                text.classList.add("text");
                 author_img.classList.add("author_img");
                 author_name.classList.add("author_name");
                 leftside.classList.add("leftside");
