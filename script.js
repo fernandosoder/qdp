@@ -473,7 +473,8 @@ var loadPost = (post, open = false) => {
                 author.append(author_img);
                 author.append(author_name);
                 author_link.append(author);
-                author_link.href = rootUrl + "/@" + item.author;
+                author_link.href = rootUrl + "@" + item.author;
+                author_link.target = "_blank";
                 comment_section.append(author_link);
                 comment_section.append(text);
 
