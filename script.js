@@ -439,23 +439,26 @@ var loadPost = (post, open = false) => {
         getDiscussion(section, (res) => {
             let lista = JSON.parse(res.target.response).result;
             Object.values(lista).forEach(item => {
-                if(item.depth === 0)
+                if (item.depth === 0)
                     return;
                 let comment_section = document.createElement("section");
                 let author_link = document.createElement("a");
                 let author = document.createElement("figure");
                 let author_name = document.createElement("figcaption");
                 let author_img = document.createElement("img");
+                let text = document.createElement("div");
                 author.append(author_img);
                 author.append(author_name);
                 author_link.append(author);
                 comment_section.append(author_link);
-                
+                comment_section.append(text);
+
+
                 author_name.append(item.author);
                 
-                
+                text.append(item.body);
                 console.log(item);
-            section.querySelector(".replies_container_div").append(comment_section);
+                section.querySelector(".replies_container_div").append(comment_section);
             });
         });
 };
