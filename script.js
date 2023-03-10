@@ -476,6 +476,12 @@ var loadPost = (post, open = false) => {
                 author_link.href = rootUrl + "@" + item.author;
                 author_link.target = "_blank";
                 comment_section.append(author_link);
+
+
+                let parser = new DOMParser();
+                let doc = parser.parseFromString(post.body, "text/html");
+                console.log(doc);
+                text.append(doc);
                 comment_section.append(text);
 
 
