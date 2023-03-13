@@ -1,0 +1,44 @@
+.replies_container_div .replies_container_div:not(:hover) {
+    width: calc(100% - 150px);
+    margin-left: 150px;
+    
+}
+.replies_container_div > section{
+    display: inline-grid;
+    grid-template-areas: "user text" "footer footer";
+    width: 100%;
+    grid-template-columns: 150px  1fr;
+    border-top: 1px solid;
+    border-left: 1px solid;
+}
+.replies_container_div > section > .leftside *{
+margin-left: 0;    
+    margin-right: 0;    
+}
+.replies_container_div > section > .leftside .author_name:before{
+    content: "@";
+}
+.replies_container_div > section > .leftside
+{
+    grid-area: user;
+    width: 150px;
+    font-size: 12px;
+
+}
+.replies_container_div > section > .leftside img{
+    max-height: 25px;
+    max-width: 25px;
+    border-radius: 50%;
+}
+.replies_container_div > section > .text
+{
+    text-align: justify;
+    grid-area: text;
+    padding: 20px;
+}
+.replies_container_div > section > footer{
+    grid-area: footer;
+}
+.replies_container_div > section > :is(.leftside,.text){
+    
+}
