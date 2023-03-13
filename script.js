@@ -449,7 +449,9 @@ var loadPost = (post, open = false) => {
                 let author_name = document.createElement("figcaption");
                 let author_img = document.createElement("img");
                 let text = document.createElement("div");
+                let footer = document.createElement("footer");
                 let replies = document.createElement("div");
+                footer.append(replies);
                 replies.classList.add("replies_container_div");
                 comment_section.setAttribute("author", item.author);
                 comment_section.setAttribute("permlink", item.permlink);
