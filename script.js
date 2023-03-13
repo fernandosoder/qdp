@@ -471,7 +471,7 @@ var loadPost = (post, open = false) => {
                 console.log(doc);
                 text.innerHTML = doc.querySelector("body").innerHTML;
                 comment_section.append(text);
-                comment_section.append(replies);
+                comment_section.append(footer);
                 author_name.append(item.author);
                 getProfile(item.author, (res) => {
                     author_img.src = res["metadata"]["profile"]["profile_image"];
