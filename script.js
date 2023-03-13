@@ -194,7 +194,7 @@ var loadPost = (post, open = false) => {
                     image.style.display = "none";
                     image.parentElement.appendChild(image2);
                 }
-            }, qtd > 4 ? 5000 : (qtd + 1) * 1000);
+            }, qtd > 4 ? 5000 : (qtd + 2) * 1000);
             section_media.appendChild(image);
         } else
         if (post.json_metadata.video.length > 0) {
@@ -411,7 +411,6 @@ var loadPost = (post, open = false) => {
         replies.innerHTML = post.children;
         total_payout.innerHTML = (payout + "").slice(0, -1) + "<span>" + (payout + "").charAt((payout + "").length - 1) + "</span>";
         let date = new Date(post.payout_at + ".000+0000");
-        let now = new Date();
         payout_at.setAttribute("epoch", date.valueOf() / 1000);
         payout_at.innerHTML = date.toLocaleString();
         total_payout.classList.toggle("paid", post.is_paidout);
@@ -451,7 +450,7 @@ var loadPost = (post, open = false) => {
                 let author_img = document.createElement("img");
                 let text = document.createElement("div");
                 let replies = document.createElement("div");
-                replies.classList.add("replies");
+                replies.classList.add("replies_container_div");
                 comment_section.setAttribute("author", item.author);
                 comment_section.setAttribute("permlink", item.permlink);
                 text.classList.add("text");
