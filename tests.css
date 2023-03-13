@@ -1,15 +1,22 @@
+.replies_container_div{
+    transition: ease-in-out 1s;
+}
 .replies_container_div .replies_container_div:not(:hover) {
     width: calc(100% - 150px);
     margin-left: 150px;
     
+}
+.replies_container_div .replies_container_div:hover {
+    width: calc(100% - 5px);
+    margin-left: 5px;
 }
 .replies_container_div > section{
     display: inline-grid;
     grid-template-areas: "user text" "footer footer";
     width: 100%;
     grid-template-columns: 150px  1fr;
-    border-top: 1px solid;
-    border-left: 1px solid;
+    border-top: 1px dotted;
+    border-left: 1px dotted;
 }
 .replies_container_div > section > .leftside *{
 margin-left: 0;    
@@ -32,7 +39,7 @@ margin-left: 0;
 }
 .replies_container_div > section > .text
 {
-    text-align: justify;
+    text-align: left;
     grid-area: text;
     padding: 20px;
 }
@@ -41,4 +48,11 @@ margin-left: 0;
 }
 .replies_container_div > section > :is(.leftside,.text){
     
+}
+
+.text-justify{
+    text-align: justify !important;
+}
+.text-right{
+    text-align: right !important;
 }
