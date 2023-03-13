@@ -19,7 +19,7 @@ header('Link: <' . $rootUrl . 'script.js>; rel=preload; as=script', false);
         }
         ?>
         <link href="<?php echo $rootUrl; ?>css/style.css" rel="stylesheet" />
-        <link href="<?php echo $rootUrl; ?>css/tests.css" rel="stylesheet" />
+        <link href="<?php echo $rootUrl; ?>tests.css" rel="stylesheet" />
         <script src="<?php echo $rootUrl; ?>script.js" type="text/javascript" defer></script>
     </head>
     <body<?php
