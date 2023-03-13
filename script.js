@@ -477,7 +477,7 @@ var loadPost = (post, open = false) => {
                     author_img.src = res["metadata"]["profile"]["profile_image"];
                 });
                 console.log(item);
-                section.querySelector(".replies_container_div").append(comment_section);
+                document.querySelector("section[author='"+item.parent_author+"'][permlink='"+item.parent_permlink+"'] footer > .replies_container_div").append(comment_section);
             });
         });
 };
