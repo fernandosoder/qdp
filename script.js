@@ -450,6 +450,8 @@ var loadPost = (post, open = false) => {
                 let author_name = document.createElement("figcaption");
                 let author_img = document.createElement("img");
                 let text = document.createElement("div");
+                let replies = document.createElement("div");
+                replies.classList.add("replies");
                 comment_section.setAttribute("author", item.author);
                 comment_section.setAttribute("permlink", item.permlink);
                 text.classList.add("text");
@@ -468,6 +470,7 @@ var loadPost = (post, open = false) => {
                 console.log(doc);
                 text.innerHTML = doc.querySelector("body").innerHTML;
                 comment_section.append(text);
+                comment_section.append(replies);
                 author_name.append(item.author);
                 getProfile(item.author, (res) => {
                     author_img.src = res["metadata"]["profile"]["profile_image"];
