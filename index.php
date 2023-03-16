@@ -1,5 +1,6 @@
 <?php
-$rootUrl = "https://qdp.hivetasks.com/";
+$rootUrl = "http://localhost:8080/";
+$v = date('Ymdhs');
 header('Link: <' . $rootUrl . 'css/style.css>; rel=preload; as=style', false);
 header('Link: <' . $rootUrl . 'script.js>; rel=preload; as=script', false);
 ?><!DOCTYPE html>
@@ -19,7 +20,6 @@ header('Link: <' . $rootUrl . 'script.js>; rel=preload; as=script', false);
         }
         ?>
         <link href="<?php echo $rootUrl; ?>css/style.css" rel="stylesheet" />
-        <link href="<?php echo $rootUrl; ?>tests.css" rel="stylesheet" />
         <script src="<?php echo $rootUrl; ?>script.js" type="text/javascript" defer></script>
     </head>
     <body<?php
