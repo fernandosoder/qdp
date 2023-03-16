@@ -1,6 +1,5 @@
 <?php
-$rootUrl = "http://localhost:8080/";
-$v = date('Ymdhs');
+$rootUrl = "https://qdp.hivetasks.com/";
 header('Link: <' . $rootUrl . 'css/style.css>; rel=preload; as=style', false);
 header('Link: <' . $rootUrl . 'script.js>; rel=preload; as=script', false);
 ?><!DOCTYPE html>
