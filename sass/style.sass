@@ -163,13 +163,16 @@ main#posts_container
             section
                 margin-bottom: 1rem
         .replies_container_div
-            transition: ease-in-out 0.7s
             .replies_container_div
-                margin-left: auto
-                width: 85%
-                &:hover
-                    width: 95%
+                padding-right: .8rem
+                text-align: right
+                section
+                    margin-left: auto
+                    width: 85%
+                    &:hover
+                        width: 95%
             & > section
+                transition: ease-in-out 0.7s
                 display: inline-grid
                 grid-template-areas: "user text" "footer footer"
                 width: 100%
