@@ -159,7 +159,9 @@ main#posts_container
             font-size: 18px
             @media ($xsmax)
                 font-size: 20px
-        
+        & >  .replies_container_div
+            section
+                margin-bottom: 1rem
         .replies_container_div
             transition: ease-in-out 0.7s
             .replies_container_div
@@ -172,8 +174,9 @@ main#posts_container
                 grid-template-areas: "user text" "footer footer"
                 width: 100%
                 grid-template-columns: 150px  1fr
-                border-top: 1px dotted
-                border-left: 1px dotted
+                border-radius: 40px
+                background: linear-gradient(rgba(20, 20, 20, .15), rgba(20, 20, 20, .15))
+                margin-bottom: .5rem
                 & > .text
                     text-align: left
                     grid-area: text
