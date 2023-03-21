@@ -159,6 +159,46 @@ main#posts_container
             font-size: 18px
             @media ($xsmax)
                 font-size: 20px
+        & >  .replies_container_div
+            section
+                margin-bottom: 1rem
+        .replies_container_div
+            .replies_container_div
+                padding-right: .8rem
+                text-align: right
+                section
+                    margin-left: auto
+                    width: 85%
+                    &:hover
+                        width: 95%
+            & > section
+                transition: ease-in-out 0.7s
+                display: inline-grid
+                grid-template-areas: "user text" "footer footer"
+                width: 100%
+                grid-template-columns: 150px  1fr
+                border-radius: 40px
+                background: linear-gradient(rgba(20, 20, 20, .15), rgba(20, 20, 20, .15))
+                margin-bottom: .5rem
+                & > .text
+                    text-align: left
+                    grid-area: text
+                    padding: 20px
+                & > .leftside
+                    grid-area: user
+                    width: 150px
+                    font-size: 12px
+                    *
+                        margin-left: 0    
+                        margin-right: 0
+                    .author_name:before
+                        content: '@'
+                    img
+                        max-height: 25px
+                        max-width: 25px
+                        border-radius: 50%
+                & > footer
+                    grid-area: footer
 
 .section_openclose
     text-align: center
