@@ -1053,7 +1053,7 @@ var createPostContent = (permlink = null) => {
     signature.append("This post was created by ");
     signature.append(signature_a);
 
-    comment.classList.add("comment");
+    //comment.classList.add("comment");
     comment.classList.add("text-justify");
     comment.appendChild(new DOMParser().parseFromString("<div>" + markdownParser(document.querySelector(".comentario_textarea").value) + "</div>", "text/xml").firstChild);
 
