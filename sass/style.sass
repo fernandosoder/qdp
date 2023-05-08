@@ -1,4 +1,5 @@
 @import "_variables"
+@charset "UTF-8"
 
 :root
     -webkit-user-select: none
@@ -106,6 +107,8 @@ body
             margin-right: 5px
             border-radius: 15px
             background-color: $cardColor
+            &:hover
+                box-shadow: 0 0 5px lighten($cardColor, 10%)
     [qtd='1']
         display: none !important
 
