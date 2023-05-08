@@ -251,7 +251,9 @@ section:not(.open) > .section_body
     p
         a
             color: $cardCommentsColor
+            transition: ease-in-out 0.1s all
             &:hover
+                color: lighten($cardCommentsColor, 10%)
                 text-shadow: 0 0 1px #999
 
 .section_footer
