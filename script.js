@@ -1084,11 +1084,14 @@ var createPostContent = (permlink = null) => {
 };
 
 
-var markdownParser = (markdown) => {
-    const htmlText = markdown
-//     .replace(/\n\n(.*)\n\n/gim, '\n\n<p>$1</p>\n\n')
-//            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-//            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+var  markdownParser = (markdown) => {
+    let htmlText = ("<p>" + markdown)
+    .replace(/\n\# +(.*)/gim, '</p><h1>$1</h1><p>')
+    .replace(/\n\#{2} +(.*)/gim, '</p><h2>$1</h2><p>')
+    .replace(/\n\#{3} +(.*)/gim, '</p><h3>$1</h3><p>')
+    .replace(/\n\#{4} +(.*)/gim, '</p><h4>$1</h4><p>')
+    .replace(/\n\#{5} +(.*)/gim, '</p><h5>$1</h5><p>')
+    .replace(/\n\#{6} +(.*)/gim, '</p><h6>$1</h6><p>')
 //            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
 //            .replace(/^#### (.*$)/gim, '<h4>$1</h4>')
 //            .replace(/^##### (.*$)/gim, '<h5>$1</h5>')
@@ -1102,6 +1105,14 @@ var markdownParser = (markdown) => {
 //
 //            .replace(/^\\(.*$)/gim, '$1')
 //            .replace(/([^\/]\>)[ \r\n]*\<br \/\>[ \r\n]*(\<)?/gim, '$1$2');
+    .replace(/\n\n(.*)/gim, '</p><p>$1')
+    .replace(/\n(.+)/gim, '<br />$1')
+     + "<\/p>";
+   	htmlText = htmlText.replace('<p><br />','<p>')
+   										 .replace('<br /></p>','</p>')
+   .replace(/([\>\<]) +/gim,'$1');
+    clear();
+    console.log(htmlText.trim());
     return htmlText.trim();
 };
 
