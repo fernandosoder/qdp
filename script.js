@@ -1110,8 +1110,8 @@ var  markdownParser = (markdown) => {
      + "<\/p>";
    	htmlText = htmlText.replace('<p><br />','<p>')
                                         .replace('<br /></p>','</p>')
-                                        .replaceAllf('<p></p>','');
-   .replace(/([\>\<]) +/gim,'$1');
+                                        .replaceAll('<p></p>','')
+                                        .replace(/([\>\<]) +/gim,'$1');
     return htmlText.trim();
 };
 
