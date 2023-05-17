@@ -1111,8 +1111,6 @@ var  markdownParser = (markdown) => {
    	htmlText = htmlText.replace('<p><br />','<p>')
    										 .replace('<br /></p>','</p>')
    .replace(/([\>\<]) +/gim,'$1');
-    clear();
-    console.log(htmlText.trim());
     return htmlText.trim();
 };
 
