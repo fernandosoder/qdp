@@ -1159,3 +1159,9 @@ var getTopTags = () => {
     };
     req.send(JSON.stringify(request));
 }
+
+document.querySelector("a.logout").onclick = () =>{
+    localStorage.username = "";
+    location.reload();
+  };
+  
